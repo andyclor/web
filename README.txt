@@ -78,3 +78,10 @@ Abrir config/config.js y editar:
 - distribuidor.precioKg
 - distribuidor.ahorro
 Luego subir solo config/config.js a GitHub.
+
+
+MENÚ MÓVIL FINAL
+- Barra inferior con Inicio, Cloro, Calcular y WhatsApp.
+- Cada opción tiene efecto redondeado independiente.
+- WhatsApp queda destacado en verde.
+- Se ocultan los botones flotantes de WhatsApp en celular para evitar duplicados.
