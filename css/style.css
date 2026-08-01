@@ -4044,3 +4044,199 @@ body:has(#resultadoCalculadora.is-visible-after-calc){
 @media(max-width:760px){
   .gold-saving-badge{width:100%;justify-content:center;text-align:center}
 }
+
+
+/* =========================================================
+   CORRECCIÓN FINAL PC / CELULAR
+   Oferta horizontal + Calculadora en dos columnas
+   ========================================================= */
+
+/* OFERTA: siempre dos tarjetas en PC */
+.gold-offer-section{
+  display:block!important;
+  width:100%!important;
+  padding:48px clamp(20px,4vw,64px)!important;
+  background:linear-gradient(180deg,#f8fbff 0%,#ffffff 100%)!important;
+}
+.gold-offer-heading{
+  display:block!important;
+  max-width:960px!important;
+  margin:0 auto 28px!important;
+  text-align:center!important;
+}
+.gold-offer-grid{
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  align-items:stretch!important;
+  gap:24px!important;
+  width:min(1180px,100%)!important;
+  max-width:1180px!important;
+  margin:0 auto!important;
+}
+.gold-offer-card{
+  display:flex!important;
+  flex-direction:column!important;
+  min-width:0!important;
+  min-height:520px!important;
+  padding:28px!important;
+  border-radius:26px!important;
+  background:#fff!important;
+  box-shadow:0 18px 46px rgba(4,43,80,.14)!important;
+}
+.gold-offer-card.retail{
+  border:2px solid rgba(22,103,197,.28)!important;
+  background:linear-gradient(145deg,#f5f9ff,#ffffff)!important;
+}
+.gold-offer-card.wholesale{
+  border:2px solid rgba(17,142,67,.30)!important;
+  background:linear-gradient(145deg,#f5fff8,#ffffff)!important;
+}
+.gold-offer-card h3,
+.gold-offer-card .gold-offer-volume,
+.gold-offer-card ul,
+.gold-offer-card .gold-offer-price-wrap,
+.gold-offer-card .gold-distributor-message{
+  width:100%!important;
+}
+.gold-offer-card .btn{
+  margin-top:auto!important;
+  width:100%!important;
+  justify-content:center!important;
+}
+.gold-offer-note{
+  display:block!important;
+  width:min(100%,950px)!important;
+  margin:20px auto 0!important;
+  text-align:center!important;
+}
+
+/* CALCULADORA: formulario inicialmente, luego resultado en 2 columnas */
+#calculadora .calc-container{
+  display:block!important;
+  width:100%!important;
+}
+#calculadora .calc-entry-panel{
+  width:min(1180px,100%)!important;
+  max-width:1180px!important;
+  margin:0 auto!important;
+}
+#resultadoCalculadora{
+  width:100%!important;
+  max-width:none!important;
+}
+#resultadoCalculadora.is-visible-after-calc{
+  display:block!important;
+}
+.calc-final-layout{
+  display:grid!important;
+  grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr)!important;
+  align-items:start!important;
+  gap:24px!important;
+  width:100%!important;
+}
+.calc-order-column,
+.calc-treatment-column{
+  min-width:0!important;
+  width:100%!important;
+  padding:24px!important;
+  border-radius:24px!important;
+  background:#fff!important;
+  box-shadow:0 16px 40px rgba(4,43,80,.11)!important;
+}
+.calc-order-column{
+  border:2px solid rgba(32,184,88,.30)!important;
+  background:linear-gradient(145deg,#f4fff8,#ffffff)!important;
+}
+.calc-treatment-column{
+  border:2px solid rgba(29,142,209,.24)!important;
+  background:linear-gradient(145deg,#f6fbff,#ffffff)!important;
+}
+.calc-treatment-column .result-grid{
+  display:grid!important;
+  grid-template-columns:1fr!important;
+  gap:16px!important;
+}
+.prepared-order-compact{
+  width:100%!important;
+  margin-top:22px!important;
+}
+.prepared-order-compact ul{
+  display:grid!important;
+  grid-template-columns:1fr!important;
+  gap:12px!important;
+  margin:16px 0 0!important;
+  padding:0!important;
+  list-style:none!important;
+}
+.prepared-order-compact li.prepared-product,
+.prepared-order-compact li{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:flex-start!important;
+  justify-content:flex-start!important;
+  gap:6px!important;
+  width:100%!important;
+  padding:15px 16px!important;
+  border-left:5px solid #20b858!important;
+  border-radius:14px!important;
+  background:#fff!important;
+  box-shadow:0 8px 20px rgba(4,43,80,.07)!important;
+}
+.prepared-order-compact li strong{
+  display:block!important;
+  width:100%!important;
+  color:#073b71!important;
+  font-size:1.03rem!important;
+}
+.prepared-order-compact li span{
+  display:block!important;
+  width:100%!important;
+  color:#1d3044!important;
+  font-size:1.18rem!important;
+  font-weight:950!important;
+  text-align:left!important;
+}
+.calculator-whatsapp-top{
+  display:flex!important;
+  width:100%!important;
+  min-height:58px!important;
+  margin:18px 0 8px!important;
+  align-items:center!important;
+  justify-content:center!important;
+  border-radius:16px!important;
+  background:#20b858!important;
+  border-color:#20b858!important;
+  font-weight:950!important;
+}
+.calc-order-column{
+  scroll-margin-top:88px!important;
+}
+
+/* CELULAR */
+@media(max-width:760px){
+  .gold-offer-section{
+    padding:34px 14px!important;
+  }
+  .gold-offer-grid{
+    grid-template-columns:1fr!important;
+    gap:18px!important;
+  }
+  .gold-offer-card{
+    min-height:0!important;
+    padding:22px 18px!important;
+  }
+  .calc-final-layout{
+    grid-template-columns:1fr!important;
+    gap:18px!important;
+  }
+  .calc-order-column{
+    order:1!important;
+  }
+  .calc-treatment-column{
+    order:2!important;
+  }
+  .calc-order-column,
+  .calc-treatment-column{
+    padding:18px!important;
+  }
+}

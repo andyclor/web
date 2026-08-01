@@ -10,8 +10,8 @@ window.ANDYCLOR_CONFIG = {
 
   oferta: {
     producto: "Pastillas Multiacción x 50 kg",
-    precio: "Precio mayorista: Compras superiores a 500 kg, $225.000 cada cuñete",
-    texto: "Oferta con stock limitado. Venta mayorista y minorista de Pastillas Multiacción en cápsulas, ideales para mantenimiento mensual y temporada.",
+    precio: "Precio Mayorista: Compras superiores a 500 kg, $225.000 cada Cuñete",
+    texto: "Oferta con stock limitado. Venta Mayorista y Minorista de Pastillas Multiacción en cápsulas, ideales para mantenimiento mensual y temporada.",
     vigencia: "",
     mensajeWhatsApp: "Hola ANDYCLOR. Quiero consultar la oferta en compra Mayorista de Pastillas Multiacción x 50 kg."
   },
@@ -23,7 +23,7 @@ window.ANDYCLOR_CONFIG = {
   ],
 
   redes: {
-    instagram: "@andyclor_distribuidormayorista",
+    instagram: "@andyclor_oficial",
     facebook: "andyclor_distribuidor-mayorist",
     mercadoLibre: ""
   },
@@ -52,7 +52,7 @@ window.ANDYCLOR_OFERTAS = {
     producto: "Pastillas Multiacción",
     precio: "$205.000",
     precioKg: "Equivale a $4.100 por kg",
-    mensajeWhatsapp: "Hola ANDYCLOR. Quiero consultar la oferta minorista por 1 cuñete de 50 kg."
+    mensajeWhatsapp: "Hola ANDYCLOR. Quiero consultar la oferta Minorista por 1 Cuñete de 50 kg."
   },
   mayorista: {
     activo: true,
@@ -71,16 +71,16 @@ window.ANDYCLOR_CONFIG = {
     mostrar: true,
     minorista: {
       producto: "Pastillas Multiacción 200 g",
-      detalle: "1 cuñete de 50 kg",
+      detalle: "1 Cuñete de 50 kg",
       precio: "$259.000",
       precioKg: "$5.180 por kg",
-      mensajeWhatsapp: "Hola ANDYCLOR. Quiero consultar la oferta minorista por 1 cuñete de 50 kg."
+      mensajeWhatsapp: "Hola ANDYCLOR. Quiero consultar la oferta minorista por 1 Cuñete de 50 kg."
     },
     distribuidor: {
       volumen: "Compra mínima: 500 kg",
-      precio: "$225.000 por cuñete",
+      precio: "$225.000 por Cuñete",
       precioKg: "$4.500 por kg",
-      ahorro: "Ahorrás $34.000 por cuñete",
+      ahorro: "Ahorrás $34.000 por Cuñete",
       mensajeWhatsapp: "Hola ANDYCLOR. Quiero solicitar una cotización para distribuidores por 500 kg o más."
     }
   },
