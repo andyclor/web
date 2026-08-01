@@ -202,6 +202,9 @@ function calculatePool() {
   const maintenance = document.getElementById('mantenimiento')?.value;
   const season = document.getElementById('temporada')?.value;
   const result = document.getElementById('resultadoCalculadora');
+  const entryPanel = document.querySelector('.calc-entry-panel');
+  const formPanel = document.querySelector('.calc-entry-panel .calc-form');
+  const resetButton = document.getElementById('recalcularPiletaBtn');
 
   if (!result) return;
 
@@ -254,7 +257,7 @@ function calculatePool() {
         <small>Presentación sugerida para aproximadamente un mes: ${presentation}.</small>
       </div>
     `);
-    preparedOrder.push(`<li><strong>${presentation}</strong><span>${granulatedName}: ${granulatedGrams} g ${granulatedFrequency}</span></li>`);
+    preparedOrder.push(`<li class="prepared-product"><strong>${granulatedName}</strong><span>${presentation}</span></li>`);
     messageOrder.push(`${presentation} — dosis: ${granulatedGrams} g ${granulatedFrequency}`);
   }
 
@@ -267,7 +270,7 @@ function calculatePool() {
         <small>Presentación sugerida para aproximadamente un mes: ${presentation}.</small>
       </div>
     `);
-    preparedOrder.push(`<li><strong>${presentation}</strong><span>${tablets} pastilla(s) ${tabletsFrequency}</span></li>`);
+    preparedOrder.push(`<li class="prepared-product"><strong>Pastillas Multiacción</strong><span>${presentation}</span></li>`);
     messageOrder.push(`${presentation} — uso: ${tablets} pastilla(s) ${tabletsFrequency}`);
   }
 
@@ -278,7 +281,7 @@ function calculatePool() {
       <small>Ante fuerte presencia de algas: ${strongAlgaeAlgaecide} cc. Aplicar sin bañistas y recircular durante 3 horas.</small>
     </div>
   `);
-  preparedOrder.push(`<li><strong>Alguicida Nataclor x 1 litro</strong><span>${weeklyAlgaecide} cc semanales</span></li>`);
+  preparedOrder.push(`<li class="prepared-product"><strong>Alguicida Nataclor</strong><span>x 1 litro</span></li>`);
   messageOrder.push(`Alguicida Nataclor x 1 litro — dosis: ${weeklyAlgaecide} cc semanales`);
 
   resultItems.push(`
@@ -288,7 +291,7 @@ function calculatePool() {
       <small>Diluir en 10 litros de agua, aplicar por la noche y pasar el limpiafondo por la mañana.</small>
     </div>
   `);
-  preparedOrder.push(`<li><strong>Clarificador Nataclor x 1 litro</strong><span>${clarifierDose} cc por aplicación</span></li>`);
+  preparedOrder.push(`<li class="prepared-product"><strong>Clarificador Nataclor</strong><span>x 1 litro</span></li>`);
   messageOrder.push(`Clarificador Nataclor x 1 litro — dosis: ${clarifierDose} cc por aplicación`);
 
   const message = [
@@ -314,41 +317,112 @@ function calculatePool() {
 
   result.className = `calc-result ${theme}`;
   result.innerHTML = `
-    <h3>Tratamiento recomendado</h3>
-    <div class="litros-box">
-      <strong>${litres.toLocaleString('es-AR')} litros aprox.</strong>
-      <span>${poolTypeLabel}</span>
-      <span>${maintenanceLabel}</span>
-      <span>${seasonLabel}</span>
+    <div class="calc-final-layout">
+      <section class="calc-order-column" aria-label="Resultado y pedido sugerido">
+        <span class="calc-result-kicker">✓ Resultado del cálculo</span>
+        <h3>Presentación sugerida para tu pileta</h3>
+
+        <a class="btn primary calculator-whatsapp-cta calculator-whatsapp-top" target="_blank" rel="noopener noreferrer"
+           href="${whatsappLink(message)}">
+           🟢 Finalizar pedido por WhatsApp
+        </a>
+        <small class="calculator-whatsapp-help">WhatsApp recibirá los productos y las cantidades sugeridas.</small>
+
+        <section class="prepared-order prepared-order-compact" aria-label="Pedido preparado">
+          <span class="prepared-order-kicker">🛒 Pedido preparado</span>
+          <ul>${preparedOrder.join('')}</ul>
+        </section>
+
+        <details class="pool-summary">
+          <summary>Ver datos utilizados para el cálculo</summary>
+          <div class="litros-box">
+            <strong>${litres.toLocaleString('es-AR')} litros aprox.</strong>
+            <span>${poolTypeLabel}</span>
+            <span>${maintenanceLabel}</span>
+            <span>${seasonLabel}</span>
+            <span>${length} m × ${width} m × ${depth} m</span>
+          </div>
+        </details>
+      </section>
+
+      <section class="calc-treatment-column" aria-label="Tratamiento recomendado">
+        <h3>Tratamiento recomendado</h3>
+        <div class="result-grid">${resultItems.join('')}</div>
+
+        <div class="recommend">
+          <strong>Importante:</strong>
+          <p>Las dosis son orientativas y pueden variar según clima, lluvia, uso, filtrado y estado del agua. Mantener el pH entre 7,2 y 7,6.</p>
+        </div>
+      </section>
     </div>
-
-    <div class="result-grid">${resultItems.join('')}</div>
-
-    <section class="prepared-order" aria-label="Pedido preparado">
-      <span class="prepared-order-kicker">🛒 Pedido preparado</span>
-      <h4>Presentaciones sugeridas para cotizar</h4>
-      <ul>${preparedOrder.join('')}</ul>
-      <p>WhatsApp recibirá los nombres y las cantidades para asociarlos con los productos de tu catálogo.</p>
-    </section>
-
-    <div class="recommend">
-      <strong>Importante:</strong>
-      <p>Las dosis son orientativas y pueden variar según clima, lluvia, uso, filtrado y estado del agua. Mantener el pH entre 7,2 y 7,6.</p>
-    </div>
-
-    <a class="btn primary calculator-whatsapp-cta" target="_blank" rel="noopener noreferrer"
-       href="${whatsappLink(message)}">
-       💬 Cotizar este tratamiento por WhatsApp
-    </a>
-    <small class="calculator-whatsapp-help">Se abrirá WhatsApp con el pedido y las cantidades ya preparadas.</small>
   `;
 
-  result.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  if (formPanel) {
+    formPanel.classList.add('is-hidden-after-calc');
+    formPanel.setAttribute('aria-hidden', 'true');
+  }
+  if (entryPanel) {
+    entryPanel.classList.add('showing-result');
+  }
+  if (resetButton) {
+    resetButton.hidden = false;
+  }
+  result.classList.add('is-visible-after-calc');
+
+  setTimeout(() => {
+    const target = result.querySelector('.calc-order-column') || result;
+    const headerOffset = 86;
+    const rect = target.getBoundingClientRect();
+    const targetTop = window.scrollY + rect.top - headerOffset;
+
+    window.scrollTo({
+      top: Math.max(0, targetTop),
+      behavior: 'smooth'
+    });
+
+    // Segundo ajuste breve por si el navegador todavía estaba reacomodando
+    setTimeout(() => {
+      const updatedRect = target.getBoundingClientRect();
+      const correctedTop = window.scrollY + updatedRect.top - headerOffset;
+      window.scrollTo({
+        top: Math.max(0, correctedTop),
+        behavior: 'auto'
+      });
+    }, 280);
+  }, 180);
+}
+
+function resetPoolCalculator() {
+  const entryPanel = document.querySelector('.calc-entry-panel');
+  const formPanel = document.querySelector('.calc-entry-panel .calc-form');
+  const result = document.getElementById('resultadoCalculadora');
+  const resetButton = document.getElementById('recalcularPiletaBtn');
+
+  if (formPanel) {
+    formPanel.classList.remove('is-hidden-after-calc');
+    formPanel.removeAttribute('aria-hidden');
+  }
+  if (entryPanel) {
+    entryPanel.classList.remove('showing-result');
+    entryPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  if (result) {
+    result.className = 'calc-result';
+    result.innerHTML = '<h3>Resultado</h3><p>Completá los datos para ver el tratamiento recomendado.</p>';
+  }
+
+  if (resetButton) {
+    resetButton.hidden = true;
+  }
 }
 
 function setupCalculator() {
   const button = document.getElementById('calcularPiletaBtn');
+  const resetButton = document.getElementById('recalcularPiletaBtn');
+
   if (button) button.addEventListener('click', calculatePool);
+  if (resetButton) resetButton.addEventListener('click', resetPoolCalculator);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -384,4 +458,76 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('resize', () => {
     if (window.innerWidth > 900) closeMenu();
   }, { passive: true });
+});
+
+
+// OFERTAS EDITABLES
+document.addEventListener('DOMContentLoaded', () => {
+  const cfg = window.ANDYCLOR_OFERTAS;
+  if (!cfg) return;
+
+  const setText = (id, value) => {
+    const el = document.getElementById(id);
+    if (el && value) el.textContent = value;
+  };
+
+  const setWhatsapp = (id, message) => {
+    const el = document.getElementById(id);
+    if (el && message) {
+      el.href = `https://wa.me/5491168306266?text=${encodeURIComponent(message)}`;
+    }
+  };
+
+  if (cfg.minorista) {
+    setText('ofertaMinoristaProducto', cfg.minorista.producto);
+    setText('ofertaMinoristaPrecio', cfg.minorista.precio);
+    setText('ofertaMinoristaPrecioKg', cfg.minorista.precioKg);
+    setWhatsapp('ofertaMinoristaBoton', cfg.minorista.mensajeWhatsapp);
+
+    const card = document.querySelector('.gold-offer-card.retail');
+    if (card && cfg.minorista.activo === false) card.hidden = true;
+  }
+
+  if (cfg.mayorista) {
+    setText('ofertaMayoristaVolumen', cfg.mayorista.volumen);
+    setWhatsapp('ofertaMayoristaBoton', cfg.mayorista.mensajeWhatsapp);
+
+    const card = document.querySelector('.gold-offer-card.wholesale');
+    if (card && cfg.mayorista.activo === false) card.hidden = true;
+  }
+});
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const cfg = window.ANDYCLOR_CONFIG;
+  if (!cfg) return;
+  const setText = (id, value) => {
+    const el = document.getElementById(id);
+    if (el && value) el.textContent = value;
+  };
+  const setWa = (id, number, message) => {
+    const el = document.getElementById(id);
+    if (el && number && message) el.href = `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
+  };
+  if (cfg.oferta?.mostrar === false) {
+    const section = document.querySelector('.gold-offer-section');
+    if (section) section.hidden = true;
+  }
+  const phone = cfg.contacto?.whatsapp || '5491168306266';
+  const m = cfg.oferta?.minorista;
+  if (m) {
+    setText('ofertaMinoristaProducto', m.producto);
+    setText('ofertaMinoristaDetalle', m.detalle);
+    setText('ofertaMinoristaPrecio', m.precio);
+    setText('ofertaMinoristaPrecioKg', m.precioKg);
+    setWa('ofertaMinoristaBoton', phone, m.mensajeWhatsapp);
+  }
+  const d = cfg.oferta?.distribuidor;
+  if (d) {
+    setText('ofertaMayoristaVolumen', d.volumen);
+    setText('ofertaMayoristaPrecio', d.precio);
+    setText('ofertaMayoristaPrecioKg', d.precioKg);
+    setText('ofertaMayoristaAhorro', d.ahorro);
+    setWa('ofertaMayoristaBoton', phone, d.mensajeWhatsapp);
+  }
 });

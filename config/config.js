@@ -43,3 +43,51 @@ window.ANDYCLOR_CONFIG = {
     liquidos: true
   }
 };
+
+
+/* OFERTAS EDITABLES — modificar solo estos valores */
+window.ANDYCLOR_OFERTAS = {
+  minorista: {
+    activo: true,
+    producto: "Pastillas Multiacción",
+    precio: "$205.000",
+    precioKg: "Equivale a $4.100 por kg",
+    mensajeWhatsapp: "Hola ANDYCLOR. Quiero consultar la oferta minorista por 1 cuñete de 50 kg."
+  },
+  mayorista: {
+    activo: true,
+    volumen: "Desde 300 o 500 kg",
+    mensajeWhatsapp: "Hola ANDYCLOR. Quiero solicitar una cotización mayorista por 300 o 500 kg."
+  }
+};
+
+
+/* ==========================================================
+   ANDYCLOR - CONFIGURACIÓN GENERAL
+   MODIFICÁ SOLO LOS VALORES ENTRE COMILLAS
+   ========================================================== */
+window.ANDYCLOR_CONFIG = {
+  oferta: {
+    mostrar: true,
+    minorista: {
+      producto: "Pastillas Multiacción 200 g",
+      detalle: "1 cuñete de 50 kg",
+      precio: "$259.000",
+      precioKg: "$5.180 por kg",
+      mensajeWhatsapp: "Hola ANDYCLOR. Quiero consultar la oferta minorista por 1 cuñete de 50 kg."
+    },
+    distribuidor: {
+      volumen: "Compra mínima: 500 kg",
+      precio: "$225.000 por cuñete",
+      precioKg: "$4.500 por kg",
+      ahorro: "Ahorrás $34.000 por cuñete",
+      mensajeWhatsapp: "Hola ANDYCLOR. Quiero solicitar una cotización para distribuidores por 500 kg o más."
+    }
+  },
+  contacto: {
+    whatsapp: "5491168306266",
+    instagram: "",
+    facebook: "",
+    mercadolibre: ""
+  }
+};

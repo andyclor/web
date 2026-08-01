@@ -76,69 +76,74 @@
      Ingres&aacute; las medidas y eleg&iacute; el tipo de mantenimiento. La recomendaci&oacute;n mostrar&aacute; solo los productos indicados para evitar confusiones.
     </p>
     <div class="calc-container">
-     <div class="calc-form">
-      <label for="largo">
-       Largo
-      </label>
-      <input id="largo" min="0" placeholder="Ej: 8" step="0.1" type="number"/>
-      <label for="ancho">
-       Ancho
-      </label>
-      <input id="ancho" min="0" placeholder="Ej: 4" step="0.1" type="number"/>
-      <label for="profundidad">
-       Profundidad promedio
-      </label>
-      <input id="profundidad" min="0" placeholder="Ej: 1.5" step="0.1" type="number"/>
-      <label for="tipoPileta">
-       Tipo de pileta
-      </label>
-      <select id="tipoPileta">
-       <option value="fibra_pintada">
-        Fibra o Pintada
-       </option>
-       <option value="revestida">
-        Revestida / Venecitas
-       </option>
-      </select>
-      <label for="mantenimiento">
-       &iquest;C&oacute;mo realiz&aacute;s el mantenimiento?
-      </label>
-      <select id="mantenimiento">
-       <option value="pastillas">
-        Solo Pastillas Multiacci&oacute;n
-       </option>
-       <option value="granulado">
-        Solo Cloro Granulado
-       </option>
-       <option value="granulado_multiaccion">
-        Granulado R&aacute;pido Multiacci&oacute;n
-       </option>
-       <option value="ambos">
-        Pastillas + Cloro Granulado
-       </option>
-      </select>
-      <label for="temporada">
-       Temporada
-      </label>
-      <select id="temporada">
-       <option value="alta">
-        Temporada alta
-       </option>
-       <option value="baja">
-        Temporada baja
-       </option>
-      </select>
-      <button class="calc-main-btn" id="calcularPiletaBtn" type="button">
-       Buscar c&aacute;lculo
+     <div class="calc-entry-panel">
+      <div class="calc-form">
+       <label for="largo">
+        Largo
+       </label>
+       <input id="largo" min="0" placeholder="Ej: 8" step="0.1" type="number"/>
+       <label for="ancho">
+        Ancho
+       </label>
+       <input id="ancho" min="0" placeholder="Ej: 4" step="0.1" type="number"/>
+       <label for="profundidad">
+        Profundidad promedio
+       </label>
+       <input id="profundidad" min="0" placeholder="Ej: 1.5" step="0.1" type="number"/>
+       <label for="tipoPileta">
+        Tipo de pileta
+       </label>
+       <select id="tipoPileta">
+        <option value="fibra_pintada">
+         Fibra o Pintada
+        </option>
+        <option value="revestida">
+         Revestida / Venecitas
+        </option>
+       </select>
+       <label for="mantenimiento">
+        &iquest;C&oacute;mo realiz&aacute;s el mantenimiento?
+       </label>
+       <select id="mantenimiento">
+        <option value="pastillas">
+         Solo Pastillas Multiacci&oacute;n
+        </option>
+        <option selected="selected" value="granulado">
+         Solo Cloro Granulado
+        </option>
+        <option value="granulado_multiaccion">
+         Granulado R&aacute;pido Multiacci&oacute;n
+        </option>
+        <option value="ambos">
+         Pastillas + Cloro Granulado
+        </option>
+       </select>
+       <label for="temporada">
+        Temporada
+       </label>
+       <select id="temporada">
+        <option value="alta">
+         Temporada alta
+        </option>
+        <option value="baja">
+         Temporada baja
+        </option>
+       </select>
+       <button class="calc-main-btn" id="calcularPiletaBtn" type="button">
+        Buscar c&aacute;lculo
+       </button>
+      </div>
+      <div aria-live="polite" class="calc-result" id="resultadoCalculadora" role="status">
+       <h3>
+        Resultado
+       </h3>
+       <p>
+        Complet&aacute; los datos para ver el tratamiento recomendado.
+       </p>
+      </div>
+      <button class="calc-reset-btn" hidden="hidden" id="recalcularPiletaBtn" type="button">
+       &larr; Modificar datos
       </button>
-     </div>
-     <div aria-live="polite" class="calc-result" id="resultadoCalculadora" role="status">
-      <h3>
-       Resultado
-      </h3>
-      <p>
-       Complet&aacute; los datos para ver el tratamiento recomendado.
-      </p>
      </div>
     </div>
    </section>
