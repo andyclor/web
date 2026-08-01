@@ -1,137 +1,359 @@
+'use strict';
+
 const CONFIG = window.ANDYCLOR_CONFIG || {};
-function aplicarConfiguracion(){
-  const wa=(CONFIG.whatsapp||'5491168306266').replace(/\D/g,'');
-  const waLink=(mensaje='')=>`https://wa.me/${wa}${mensaje?`?text=${encodeURIComponent(mensaje)}`:''}`;
-  const oferta=CONFIG.oferta||{};
-  if(oferta.producto) document.getElementById('ofertaProducto').textContent=oferta.producto;
-  if(oferta.texto) document.getElementById('ofertaTexto').textContent=oferta.texto;
-  if(oferta.precio){
-    const precioCompleto=String(oferta.precio);
-    const coincidencia=precioCompleto.match(/\$\s?[\d.]+(?:,[\d]{1,2})?/g);
-    const numero=coincidencia ? coincidencia[coincidencia.length-1].replace(/\s+/g,'') : precioCompleto;
-    const condicion=precioCompleto
-      .replace(numero,'')
-      .replace(/[,;:\-]\s*$/,'')
-      .replace(/\s{2,}/g,' ')
+
+const getWhatsAppNumber = () => String(CONFIG.whatsapp || '5491168306266').replace(/\D/g, '');
+const whatsappLink = (message = '') =>
+  `https://wa.me/${getWhatsAppNumber()}${message ? `?text=${encodeURIComponent(message)}` : ''}`;
+
+function setText(id, value, prefix = '') {
+  const element = document.getElementById(id);
+  if (!element) return;
+  if (!value) {
+    element.hidden = true;
+    return;
+  }
+  element.textContent = prefix + value;
+}
+
+function configureSocial(id, url, pendingLabel = 'Próximamente') {
+  const element = document.getElementById(id);
+  if (!element) return;
+
+  if (url && /^https?:\/\//i.test(url)) {
+    element.href = url;
+    element.classList.remove('proximamente');
+    return;
+  }
+
+  element.href = '#';
+  element.removeAttribute('target');
+  element.classList.add('proximamente');
+  element.addEventListener('click', event => event.preventDefault());
+  const label = element.querySelector('small');
+  if (label) label.textContent = pendingLabel;
+}
+
+function applyConfiguration() {
+  const offer = CONFIG.oferta || {};
+
+  if (offer.producto) setText('ofertaProducto', offer.producto);
+  if (offer.texto) setText('ofertaTexto', offer.texto);
+
+  if (offer.precio) {
+    const fullPrice = String(offer.precio);
+    const matches = fullPrice.match(/\$\s?[\d.]+(?:,[\d]{1,2})?/g);
+    const number = matches ? matches[matches.length - 1].replace(/\s+/g, '') : fullPrice;
+    const condition = fullPrice
+      .replace(number, '')
+      .replace(/[,;:\-]\s*$/, '')
+      .replace(/\s{2,}/g, ' ')
       .trim();
-    document.getElementById('ofertaPrecio').textContent=numero;
-    const condicionEl=document.getElementById('ofertaCondicion');
-    if(condicionEl){
-      condicionEl.textContent=condicion || 'Oferta vigente';
-      condicionEl.hidden=!condicion;
+
+    setText('ofertaPrecio', number);
+    const conditionElement = document.getElementById('ofertaCondicion');
+    if (conditionElement) {
+      conditionElement.textContent = condition || 'Oferta vigente';
+      conditionElement.hidden = !condition;
     }
   }
 
-document.getElementById('ofertaWhatsApp').href=waLink(oferta.mensajeWhatsApp||`Hola ANDYCLOR. Quiero consultar la oferta de ${oferta.producto||'la página'}.`);
-  const vigencia=document.getElementById('ofertaVigencia');
-  if(oferta.vigencia){vigencia.textContent='Vigencia: '+oferta.vigencia;vigencia.hidden=false;}else vigencia.hidden=true;
-  document.getElementById('whatsappFlotante').href=waLink(CONFIG.mensajeGeneral||'Hola ANDYCLOR. Quiero consultar precios.');
-  document.getElementById('contactWhatsApp').href=waLink(CONFIG.mensajeGeneral||'Hola ANDYCLOR. Quiero consultar precios.');
-  document.getElementById('cotizacionWhatsApp').href=waLink(CONFIG.mensajeCotizacion||'Hola ANDYCLOR. Quisiera solicitar una cotización.');
-  const contacto=CONFIG.contacto||{};
-  const setInfo=(id,valor,prefijo='')=>{const el=document.getElementById(id);if(!valor){el.style.display='none';return;}el.textContent=prefijo+valor;};
-  setInfo('contactDireccion',contacto.direccion,'📍 '); setInfo('contactHorario',contacto.horarios,'🕒 ');
-  const email=document.getElementById('contactEmail'); if(contacto.email){email.textContent='✉️ '+contacto.email;email.href='mailto:'+contacto.email}else email.style.display='none';
-  const redes=CONFIG.redes||{};
-  configurarRed('socialInstagram',redes.instagram,'Próximamente');
-  configurarRed('socialFacebook',redes.facebook,'Próximamente');
-  configurarRed('socialMercadoLibre',redes.mercadoLibre,'Próximamente');
-  // Actualiza todos los botones de WhatsApp conservando el mensaje particular de cada uno.
-  document.querySelectorAll('a[href*="wa.me/"]').forEach(el=>{
-    try{const url=new URL(el.href);
+  const offerButton = document.getElementById('ofertaWhatsApp');
+  if (offerButton) {
+    offerButton.href = whatsappLink(
+      offer.mensajeWhatsApp ||
+      `Hola ANDYCLOR. Quiero consultar la oferta de ${offer.producto || 'la página'}.`
+    );
+  }
 
-const mensaje=url.searchParams.get('text')||'';el.href=waLink(mensaje);}catch(e){}
+  const validity = document.getElementById('ofertaVigencia');
+  if (validity) {
+    if (offer.vigencia) {
+      validity.textContent = `Vigencia: ${offer.vigencia}`;
+      validity.hidden = false;
+    } else {
+      validity.hidden = true;
+    }
+  }
+
+  const generalMessage = CONFIG.mensajeGeneral || 'Hola ANDYCLOR. Quiero consultar precios.';
+  const quoteMessage = CONFIG.mensajeCotizacion || 'Hola ANDYCLOR. Quisiera solicitar una cotización.';
+
+  ['whatsappFlotante', 'contactWhatsApp', 'quickWhatsApp', 'mobileWhatsApp'].forEach(id => {
+    const element = document.getElementById(id);
+    if (element) element.href = whatsappLink(generalMessage);
   });
-  renderPromociones(CONFIG.promociones||[],waLink);
-  const visibles=CONFIG.productosVisibles||{};
-  document.querySelectorAll('[data-producto]').forEach(card=>{const key=card.dataset.producto;if(visibles[key]===false)card.style.display='none';});
+
+  const quoteButton = document.getElementById('cotizacionWhatsApp');
+  if (quoteButton) quoteButton.href = whatsappLink(quoteMessage);
+
+  const contact = CONFIG.contacto || {};
+  setText('contactDireccion', contact.direccion, '📍 ');
+  setText('contactHorario', contact.horarios, '🕒 ');
+
+  const email = document.getElementById('contactEmail');
+  if (email) {
+    if (contact.email) {
+      email.hidden = false;
+      email.textContent = `✉️ ${contact.email}`;
+      email.href = `mailto:${contact.email}`;
+    } else {
+      email.hidden = true;
+    }
+  }
+
+  const social = CONFIG.redes || {};
+  configureSocial('socialInstagram', social.instagram);
+  configureSocial('socialFacebook', social.facebook);
+  configureSocial('socialMercadoLibre', social.mercadoLibre);
+
+  const visibleProducts = CONFIG.productosVisibles || {};
+  document.querySelectorAll('[data-producto]').forEach(card => {
+    if (visibleProducts[card.dataset.producto] === false) card.hidden = true;
+  });
+
+  renderPromotions(CONFIG.promociones || []);
 }
 
-function renderPromociones(promociones,waLink){
-  const cont=document.getElementById('promocionesFuturas');
-  if(!cont||!Array.isArray(promociones)||promociones.length===0){if(cont)cont.hidden=true;return;}
-  cont.innerHTML='<h3>Otras promociones</h3><div class="future-promotions-grid">'+promociones.map(p=>`<article><h4>${p.producto||'Promoción'}</h4><p>${p.texto||''}</p>${p.precio?`<strong>${p.precio}</strong>`:''}<a class="btn primary" target="_blank" rel="noopener" href="${waLink(p.mensajeWhatsApp||`Hola ANDYCLOR. Quiero consultar por ${p.producto||'esta promoción'}.`)}">Consultar</a></article>`).join('')+'</div>';
-  cont.hidden=false;
+function renderPromotions(promotions) {
+  const container = document.getElementById('promocionesFuturas');
+  if (!container) return;
+
+  if (!Array.isArray(promotions) || promotions.length === 0) {
+    container.hidden = true;
+    return;
+  }
+
+  container.innerHTML = `
+    <h3>Otras promociones</h3>
+    <div class="future-promotions-grid">
+      ${promotions.map(promotion => `
+        <article>
+          <h4>${promotion.producto || 'Promoción'}</h4>
+          <p>${promotion.texto || ''}</p>
+          ${promotion.precio ? `<strong>${promotion.precio}</strong>` : ''}
+          <a class="btn primary" target="_blank" rel="noopener noreferrer"
+             href="${whatsappLink(promotion.mensajeWhatsApp || `Hola ANDYCLOR. Quiero consultar por ${promotion.producto || 'esta promoción'}.`)}">
+             Consultar
+          </a>
+        </article>
+      `).join('')}
+    </div>
+  `;
+  container.hidden = false;
 }
 
-function configurarRed(id,enlace,textoPendiente){
-  const el=document.getElementById(id); if(!el)return;
-  if(enlace){el.href=enlace;el.classList.remove('proximamente');}
-  else{el.removeAttribute('target');el.href='#';el.classList.add('proximamente');el.addEventListener('click',e=>e.preventDefault());
+function setupNavigation() {
+  const navbar = document.getElementById('navbar');
+  const menu = document.getElementById('menuToggle');
+  const links = document.getElementById('navLinks');
 
-const small=el.querySelector('small');small.textContent=textoPendiente;}
+  window.addEventListener('scroll', () => {
+    if (navbar) navbar.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  if (menu && links) {
+    menu.addEventListener('click', () => {
+      const open = links.classList.toggle('open');
+      menu.setAttribute('aria-expanded', String(open));
+    });
+
+    links.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        links.classList.remove('open');
+        menu.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
 }
 
-document.addEventListener('DOMContentLoaded',aplicarConfiguracion);
-const nav=document.getElementById('navbar'), menu=document.getElementById('menuToggle'), links=document.getElementById('navLinks');
-window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>40));
-menu.addEventListener('click',()=>links.classList.toggle('open'));
-document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('open')));
-function sugerirPresentacionKg(kg){
-  if(kg<=1) return '1 kg';
-  if(kg<=5) return '5 kg';
-  if(kg<=10) return '10 kg';
-  return '50 kg o consultar cantidad mayorista';
+function setupMobileSections() {
+  document.querySelectorAll('.mobile-section-toggle').forEach(button => {
+    button.addEventListener('click', () => {
+      const section = button.closest('section');
+      if (!section) return;
+      const expanded = section.classList.toggle('mobile-section-expanded');
+      button.setAttribute('aria-expanded', String(expanded));
+      button.textContent = expanded ? 'Ver menos' : button.dataset.label || button.textContent;
+    });
+    button.dataset.label = button.textContent;
+  });
 }
 
-function sugerirPresentacionPastillas(pastillasPorMes){
-  // Para venta práctica, la calculadora sugiere compra aproximada para un mes.
-  // La compra mínima sugerida es 1 kg, equivalente a 5 pastillas de 200 g.
-  if(pastillasPorMes<=5) return '1 kg';
-  if(pastillasPorMes<=25) return '5 kg';
-  if(pastillasPorMes<=50) return '10 kg';
-  return 'cuñete de 50 kg o consultar cantidad mayorista';
+function suggestedGranulatedPresentation(monthlyKg) {
+  if (monthlyKg <= 1) return 'Cloro granulado x 1 kg';
+  if (monthlyKg <= 5) return 'Cloro granulado x 5 kg';
+  if (monthlyKg <= 10) return 'Cloro granulado x 10 kg';
+  return 'Cloro granulado en cuñete x 50 kg';
 }
 
-function calcularPileta(){
- const largo=+document.getElementById('largo').value, ancho=+document.getElementById('ancho').value, profundidad=+document.getElementById('profundidad').value;
- const tipo=document.getElementById('tipoPileta').value, mant=document.getElementById('mantenimiento').value, temporada=document.getElementById('temporada').value, res=document.getElementById('resultadoCalculadora');
- if(!largo||!ancho||!profundidad||largo<=0||ancho<=0||profundidad<=0){res.innerHTML='<h3>Resultado</h3><p class="error">Completá largo, ancho y profundidad con valores válidos.</p>';return;}
- const litros=Math.round(largo*ancho*profundidad*1000);
- const tipoTxt=tipo==='revestida'?'Revestida / Venecitas':'Fibra o Pintada';
- const mantTxt={pastillas:'Solo Pastillas Multiacción',granulado:'Solo Cloro Granulado',granulado_multiaccion:'Granulado Rápido Multiacción',ambos:'Pastillas + Cloro Granulado'}[mant];
- const tempTxt=temporada==='alta'?'Temporada alta':'Temporada baja';
- const esMultiaccion=mant==='granulado_multiaccion';
- const cloroNombre=esMultiaccion?'Cloro Granulado Rápido Multiacción':(tipo==='revestida'?'Cloro Granulado Lento':'Cloro Granulado Rápido');
- const cloroGramos=Math.ceil((litros/40000)*80);
- const cloroFrecuencia=temporada==='alta'?'por día':'por semana';
- const cloroCompraKg=temporada==='alta' ? Math.ceil((cloroGramos*30/1000)*10)/10 : Math.ceil((cloroGramos*4/1000)*10)/10;
- const cloroPeriodo=temporada==='alta'?'aprox. un mes de temporada alta':'aprox. un mes de temporada baja';
- const pastillas=Math.max(1,Math.ceil(litros/20000));
- const pastillasFrecuencia=temporada==='alta'?'por semana':'por mes';
- const pastillasPorMes=temporada==='alta'?pastillas*4:pastillas;
- const compraPastillas=sugerirPresentacionPastillas(pastillasPorMes);
- // Dosificaciones Nataclor.
- // Alguicida: 400 cc cada 40.000 L semanal; 800 cc cada 40.000 L ante fuerte presencia de algas.
- // Clarificador: 250 cc cada 50.000 L.
- const algSem=Math.ceil((litros/40000)*400);
- const algChoque=Math.ceil((litros/40000)*800);
- const clarDosis=Math.ceil((litros/50000)*250);
- let items='', compra=[];
- if(mant==='granulado'||mant==='ambos'||mant==='granulado_multiaccion'){
-   const clase = esMultiaccion ? 'item-pastillas' : (tipo==='revestida'?'item-lento':'item-rapido');
-   items+=`<div class="result-item ${clase}"><strong>🧪 ${cloroNombre}</strong><span>${cloroGramos} g ${cloroFrecuencia}.</span><small>Regla Andyclor: 80 g cada 40.000 litros ${temporada==='alta'?'por día en temporada alta':'por semana en temporada baja'}. Compra sugerida: ${sugerirPresentacionKg(cloroCompraKg)} para ${cloroPeriodo}.</small></div>`;
-   compra.push(`${cloroNombre}: ${cloroGramos} g ${cloroFrecuencia}. Presentación sugerida: ${sugerirPresentacionKg(cloroCompraKg)}`);
- }
- if(mant==='pastillas'||mant==='ambos'){
-   items+=`<div class="result-item item-pastillas"><strong>🟣 Pastillas Multiacción</strong><span>${pastillas} pastilla(s) de 200 g ${pastillasFrecuencia}.</span><small>Compra sugerida para 1 mes aprox.: ${compraPastillas}.</small><small>Regla Andyclor: 1 pastilla cada 20.000 litros ${temporada==='alta'?'una vez por semana en temporada alta':'por mes en temporada baja'}. 1 kg equivale a 5 pastillas.</small></div>`;
-   compra.push(`Pastillas Multiacción: ${pastillas} pastilla(s) ${pastillasFrecuencia}. Compra sugerida para 1 mes aprox.: ${compraPastillas}`);
- }
- if(mant==='pastillas'){
-   if(tipo==='fibra_pintada'){
-     items+=`<div class="result-item note"><strong>💡 Recuperación</strong><span>Para clientes que mantienen con pastillas, conviene tener Cloro Granulado Rápido solo para shock o recuperación cuando el agua lo requiera.</span></div>`;
-     compra.push('Opcional recuperación: Cloro Granulado Rápido');
-   } else {
-     items+=`<div class="result-item note"><strong>💡 Recuperación</strong><span>Para tratamientos puntuales, consultar dosis según el estado del agua.</span></div>`;
-   }
- }
- if(esMultiaccion){
-   items+=`<div class="result-item note"><strong>🟣 Multiacción</strong><span>Apto para cualquier tipo de pileta. Ajustá los complementos según el estado real del agua y las indicaciones de la etiqueta.</span></div>`;
- }
- items+=`<div class="result-item item-alguicida"><strong>🟦 Alguicida Nataclor</strong><span>Mantenimiento: ${algSem} cc por semana.</span><small>Ante fuerte presencia de algas: ${algChoque} cc. Aplicar sin bañistas y recircular durante 3 horas.</small></div><div class="result-item item-clarificador"><strong>💧 Clarificador Nataclor</strong><span>${clarDosis} cc por aplicación.</span><small>Diluir en un balde con 10 litros de agua, aplicar por la noche y pasar el limpiafondo por la mañana.</small></div>`;
- compra.push('Alguicida: 1 litro','Clarificador: 1 litro');
- const tema = mant==='pastillas' ? 'tema-pastillas' : (mant==='granulado' ? (tipo==='revestida' ? 'tema-lento' : 'tema-rapido') : (mant==='granulado_multiaccion' ? 'tema-pastillas' : 'tema-mixto'));
- res.className = 'calc-result ' + tema;
- const msg=encodeURIComponent(`Hola Andyclor. Quiero solicitar presupuesto de este tratamiento.\nPileta: ${tipoTxt}\nMedidas: ${largo} m x ${ancho} m x ${profundidad} m\nLitros aprox.: ${litros.toLocaleString('es-AR')}\nMantenimiento: ${mantTxt}\nTemporada: ${tempTxt}\nProductos sugeridos:\n- ${compra.join('\n- ')}\nGracias.`);
- res.innerHTML=`<h3>Resultado para tu pileta</h3><div class="litros-box"><strong>${litros.toLocaleString('es-AR')} litros aprox.</strong><span>${tipoTxt}</span><span>${mantTxt}</span><span>${tempTxt}</span></div><div class="result-grid">${items}</div><div class="recommend"><strong>Recomendaciones:</strong><p>Mantener pH entre 7,2 y 7,6. Filtrar entre 6 y 8 horas diarias en temporada. Las dosis son orientativas y pueden variar por clima, uso, lluvia y estado del agua.</p></div><a class="btn primary" target="_blank" href="https://wa.me/${(CONFIG.whatsapp||'5491168306266').replace(/\D/g,'')}?text=${msg}">Solicitar presupuesto de este tratamiento</a>`;
+function suggestedTabletPresentation(tabletsPerMonth) {
+  if (tabletsPerMonth <= 5) return 'Pastillas Multiacción x 1 kg';
+  if (tabletsPerMonth <= 25) return 'Pastillas Multiacción x 5 kg';
+  if (tabletsPerMonth <= 50) return 'Pastillas Multiacción x 10 kg';
+  return 'Pastillas Multiacción en cuñete x 50 kg';
 }
+
+function calculatePool() {
+  const length = Number(document.getElementById('largo')?.value);
+  const width = Number(document.getElementById('ancho')?.value);
+  const depth = Number(document.getElementById('profundidad')?.value);
+  const poolType = document.getElementById('tipoPileta')?.value;
+  const maintenance = document.getElementById('mantenimiento')?.value;
+  const season = document.getElementById('temporada')?.value;
+  const result = document.getElementById('resultadoCalculadora');
+
+  if (!result) return;
+
+  if (![length, width, depth].every(value => Number.isFinite(value) && value > 0)) {
+    result.innerHTML = '<h3>Resultado</h3><p class="error">Completá largo, ancho y profundidad con valores válidos.</p>';
+    result.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return;
+  }
+
+  const litres = Math.round(length * width * depth * 1000);
+  const poolTypeLabel = poolType === 'revestida' ? 'Revestida / Venecitas' : 'Fibra o Pintada';
+  const maintenanceLabels = {
+    pastillas: 'Solo Pastillas Multiacción',
+    granulado: 'Solo Cloro Granulado',
+    granulado_multiaccion: 'Granulado Rápido Multiacción',
+    ambos: 'Pastillas + Cloro Granulado'
+  };
+  const maintenanceLabel = maintenanceLabels[maintenance] || maintenance;
+  const seasonLabel = season === 'alta' ? 'Temporada alta' : 'Temporada baja';
+
+  const multiAction = maintenance === 'granulado_multiaccion';
+  const granulatedName = multiAction
+    ? 'Cloro Granulado Rápido Multiacción'
+    : (poolType === 'revestida' ? 'Cloro Granulado Lento' : 'Cloro Granulado Rápido');
+
+  const granulatedGrams = Math.ceil((litres / 40000) * 80);
+  const granulatedFrequency = season === 'alta' ? 'por día' : 'por semana';
+  const granulatedMonthlyKg = season === 'alta'
+    ? Math.ceil((granulatedGrams * 30 / 1000) * 10) / 10
+    : Math.ceil((granulatedGrams * 4 / 1000) * 10) / 10;
+
+  const tablets = Math.max(1, Math.ceil(litres / 20000));
+  const tabletsFrequency = season === 'alta' ? 'por semana' : 'por mes';
+  const tabletsPerMonth = season === 'alta' ? tablets * 4 : tablets;
+
+  const weeklyAlgaecide = Math.ceil((litres / 40000) * 400);
+  const strongAlgaeAlgaecide = Math.ceil((litres / 40000) * 800);
+  const clarifierDose = Math.ceil((litres / 50000) * 250);
+
+  const resultItems = [];
+  const preparedOrder = [];
+  const messageOrder = [];
+
+  if (['granulado', 'ambos', 'granulado_multiaccion'].includes(maintenance)) {
+    const presentation = suggestedGranulatedPresentation(granulatedMonthlyKg);
+    resultItems.push(`
+      <div class="result-item ${multiAction ? 'item-pastillas' : (poolType === 'revestida' ? 'item-lento' : 'item-rapido')}">
+        <strong>🧪 ${granulatedName}</strong>
+        <span>${granulatedGrams} g ${granulatedFrequency}</span>
+        <small>Presentación sugerida para aproximadamente un mes: ${presentation}.</small>
+      </div>
+    `);
+    preparedOrder.push(`<li><strong>${presentation}</strong><span>${granulatedName}: ${granulatedGrams} g ${granulatedFrequency}</span></li>`);
+    messageOrder.push(`${presentation} — dosis: ${granulatedGrams} g ${granulatedFrequency}`);
+  }
+
+  if (['pastillas', 'ambos'].includes(maintenance)) {
+    const presentation = suggestedTabletPresentation(tabletsPerMonth);
+    resultItems.push(`
+      <div class="result-item item-pastillas">
+        <strong>🟣 Pastillas Multiacción</strong>
+        <span>${tablets} pastilla(s) de 200 g ${tabletsFrequency}</span>
+        <small>Presentación sugerida para aproximadamente un mes: ${presentation}.</small>
+      </div>
+    `);
+    preparedOrder.push(`<li><strong>${presentation}</strong><span>${tablets} pastilla(s) ${tabletsFrequency}</span></li>`);
+    messageOrder.push(`${presentation} — uso: ${tablets} pastilla(s) ${tabletsFrequency}`);
+  }
+
+  resultItems.push(`
+    <div class="result-item item-alguicida">
+      <strong>🟦 Alguicida Nataclor</strong>
+      <span>${weeklyAlgaecide} cc por semana</span>
+      <small>Ante fuerte presencia de algas: ${strongAlgaeAlgaecide} cc. Aplicar sin bañistas y recircular durante 3 horas.</small>
+    </div>
+  `);
+  preparedOrder.push(`<li><strong>Alguicida Nataclor x 1 litro</strong><span>${weeklyAlgaecide} cc semanales</span></li>`);
+  messageOrder.push(`Alguicida Nataclor x 1 litro — dosis: ${weeklyAlgaecide} cc semanales`);
+
+  resultItems.push(`
+    <div class="result-item item-clarificador">
+      <strong>💧 Clarificador Nataclor</strong>
+      <span>${clarifierDose} cc por aplicación</span>
+      <small>Diluir en 10 litros de agua, aplicar por la noche y pasar el limpiafondo por la mañana.</small>
+    </div>
+  `);
+  preparedOrder.push(`<li><strong>Clarificador Nataclor x 1 litro</strong><span>${clarifierDose} cc por aplicación</span></li>`);
+  messageOrder.push(`Clarificador Nataclor x 1 litro — dosis: ${clarifierDose} cc por aplicación`);
+
+  const message = [
+    'Hola ANDYCLOR. Utilicé la calculadora de la página.',
+    '',
+    `Pileta: ${poolTypeLabel}`,
+    `Medidas: ${length} m x ${width} m x ${depth} m`,
+    `Capacidad aproximada: ${litres.toLocaleString('es-AR')} litros`,
+    `Mantenimiento: ${maintenanceLabel}`,
+    `Temporada: ${seasonLabel}`,
+    '',
+    'Quisiera cotización para:',
+    ...messageOrder.map(item => `• ${item}`),
+    '',
+    'La página me sugirió estas cantidades y presentaciones. Quisiera ver los productos disponibles en el catálogo.'
+  ].join('\n');
+
+  const theme = maintenance === 'pastillas'
+    ? 'tema-pastillas'
+    : (maintenance === 'granulado'
+      ? (poolType === 'revestida' ? 'tema-lento' : 'tema-rapido')
+      : (maintenance === 'granulado_multiaccion' ? 'tema-pastillas' : 'tema-mixto'));
+
+  result.className = `calc-result ${theme}`;
+  result.innerHTML = `
+    <h3>Tratamiento recomendado</h3>
+    <div class="litros-box">
+      <strong>${litres.toLocaleString('es-AR')} litros aprox.</strong>
+      <span>${poolTypeLabel}</span>
+      <span>${maintenanceLabel}</span>
+      <span>${seasonLabel}</span>
+    </div>
+
+    <div class="result-grid">${resultItems.join('')}</div>
+
+    <section class="prepared-order" aria-label="Pedido preparado">
+      <span class="prepared-order-kicker">🛒 Pedido preparado</span>
+      <h4>Presentaciones sugeridas para cotizar</h4>
+      <ul>${preparedOrder.join('')}</ul>
+      <p>WhatsApp recibirá los nombres y las cantidades para asociarlos con los productos de tu catálogo.</p>
+    </section>
+
+    <div class="recommend">
+      <strong>Importante:</strong>
+      <p>Las dosis son orientativas y pueden variar según clima, lluvia, uso, filtrado y estado del agua. Mantener el pH entre 7,2 y 7,6.</p>
+    </div>
+
+    <a class="btn primary calculator-whatsapp-cta" target="_blank" rel="noopener noreferrer"
+       href="${whatsappLink(message)}">
+       💬 Cotizar este tratamiento por WhatsApp
+    </a>
+    <small class="calculator-whatsapp-help">Se abrirá WhatsApp con el pedido y las cantidades ya preparadas.</small>
+  `;
+
+  result.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function setupCalculator() {
+  const button = document.getElementById('calcularPiletaBtn');
+  if (button) button.addEventListener('click', calculatePool);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  applyConfiguration();
+  setupNavigation();
+  setupMobileSections();
+  setupCalculator();
+});

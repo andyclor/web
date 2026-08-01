@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <title>
+   Calcul&aacute; tu pileta | ANDYCLOR
+  </title>
+  <meta content="Calculadora para piletas." name="description"/>
+  <meta content="index,follow,max-image-preview:large" name="robots"/>
+  <link href="https://andyclor.com.ar/calculadora.html" rel="canonical"/>
+  <meta content="Calcul&aacute; tu pileta | ANDYCLOR" property="og:title"/>
+  <meta content="Calculadora para piletas." property="og:description"/>
+  <meta content="https://andyclor.com.ar/calculadora.html" property="og:url"/>
+  <meta content="https://andyclor.com.ar/Imagenes/fondo.jpg" property="og:image"/>
+  <link href="favicon-32x32.png" rel="icon"/>
+  <link href="apple-touch-icon.png" rel="apple-touch-icon"/>
+  <link href="manifest.webmanifest" rel="manifest"/>
+  <link href="css/style.css" rel="stylesheet"/>
+  <script defer="" src="config/config.js">
+  </script>
+  <script defer="" src="js/main.js">
+  </script>
+ </head>
+ <body class="rc-site">
+  <header class="rc-subheader">
+   <nav class="navbar site-navbar" id="navbar">
+    <a aria-label="Inicio ANDYCLOR" class="brand-logo" href="index.html">
+     <img alt="ANDYCLOR" class="logo" height="361" src="Imagenes/logo-andyclor-sin-eslogan.webp" width="900"/>
+    </a>
+    <button aria-controls="navLinks" aria-expanded="false" aria-label="Abrir men&uacute;" class="menu-toggle" id="menuToggle" type="button">
+     ☰
+    </button>
+    <div class="nav-links" id="navLinks">
+     <a href="cloro-piletas.html">
+      Cloro
+     </a>
+     <a href="accesorios-piletas.html">
+      Accesorios
+     </a>
+     <a href="liquidos-papeles.html">
+      L&iacute;quidos y Papeles
+     </a>
+     <a class="active" href="calculadora.html">
+      Calculadora
+     </a>
+     <a href="mayoristas.html">
+      Mayoristas
+     </a>
+     <a href="academia.html">
+      Academia
+     </a>
+     <a href="contacto.html">
+      Contacto
+     </a>
+    </div>
+   </nav>
+   <div class="rc-subhero">
+    <h1>
+     Calculadora para piletas
+    </h1>
+    <p>
+     Ingres&aacute; las medidas para obtener la dosificaci&oacute;n recomendada.
+    </p>
+   </div>
+  </header>
+  <main>
+   <section class="section calculator" id="calculadora">
+    <p class="rc-calc-subtitle">
+     Complet&aacute; largo, ancho y profundidad.
+    </p>
+    <p class="badge blue">
+     Asesoramiento
+    </p>
+    <p>
+     Ingres&aacute; las medidas y eleg&iacute; el tipo de mantenimiento. La recomendaci&oacute;n mostrar&aacute; solo los productos indicados para evitar confusiones.
+    </p>
+    <div class="calc-container">
+     <div class="calc-form">
+      <label for="largo">
+       Largo
+      </label>
+      <input id="largo" min="0" placeholder="Ej: 8" step="0.1" type="number"/>
+      <label for="ancho">
+       Ancho
+      </label>
+      <input id="ancho" min="0" placeholder="Ej: 4" step="0.1" type="number"/>
+      <label for="profundidad">
+       Profundidad promedio
+      </label>
+      <input id="profundidad" min="0" placeholder="Ej: 1.5" step="0.1" type="number"/>
+      <label for="tipoPileta">
+       Tipo de pileta
+      </label>
+      <select id="tipoPileta">
+       <option value="fibra_pintada">
+        Fibra o Pintada
+       </option>
+       <option value="revestida">
+        Revestida / Venecitas
+       </option>
+      </select>
+      <label for="mantenimiento">
+       &iquest;C&oacute;mo realiz&aacute;s el mantenimiento?
+      </label>
+      <select id="mantenimiento">
+       <option value="pastillas">
+        Solo Pastillas Multiacci&oacute;n
+       </option>
+       <option value="granulado">
+        Solo Cloro Granulado
+       </option>
+       <option value="granulado_multiaccion">
+        Granulado R&aacute;pido Multiacci&oacute;n
+       </option>
+       <option value="ambos">
+        Pastillas + Cloro Granulado
+       </option>
+      </select>
+      <label for="temporada">
+       Temporada
+      </label>
+      <select id="temporada">
+       <option value="alta">
+        Temporada alta
+       </option>
+       <option value="baja">
+        Temporada baja
+       </option>
+      </select>
+      <button class="calc-main-btn" id="calcularPiletaBtn" type="button">
+       Buscar c&aacute;lculo
+      </button>
+     </div>
+     <div aria-live="polite" class="calc-result" id="resultadoCalculadora" role="status">
+      <h3>
+       Resultado
+      </h3>
+      <p>
+       Complet&aacute; los datos para ver el tratamiento recomendado.
+      </p>
+     </div>
+    </div>
+   </section>
+   <section class="section alt rc-steps">
+    <h2>
+     C&oacute;mo funciona
+    </h2>
+    <div>
+     <article>
+      <strong>
+       1
+      </strong>
+      <span>
+       Ingres&aacute;s las medidas.
+      </span>
+     </article>
+     <article>
+      <strong>
+       2
+      </strong>
+      <span>
+       Calculamos litros, dosis y presentaciones.
+      </span>
+     </article>
+     <article>
+      <strong>
+       3
+      </strong>
+      <span>
+       Envi&aacute;s el pedido preparado por WhatsApp.
+      </span>
+     </article>
+    </div>
+   </section>
+  </main>
+  <nav class="mobile-bottom-nav">
+   <a href="index.html">
+    <span>
+     🏠
+    </span>
+    <small>
+     Inicio
+    </small>
+   </a>
+   <a href="cloro-piletas.html">
+    <span>
+     🧪
+    </span>
+    <small>
+     Cloro
+    </small>
+   </a>
+   <a href="calculadora.html">
+    <span>
+     🧮
+    </span>
+    <small>
+     Calcular
+    </small>
+   </a>
+   <a href="https://wa.me/5491168306266">
+    <span>
+     💬
+    </span>
+    <small>
+     WhatsApp
+    </small>
+   </a>
+  </nav>
+  <footer class="footer-final">
+   <img alt="ANDYCLOR" class="footer-logo" src="Imagenes/logo-andyclor.webp"/>
+   <p>
+    <strong>
+     Distribuidor Oficial Nataclor
+    </strong>
+    &middot; Venta mayorista y minorista &middot; Zona Sur &middot; Env&iacute;os a todo el pa&iacute;s.
+   </p>
+  </footer>
+  <a class="whatsapp" href="https://wa.me/5491168306266" id="whatsappFlotante" rel="noopener" target="_blank">
+   WhatsApp
+  </a>
+ </body>
+</html>

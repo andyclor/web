@@ -1,18 +1,12 @@
-ANDYCLOR — SITIO WEB
+ANDYCLOR 1.0 FINAL AJUSTADA
 
-ARCHIVOS PRINCIPALES
-- index.html: estructura y textos de la página.
-- css/style.css: diseño, colores y adaptación a celulares.
-- js/main.js: menú, configuración, redes y calculadora.
-- config/config.js: oferta, precio, WhatsApp, redes y datos de contacto.
-- Imagenes/: imágenes del sitio.
-- robots.txt y sitemap.xml: archivos para Google.
+Últimos cambios:
+- Pastilla de 50 g: 1 cada 5.000 litros.
+- Pastilla de 200 g: 1 cada 20.000 litros.
+- Boya ionizadora: para piletas de hasta 70.000 litros.
+- Calculadora con un solo título y un subtítulo breve.
+- Mayoristas sin títulos repetidos.
+- Contacto con tarjetas de color y WhatsApp ubicado en el centro.
 
-CAMBIOS RÁPIDOS
-1. Oferta, precio, WhatsApp y redes: editar config/config.js.
-2. Textos de productos: editar index.html.
-3. Colores de tarjetas: buscar “Bordes de color por categoría” al final de css/style.css.
-
-PUBLICACIÓN EN GITHUB PAGES
-Subir directamente todo el contenido de esta carpeta a la raíz del repositorio.
-El archivo index.html debe quedar visible en la pantalla principal del repositorio.
+PUBLICACIÓN
+Descomprimir y subir todo el contenido a la raíz del repositorio GitHub “web”.
