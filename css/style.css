@@ -4333,3 +4333,28 @@ body:has(#resultadoCalculadora.is-visible-after-calc){
     display:none!important;
   }
 }
+
+
+/* CORRECCIÓN ÚNICA: evitar WhatsApp repetido en celular */
+@media(max-width:760px){
+  #whatsappFlotante,
+  a.whatsapp,
+  .whatsapp,
+  .whatsapp-float,
+  .floating-whatsapp,
+  .wa-float,
+  .whatsapp-button,
+  .whatsapp-floating{
+    display:none!important;
+    visibility:hidden!important;
+    opacity:0!important;
+    pointer-events:none!important;
+  }
+
+  .mobile-bottom-nav .mobile-nav-whatsapp{
+    display:flex!important;
+    visibility:visible!important;
+    opacity:1!important;
+    pointer-events:auto!important;
+  }
+}
