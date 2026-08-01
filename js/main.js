@@ -357,3 +357,31 @@ document.addEventListener('DOMContentLoaded', () => {
   setupMobileSections();
   setupCalculator();
 });
+
+
+// HOTFIX MENÚ MÓVIL
+document.addEventListener('DOMContentLoaded', () => {
+  const navbar = document.getElementById('navbar');
+  const menu = document.getElementById('menuToggle');
+  const links = document.getElementById('navLinks');
+
+  if (!menu || !links) return;
+
+  const closeMenu = () => {
+    links.classList.remove('open');
+    menu.setAttribute('aria-expanded', 'false');
+  };
+
+  document.addEventListener('click', (event) => {
+    if (!links.classList.contains('open')) return;
+    if (navbar && !navbar.contains(event.target)) closeMenu();
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') closeMenu();
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 900) closeMenu();
+  }, { passive: true });
+});

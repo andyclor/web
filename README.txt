@@ -10,3 +10,9 @@ ANDYCLOR 1.0 FINAL AJUSTADA
 
 PUBLICACIÓN
 Descomprimir y subir todo el contenido a la raíz del repositorio GitHub “web”.
+
+
+HOTFIX:
+- Menú móvil cerrado por defecto.
+- Se abre únicamente al tocar ☰.
+- Se cierra al elegir una opción, tocar fuera o presionar Escape.
