@@ -12,6 +12,7 @@
 <meta content="Cloro granulado, pastillas Multiacción, alguicidas, clarificadores y accesorios para el cuidado de piletas. Venta Mayorista y Minorista." property="og:description"/>
 <meta content="https://andyclor.com.ar/" property="og:url"/>
 <meta content="https://andyclor.com.ar/Imagenes/fondo.jpg" property="og:image"/>
+<meta content="website" property="og:type"/>
 <link href="favicon-32x32.png" rel="icon"/>
 <link href="apple-touch-icon.png" rel="apple-touch-icon"/>
 <link href="manifest.webmanifest" rel="manifest"/>
@@ -19,6 +20,52 @@
 <script defer="" src="config/config.js">
 </script>
 <script defer="" src="js/main.js">
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://andyclor.com.ar/#organization",
+      "name": "ANDYCLOR",
+      "url": "https://andyclor.com.ar/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://andyclor.com.ar/Imagenes/logo-andyclor.webp"
+      },
+      "description": "Venta Mayorista y Minorista de cloro, pastillas Multiacción, alguicidas, clarificadores y accesorios para piletas.",
+      "telephone": "+54 9 11 6830-6266",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+54 9 11 6830-6266",
+        "contactType": "Ventas y cotizaciones",
+        "availableLanguage": "es"
+      },
+      "areaServed": [
+        {"@type": "Country", "name": "Argentina"},
+        {"@type": "AdministrativeArea", "name": "Provincia de Buenos Aires"},
+        {"@type": "City", "name": "Adrogué"}
+      ],
+      "knowsAbout": [
+        "Cloro para piletas",
+        "Cloro granulado rápido o dicloro",
+        "Cloro granulado lento o tricloro",
+        "Pastillas Multiacción",
+        "Tratamiento de agua verde",
+        "Mantenimiento de piscinas"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://andyclor.com.ar/#website",
+      "url": "https://andyclor.com.ar/",
+      "name": "ANDYCLOR",
+      "inLanguage": "es-AR",
+      "publisher": {"@id": "https://andyclor.com.ar/#organization"}
+    }
+  ]
+}
 </script>
 </head>
 <body class="rc-site">
@@ -51,7 +98,7 @@
 </div>
 </header>
 <main>
-<section class="section rc-specialty-intro"><p>Cloro granulado, pastillas multiacción, alguicidas, clarificadores y accesorios para el mantenimiento de piscinas.</p></section><section class="section">
+<section class="section rc-specialty-intro"><p>Venta Mayorista y Minorista de cloro para piletas y piscinas: Granulado rápido (dicloro), granulado lento (tricloro), pastillas Multiacción —también buscadas como multifunción o triple acción—, alguicidas, clarificadores y accesorios.</p><a class="rc-inline-guide" href="como-recuperar-agua-verde-pileta.html">¿Tenés el agua verde? Consultá la guía paso a paso</a></section><section class="section">
 <span class="rc-eyebrow blue">Soluciones para tu pileta</span>
 <h2>Encontrá lo que necesitás</h2>
 <div class="rc-lines">
@@ -93,7 +140,7 @@
     </h2>
 <div class="rc-popular">
 <article class="rapido">
-<img class="image-rim rim-green" src="Imagenes/cloro-rapido.webp"/>
+<img alt="Cloro granulado de disolución rápida o dicloro para piletas" class="image-rim rim-green" src="Imagenes/cloro-rapido.webp"/>
 <div>
 <h3>Cloro Granulado de Disolución Rápida</h3>
 <p class="product-technical">Dicloro</p><a href="granulado-rapido.html">
@@ -102,7 +149,7 @@
 </div>
 </article>
 <article class="lento">
-<img class="image-rim rim-red" src="Imagenes/cloro-lento.webp"/>
+<img alt="Cloro granulado de disolución lenta o tricloro para piletas" class="image-rim rim-red" src="Imagenes/cloro-lento.webp"/>
 <div>
 <h3>Cloro Granulado de Disolución Lenta</h3>
 <p class="product-technical">Tricloro</p><a href="granulado-lento.html">
@@ -120,7 +167,7 @@
 </div>
 </article>
 <article class="pastillas">
-<img class="image-rim rim-purple" src="Imagenes/pastillas.webp"/>
+<img alt="Pastillas Multiacción de 50 g y 200 g para piletas" class="image-rim rim-purple" src="Imagenes/pastillas.webp"/>
 <div>
 <h3>Pastillas Multiacción 50 g y 200 g</h3>
 <p class="product-technical">Disolución lenta</p><a href="pastillas-multiaccion.html">

@@ -3,8 +3,187 @@
 const CONFIG = window.ANDYCLOR_CONFIG || {};
 
 const getWhatsAppNumber = () => String(CONFIG.contacto?.whatsapp || CONFIG.whatsapp || '5491168306266').replace(/\D/g, '');
-const whatsappLink = (message = '') =>
-  `https://wa.me/${getWhatsAppNumber()}${message ? `?text=${encodeURIComponent(message)}` : ''}`;
+
+function detectTrafficSource() {
+  const params = new URLSearchParams(window.location.search);
+  const rawUtmSource = (params.get('utm_source') || '').replace(/[^a-zA-Z0-9áéíóúüñÁÉÍÓÚÜÑ _.-]/g, '').trim().slice(0, 40);
+  const referrer = document.referrer.toLowerCase();
+
+  let source = rawUtmSource;
+  if (!source && referrer.includes('chatgpt.com')) source = 'ChatGPT';
+  else if (!source && referrer.includes('perplexity.ai')) source = 'Perplexity';
+  else if (!source && (referrer.includes('copilot.microsoft.com') || referrer.includes('bing.com'))) source = 'Bing/Copilot';
+  else if (!source && referrer.includes('google.')) source = 'Google';
+  else if (!source && referrer.includes('instagram.com')) source = 'Instagram';
+  else if (!source && referrer.includes('facebook.com')) source = 'Facebook';
+  else if (!source && referrer && !referrer.includes('andyclor.com.ar')) source = 'Otro sitio';
+
+  try {
+    if (source) sessionStorage.setItem('andyclor_visit_source', source);
+    return source || sessionStorage.getItem('andyclor_visit_source') || 'Directo';
+  } catch (_) {
+    return source || 'Directo';
+  }
+}
+
+function attributedMessage(message = '') {
+  const source = detectTrafficSource();
+  if (!message || source === 'Directo' || /Origen web:/i.test(message)) return message;
+  return `${message}\n\nOrigen web: ${source}.`;
+}
+
+function isMobileDevice() {
+  const userAgent = navigator.userAgent || '';
+  const isIPadDesktopMode = /Macintosh/i.test(userAgent) && Number(navigator.maxTouchPoints || 0) > 1;
+  return /Android|iPhone|iPad|iPod|IEMobile|Opera Mini|Mobile/i.test(userAgent) || isIPadDesktopMode;
+}
+
+function directWhatsAppLink(message = '') {
+  const phone = getWhatsAppNumber();
+  const text = message ? `&text=${encodeURIComponent(message)}` : '';
+
+  if (isMobileDevice()) {
+    return `https://wa.me/${phone}${message ? `?text=${encodeURIComponent(message)}` : ''}`;
+  }
+
+  return `https://web.whatsapp.com/send?phone=${phone}${text}`;
+}
+
+const whatsappLink = (message = '') => directWhatsAppLink(attributedMessage(message));
+
+function trackSiteEvent(eventName, parameters = {}) {
+  if (typeof window.gtag !== 'function') return;
+  window.gtag('event', eventName, {
+    page_path: window.location.pathname,
+    traffic_source: detectTrafficSource(),
+    ...parameters
+  });
+}
+
+function setupOptionalAnalytics() {
+  const measurementId = String(CONFIG.analytics?.ga4Id || '').trim();
+  if (!/^G-[A-Z0-9]+$/i.test(measurementId)) return;
+
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function gtag() { window.dataLayer.push(arguments); };
+  window.gtag('js', new Date());
+  window.gtag('config', measurementId, { anonymize_ip: true });
+
+  const script = document.createElement('script');
+  script.async = true;
+  script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(measurementId)}`;
+  document.head.appendChild(script);
+}
+
+function decorateWhatsAppLink(link) {
+  if (!link) return;
+  const isWhatsApp = /https:\/\/(?:wa\.me\/|web\.whatsapp\.com\/send)/i.test(link.href);
+  if (!isWhatsApp && link.dataset.whatsappLink !== 'true') return;
+
+  try {
+    const url = new URL(link.href);
+    const source = detectTrafficSource();
+    const originalMessage = link.dataset.whatsappMessage ||
+      url.searchParams.get('text') ||
+      (source !== 'Directo'
+        ? CONFIG.mensajeGeneral || 'Hola ANDYCLOR. Quiero realizar una consulta.'
+        : '');
+
+    link.dataset.whatsappLink = 'true';
+    link.dataset.whatsappMessage = originalMessage;
+    link.href = directWhatsAppLink(attributedMessage(originalMessage));
+  } catch (_) {
+    // Conserva el enlace original si el navegador no puede interpretarlo.
+  }
+}
+
+function setupWhatsappTracking() {
+  document.querySelectorAll('a[href*="wa.me/"]').forEach(decorateWhatsAppLink);
+  document.addEventListener('click', event => {
+    const link = event.target.closest('a[data-whatsapp-link="true"], a[href*="wa.me/"], a[href*="web.whatsapp.com/send"]');
+    if (!link) return;
+    decorateWhatsAppLink(link);
+    trackSiteEvent('whatsapp_click', {
+      link_label: (link.textContent || 'WhatsApp').trim().slice(0, 80)
+    });
+  });
+}
+
+function setupSeoBreadcrumbs() {
+  const main = document.querySelector('main');
+  const filename = window.location.pathname.split('/').filter(Boolean).pop() || 'index.html';
+  if (!main || filename === 'index.html' || main.querySelector('.seo-breadcrumb')) return;
+
+  const pageMap = {
+    'cloro-piletas.html': { label: 'Cloro para Piletas' },
+    'granulado-rapido.html': { label: 'Granulado Rápido (Dicloro)', parent: ['Cloro para Piletas', 'cloro-piletas.html'] },
+    'granulado-lento.html': { label: 'Granulado Lento (Tricloro)', parent: ['Cloro para Piletas', 'cloro-piletas.html'] },
+    'granulado-multiaccion.html': { label: 'Granulado Multiacción', parent: ['Cloro para Piletas', 'cloro-piletas.html'] },
+    'pastillas-multiaccion.html': { label: 'Pastillas Multiacción', parent: ['Cloro para Piletas', 'cloro-piletas.html'] },
+    'alguicida-clarificador.html': { label: 'Alguicida y Clarificador' },
+    'accesorios-piletas.html': { label: 'Accesorios para Piletas' },
+    'liquidos-papeles.html': { label: 'Líquidos y Papeles' },
+    'calculadora.html': { label: 'Calculadora para Piletas' },
+    'mayoristas.html': { label: 'Venta Mayorista' },
+    'academia.html': { label: 'Academia ANDYCLOR' },
+    'como-recuperar-agua-verde-pileta.html': { label: 'Cómo Recuperar el Agua Verde', parent: ['Academia ANDYCLOR', 'academia.html'] },
+    'contacto.html': { label: 'Contacto' },
+    'cloro-para-piletas-adrogue.html': { label: 'Cloro para Piletas en Adrogué', parent: ['Cloro para Piletas', 'cloro-piletas.html'] }
+  };
+
+  const page = pageMap[filename] || {
+    label: document.querySelector('h1')?.textContent.trim() || document.title.split('|')[0].trim()
+  };
+  const items = [{ label: 'Inicio', href: 'index.html', absolute: 'https://andyclor.com.ar/' }];
+  if (page.parent) {
+    items.push({
+      label: page.parent[0],
+      href: page.parent[1],
+      absolute: `https://andyclor.com.ar/${page.parent[1]}`
+    });
+  }
+  const canonical = document.querySelector('link[rel="canonical"]')?.href || window.location.href.split('?')[0];
+  items.push({ label: page.label, absolute: canonical });
+
+  const nav = document.createElement('nav');
+  nav.className = 'seo-breadcrumb';
+  nav.setAttribute('aria-label', 'Ruta de navegación');
+  items.forEach((item, index) => {
+    if (index > 0) {
+      const separator = document.createElement('span');
+      separator.setAttribute('aria-hidden', 'true');
+      separator.textContent = '›';
+      nav.appendChild(separator);
+    }
+    if (item.href) {
+      const anchor = document.createElement('a');
+      anchor.href = item.href;
+      anchor.textContent = item.label;
+      nav.appendChild(anchor);
+    } else {
+      const current = document.createElement('span');
+      current.setAttribute('aria-current', 'page');
+      current.textContent = item.label;
+      nav.appendChild(current);
+    }
+  });
+  main.prepend(nav);
+
+  const structuredData = document.createElement('script');
+  structuredData.type = 'application/ld+json';
+  structuredData.dataset.generatedBreadcrumb = 'true';
+  structuredData.textContent = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.label,
+      item: item.absolute
+    }))
+  });
+  document.head.appendChild(structuredData);
+}
 
 function setText(id, value, prefix = '') {
   const element = document.getElementById(id);
@@ -392,6 +571,16 @@ function calculatePool() {
     </div>
   `;
 
+  const volumeBand = litres <= 20000
+    ? 'hasta_20000'
+    : (litres <= 40000 ? '20001_a_40000' : (litres <= 70000 ? '40001_a_70000' : 'mas_de_70000'));
+  trackSiteEvent('calculator_complete', {
+    pool_type: poolType,
+    maintenance_type: maintenance,
+    season,
+    volume_band: volumeBand
+  });
+
   if (formPanel) {
     formPanel.classList.add('is-hidden-after-calc');
     formPanel.setAttribute('aria-hidden', 'true');
@@ -461,10 +650,13 @@ function setupCalculator() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  setupOptionalAnalytics();
+  setupSeoBreadcrumbs();
   applyConfiguration();
   setupNavigation();
   setupMobileSections();
   setupCalculator();
+  setupWhatsappTracking();
 });
 
 
@@ -527,7 +719,6 @@ function buildOfferCard(offer, segment) {
   const badge = segment === 'retail' ? 'Oferta Minorista' : 'Oferta Mayorista';
   const buttonLabel = segment === 'retail' ? 'Consultar oferta' : 'Solicitar cotización';
   const priceKg = numericPrice(offer.precioKg);
-  const phone = getWhatsAppNumber();
   const message = offer.mensajeWhatsapp ||
     (segment === 'retail'
       ? `Hola ANDYCLOR. Quiero consultar la oferta de ${offer.producto || 'este producto'}.`
@@ -556,7 +747,7 @@ function buildOfferCard(offer, segment) {
       `}
     </ul>
     <a class="btn primary gold-offer-action" target="_blank" rel="noopener noreferrer"
-       href="https://wa.me/${phone}?text=${encodeURIComponent(message)}">${buttonLabel}</a>
+       data-whatsapp-link="true" href="${whatsappLink(message)}">${buttonLabel}</a>
   `;
   return card;
 }

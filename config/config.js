@@ -76,5 +76,11 @@ window.ANDYCLOR_CONFIG = {
     instagram: "",
     facebook: "",
     mercadolibre: ""
+  },
+
+  /* Opcional: Escribí aquí un ID de Google Analytics 4 con formato G-XXXXXXXXXX.
+     Si queda vacío, la página no carga Google Analytics. */
+  analytics: {
+    ga4Id: ""
   }
 };

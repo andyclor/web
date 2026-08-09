@@ -132,3 +132,21 @@ ANDYCLOR MASTER 1.0 — RC8
 - Los 50 kg se identifican expresamente como granulados a granel en cuñete completo.
 - Los 45 kg fraccionados se muestran como alternativa dentro de la presentación de cuñete.
 - La misma clasificación se aplicó a las fichas de Granulado Rápido, Lento y Multiacción.
+
+
+ANDYCLOR MASTER 1.0 — RC11
+- Se incorporó la guía “Cómo recuperar el agua verde de una pileta” con pasos, seguridad, pH, cloro, alguicida, filtrado, clarificador y limpiafondo.
+- Los textos combinan expresiones habituales de los clientes con términos técnicos: Cloro en polvo/granulado, dicloro, tricloro, pastillas multifunción/triple acción/Multiacción, verdín/algas y decantar/clarificar.
+- La calculadora suma una tabla visible de cantidades para 10.000, 20.000, 40.000 y 50.000 litros y nuevas respuestas frecuentes.
+- Se recuperaron los datos estructurados Organization y WebSite en la portada.
+- Todas las páginas internas generan navegación visible y BreadcrumbList.
+- Academia enlaza directamente a la nueva guía.
+- El sitemap incluye la nueva URL y fechas de actualización.
+- Los mensajes enviados por WhatsApp identifican el origen cuando la visita llega desde ChatGPT, Perplexity, Bing/Copilot, Google, Instagram o Facebook.
+- Quedó preparado Google Analytics 4: Para activarlo, editar config/config.js y completar analytics.ga4Id. Si permanece vacío, no se carga Analytics.
+
+
+ANDYCLOR MASTER 1.0 — RC12
+- En computadora, los botones de WhatsApp abren directamente la conversación en WhatsApp Web y evitan la página institucional intermedia.
+- En celulares y tabletas, los enlaces conservan la apertura mediante WhatsApp para derivar a la aplicación instalada.
+- Se mantienen el mensaje precargado, la identificación del origen de la visita y la medición de clics.
