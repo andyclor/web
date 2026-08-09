@@ -2,7 +2,7 @@
 
 const CONFIG = window.ANDYCLOR_CONFIG || {};
 
-const getWhatsAppNumber = () => String(CONFIG.contacto?.whatsapp || CONFIG.whatsapp || '5491168306266').replace(/\D/g, '');
+const getWhatsAppNumber = () => String(CONFIG.whatsapp || '5491168306266').replace(/\D/g, '');
 const whatsappLink = (message = '') =>
   `https://wa.me/${getWhatsAppNumber()}${message ? `?text=${encodeURIComponent(message)}` : ''}`;
 
@@ -181,49 +181,17 @@ function setupMobileSections() {
 }
 
 function suggestedGranulatedPresentation(monthlyKg) {
-  const requiredKg = Math.max(5, Math.ceil(monthlyKg));
-
-  // Oferta comercial sugerida: mínimo 5 kg. Hasta 30 kg usamos las escalas
-  // 5 / 10 / 20 kg; desde 35 kg conviene el cuñete de 50 kg a granel.
-  if (requiredKg <= 5) return 'Oferta x 5 kg';
-  if (requiredKg <= 10) return 'Oferta x 10 kg';
-  if (requiredKg <= 20) return 'Oferta x 20 kg';
-  if (requiredKg <= 25) return 'Oferta x 20 kg + 5 kg';
-  if (requiredKg <= 30) return 'Oferta x 20 kg + 10 kg';
-  if (requiredKg <= 50) return 'Cuñete x 50 kg a granel — mejor precio';
-
-  const cuñetes = Math.ceil(requiredKg / 50);
-  return `${cuñetes} cuñetes x 50 kg a granel`;
+  if (monthlyKg <= 1) return 'Cloro granulado x 1 kg';
+  if (monthlyKg <= 5) return 'Cloro granulado x 5 kg';
+  if (monthlyKg <= 10) return 'Cloro granulado x 10 kg';
+  return 'Cloro granulado en cuñete x 50 kg';
 }
 
-function formatKg(value) {
-  return Number.isInteger(value)
-    ? `${value} kg`
-    : `${value.toFixed(1).replace('.', ',')} kg`;
-}
-
-function tabletMonthlyEstimate(tabletsPerMonth) {
-  const capsules = Math.max(1, Math.ceil(tabletsPerMonth));
-  const kg = capsules * 0.2;
-  return {
-    capsules,
-    kg,
-    label: `${capsules} cápsula(s) de 200 g (${formatKg(kg)})`
-  };
-}
-
-function suggestedTabletOffer(monthlyKg) {
-  const requiredKg = Math.max(5, Math.ceil(monthlyKg));
-
-  // Las pastillas vienen en cápsulas y pueden fraccionarse, pero la calculadora
-  // deriva hacia las ofertas comerciales para favorecer una compra conveniente.
-  if (requiredKg <= 5) return 'Oferta x 5 kg';
-  if (requiredKg <= 10) return 'Oferta x 10 kg';
-  if (requiredKg <= 20) return 'Oferta x 20 kg';
-  if (requiredKg <= 25) return 'Oferta x 20 kg + 5 kg';
-  if (requiredKg <= 30) return 'Oferta x 20 kg + 10 kg';
-  if (requiredKg <= 40) return '2 ofertas x 20 kg';
-  return 'Cotización por volumen';
+function suggestedTabletPresentation(tabletsPerMonth) {
+  if (tabletsPerMonth <= 5) return 'Pastillas Multiacción x 1 kg';
+  if (tabletsPerMonth <= 25) return 'Pastillas Multiacción x 5 kg';
+  if (tabletsPerMonth <= 50) return 'Pastillas Multiacción x 10 kg';
+  return 'Pastillas Multiacción en cuñete x 50 kg';
 }
 
 function calculatePool() {
@@ -281,32 +249,29 @@ function calculatePool() {
   const messageOrder = [];
 
   if (['granulado', 'ambos', 'granulado_multiaccion'].includes(maintenance)) {
-    const offer = suggestedGranulatedPresentation(granulatedMonthlyKg);
+    const presentation = suggestedGranulatedPresentation(granulatedMonthlyKg);
     resultItems.push(`
       <div class="result-item ${multiAction ? 'item-pastillas' : (poolType === 'revestida' ? 'item-lento' : 'item-rapido')}">
         <strong>🧪 ${granulatedName}</strong>
-        <span><b>Dosis estimada:</b> ${granulatedGrams} g ${granulatedFrequency}</span>
-        <small><b>Consumo estimado para aproximadamente un mes:</b> ${formatKg(granulatedMonthlyKg)}.</small>
-        <small><b>Oferta recomendada:</b> ${offer}. Mejor precio por cantidad.</small>
+        <span>${granulatedGrams} g ${granulatedFrequency}</span>
+        <small>Presentación sugerida para aproximadamente un mes: ${presentation}.</small>
       </div>
     `);
-    preparedOrder.push(`<li class="prepared-product"><strong>${granulatedName}</strong><span>${offer}</span></li>`);
-    messageOrder.push(`${offer} — dosis estimada: ${granulatedGrams} g ${granulatedFrequency}; consumo mensual aprox.: ${formatKg(granulatedMonthlyKg)}`);
+    preparedOrder.push(`<li class="prepared-product"><strong>${granulatedName}</strong><span>${presentation}</span></li>`);
+    messageOrder.push(`${presentation} — dosis: ${granulatedGrams} g ${granulatedFrequency}`);
   }
 
   if (['pastillas', 'ambos'].includes(maintenance)) {
-    const estimate = tabletMonthlyEstimate(tabletsPerMonth);
-    const offer = suggestedTabletOffer(estimate.kg);
+    const presentation = suggestedTabletPresentation(tabletsPerMonth);
     resultItems.push(`
       <div class="result-item item-pastillas">
-        <strong>🟣 Pastillas Multiacción en cápsulas</strong>
-        <span><b>Dosis estimada:</b> ${tablets} pastilla(s) de 200 g ${tabletsFrequency}</span>
-        <small><b>Consumo estimado para aproximadamente un mes:</b> ${estimate.label}.</small>
-        <small><b>Oferta recomendada:</b> ${offer}. Mejor precio por cantidad.</small>
+        <strong>🟣 Pastillas Multiacción</strong>
+        <span>${tablets} pastilla(s) de 200 g ${tabletsFrequency}</span>
+        <small>Presentación sugerida para aproximadamente un mes: ${presentation}.</small>
       </div>
     `);
-    preparedOrder.push(`<li class="prepared-product"><strong>Pastillas Multiacción en cápsulas</strong><span>${offer}</span></li>`);
-    messageOrder.push(`${offer} — uso estimado: ${tablets} pastilla(s) ${tabletsFrequency}; consumo mensual aprox.: ${estimate.label}`);
+    preparedOrder.push(`<li class="prepared-product"><strong>Pastillas Multiacción</strong><span>${presentation}</span></li>`);
+    messageOrder.push(`${presentation} — uso: ${tablets} pastilla(s) ${tabletsFrequency}`);
   }
 
   resultItems.push(`
@@ -341,7 +306,7 @@ function calculatePool() {
     'Quisiera cotización para:',
     ...messageOrder.map(item => `• ${item}`),
     '',
-    'La página me mostró la dosis estimada y una oferta recomendada. Quisiera consultar disponibilidad y precio.'
+    'La página me sugirió estas cantidades y presentaciones. Quisiera ver los productos disponibles en el catálogo.'
   ].join('\n');
 
   const theme = maintenance === 'pastillas'
@@ -353,18 +318,18 @@ function calculatePool() {
   result.className = `calc-result ${theme}`;
   result.innerHTML = `
     <div class="calc-final-layout">
-      <section class="calc-order-column" aria-label="Resultado y oferta recomendada">
+      <section class="calc-order-column" aria-label="Resultado y pedido sugerido">
         <span class="calc-result-kicker">✓ Resultado del cálculo</span>
-        <h3>Oferta recomendada para tu pileta</h3>
+        <h3>Presentación sugerida para tu pileta</h3>
 
         <a class="btn primary calculator-whatsapp-cta calculator-whatsapp-top" target="_blank" rel="noopener noreferrer"
            href="${whatsappLink(message)}">
            🟢 Finalizar pedido por WhatsApp
         </a>
-        <small class="calculator-whatsapp-help">WhatsApp recibirá los productos, la dosis estimada y la oferta recomendada.</small>
+        <small class="calculator-whatsapp-help">WhatsApp recibirá los productos y las cantidades sugeridas.</small>
 
         <section class="prepared-order prepared-order-compact" aria-label="Pedido preparado">
-          <span class="prepared-order-kicker">🛒 Compra recomendada</span>
+          <span class="prepared-order-kicker">🛒 Pedido preparado</span>
           <ul>${preparedOrder.join('')}</ul>
         </section>
 
@@ -496,97 +461,73 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// ==========================================================
-// OFERTAS DINÁMICAS MASTER
-// Precio > 0 = visible. Precio 0 = oculto.
-// 1 oferta: centrada | 2: lado a lado | 3: misma fila en desktop.
-// ==========================================================
-function numericPrice(value) {
-  if (typeof value === 'number') return Number.isFinite(value) ? value : 0;
-  if (typeof value !== 'string') return 0;
-  const cleaned = value.replace(/[^\d,.-]/g, '').replace(/\./g, '').replace(',', '.');
-  const parsed = Number(cleaned);
-  return Number.isFinite(parsed) ? parsed : 0;
-}
+// OFERTAS EDITABLES
+document.addEventListener('DOMContentLoaded', () => {
+  const cfg = window.ANDYCLOR_OFERTAS;
+  if (!cfg) return;
 
-function formatARS(value) {
-  const amount = numericPrice(value);
-  if (amount <= 0) return '';
-  return `$${Math.round(amount).toLocaleString('es-AR')}`;
-}
+  const setText = (id, value) => {
+    const el = document.getElementById(id);
+    if (el && value) el.textContent = value;
+  };
 
-function offerTypeClass(type) {
-  const allowed = ['rapido', 'lento', 'pastillas', 'multiaccion'];
-  return allowed.includes(type) ? `offer-product-${type}` : 'offer-product-default';
-}
+  const setWhatsapp = (id, message) => {
+    const el = document.getElementById(id);
+    if (el && message) {
+      el.href = `https://wa.me/5491168306266?text=${encodeURIComponent(message)}`;
+    }
+  };
 
-function buildOfferCard(offer, segment) {
-  const card = document.createElement('article');
-  card.className = `gold-offer-card ${segment} ${offerTypeClass(offer.tipo)}`;
+  if (cfg.minorista) {
+    setText('ofertaMinoristaProducto', cfg.minorista.producto);
+    setText('ofertaMinoristaPrecio', cfg.minorista.precio);
+    setText('ofertaMinoristaPrecioKg', cfg.minorista.precioKg);
+    setWhatsapp('ofertaMinoristaBoton', cfg.minorista.mensajeWhatsapp);
 
-  const badge = segment === 'retail' ? 'Oferta Minorista' : 'Oferta Mayorista';
-  const buttonLabel = segment === 'retail' ? 'Consultar oferta' : 'Solicitar cotización';
-  const priceKg = numericPrice(offer.precioKg);
-  const phone = getWhatsAppNumber();
-  const message = offer.mensajeWhatsapp ||
-    (segment === 'retail'
-      ? `Hola ANDYCLOR. Quiero consultar la oferta de ${offer.producto || 'este producto'}.`
-      : `Hola ANDYCLOR. Quiero solicitar una cotización Mayorista de ${offer.producto || 'este producto'}. Cantidad estimada: ____ kg. Frecuencia: ____. Zona: ____.`);
-
-  card.innerHTML = `
-    <div class="gold-offer-badge">${badge}</div>
-    <h3>${offer.producto || 'Oferta ANDYCLOR'}</h3>
-    ${offer.tecnico ? `<p class="gold-offer-technical">${offer.tecnico}</p>` : ''}
-    ${offer.detalle ? `<p class="gold-offer-volume">${offer.detalle}</p>` : ''}
-    <div class="gold-offer-price-wrap">
-      <small>Precio publicado</small>
-      <strong>${formatARS(offer.precio)}</strong>
-      ${priceKg > 0 ? `<span>${formatARS(priceKg)} por kg</span>` : ''}
-      ${offer.ahorro ? `<span class="gold-saving-badge">${offer.ahorro}</span>` : ''}
-    </div>
-    <ul>
-      ${segment === 'retail' ? `
-        <li>Precio especial por cantidad</li>
-        <li>Entrega coordinada según zona</li>
-        <li>Pago por efectivo o transferencia</li>
-      ` : `
-        <li>Referencia sujeta a volumen, frecuencia y producto</li>
-        <li>Otros volúmenes y compras recurrentes se evalúan caso por caso</li>
-        <li>Entrega o despacho según operación y zona</li>
-      `}
-    </ul>
-    <a class="btn primary gold-offer-action" target="_blank" rel="noopener noreferrer"
-       href="https://wa.me/${phone}?text=${encodeURIComponent(message)}">${buttonLabel}</a>
-  `;
-  return card;
-}
-
-function renderOfferGroup(containerId, offers, segment) {
-  const container = document.getElementById(containerId);
-  if (!container) return;
-
-  const active = (Array.isArray(offers) ? offers : [])
-    .filter(offer => offer && numericPrice(offer.precio) > 0)
-    .slice(0, 3);
-
-  const section = container.closest('.gold-offer-section');
-  if (active.length === 0) {
-    if (section) section.hidden = true;
-    container.innerHTML = '';
-    return;
+    const card = document.querySelector('.gold-offer-card.retail');
+    if (card && cfg.minorista.activo === false) card.hidden = true;
   }
 
-  if (section) section.hidden = false;
-  container.classList.remove('count-1', 'count-2', 'count-3');
-  container.classList.add(`count-${active.length}`);
-  container.innerHTML = '';
-  active.forEach(offer => container.appendChild(buildOfferCard(offer, segment)));
-}
+  if (cfg.mayorista) {
+    setText('ofertaMayoristaVolumen', cfg.mayorista.volumen);
+    setWhatsapp('ofertaMayoristaBoton', cfg.mayorista.mensajeWhatsapp);
 
-function renderMasterOffers() {
-  const offers = CONFIG.ofertas || {};
-  renderOfferGroup('ofertasMinoristasGrid', offers.minorista, 'retail');
-  renderOfferGroup('ofertasMayoristasGrid', offers.mayorista, 'wholesale');
-}
+    const card = document.querySelector('.gold-offer-card.wholesale');
+    if (card && cfg.mayorista.activo === false) card.hidden = true;
+  }
+});
 
-document.addEventListener('DOMContentLoaded', renderMasterOffers);
+
+document.addEventListener('DOMContentLoaded', () => {
+  const cfg = window.ANDYCLOR_CONFIG;
+  if (!cfg) return;
+  const setText = (id, value) => {
+    const el = document.getElementById(id);
+    if (el && value) el.textContent = value;
+  };
+  const setWa = (id, number, message) => {
+    const el = document.getElementById(id);
+    if (el && number && message) el.href = `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
+  };
+  if (cfg.oferta?.mostrar === false) {
+    const section = document.querySelector('.gold-offer-section');
+    if (section) section.hidden = true;
+  }
+  const phone = cfg.contacto?.whatsapp || '5491168306266';
+  const m = cfg.oferta?.minorista;
+  if (m) {
+    setText('ofertaMinoristaProducto', m.producto);
+    setText('ofertaMinoristaDetalle', m.detalle);
+    setText('ofertaMinoristaPrecio', m.precio);
+    setText('ofertaMinoristaPrecioKg', m.precioKg);
+    setWa('ofertaMinoristaBoton', phone, m.mensajeWhatsapp);
+  }
+  const d = cfg.oferta?.distribuidor;
+  if (d) {
+    setText('ofertaMayoristaVolumen', d.volumen);
+    setText('ofertaMayoristaPrecio', d.precio);
+    setText('ofertaMayoristaPrecioKg', d.precioKg);
+    setText('ofertaMayoristaAhorro', d.ahorro);
+    setWa('ofertaMayoristaBoton', phone, d.mensajeWhatsapp);
+  }
+});
