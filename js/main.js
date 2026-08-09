@@ -183,7 +183,7 @@ function setupMobileSections() {
 function suggestedGranulatedPresentation(monthlyKg) {
   const requiredKg = Math.max(5, Math.ceil(monthlyKg));
 
-  // Oferta comercial sugerida: mínimo 5 kg. Hasta 30 kg usamos las escalas
+  // Oferta comercial sugerida: Mínimo 5 kg. Hasta 30 kg usamos las escalas
   // 5 / 10 / 20 kg; desde 35 kg conviene el cuñete de 50 kg a granel.
   if (requiredKg <= 5) return 'Oferta x 5 kg';
   if (requiredKg <= 10) return 'Oferta x 10 kg';
@@ -499,7 +499,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // ==========================================================
 // OFERTAS DINÁMICAS MASTER
 // Precio > 0 = visible. Precio 0 = oculto.
-// 1 oferta: centrada | 2: lado a lado | 3: misma fila en desktop.
+// 1 oferta: Centrada | 2: Lado a lado | 3: Misma fila en desktop.
 // ==========================================================
 function numericPrice(value) {
   if (typeof value === 'number') return Number.isFinite(value) ? value : 0;
@@ -550,9 +550,9 @@ function buildOfferCard(offer, segment) {
         <li>Entrega coordinada según zona</li>
         <li>Pago por efectivo o transferencia</li>
       ` : `
-        <li>Referencia sujeta a volumen, frecuencia y producto</li>
+        <li>Referencia sujeta a volumen, frecuencia, distancia y producto</li>
         <li>Otros volúmenes y compras recurrentes se evalúan caso por caso</li>
-        <li>Entrega o despacho según operación y zona</li>
+        <li>Entrega propia, retiro coordinado o despacho por transporte</li>
       `}
     </ul>
     <a class="btn primary gold-offer-action" target="_blank" rel="noopener noreferrer"

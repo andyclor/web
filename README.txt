@@ -3,7 +3,7 @@ ANDYCLOR 1.0 FINAL AJUSTADA
 Últimos cambios:
 - Pastilla de 50 g: 1 cada 5.000 litros.
 - Pastilla de 200 g: 1 cada 20.000 litros.
-- Boya ionizadora: para piletas de hasta 70.000 litros.
+- Boya ionizadora: Para piletas de hasta 70.000 litros.
 - Calculadora con un solo título y un subtítulo breve.
 - Mayoristas sin títulos repetidos.
 - Contacto con tarjetas de color y WhatsApp ubicado en el centro.
@@ -52,8 +52,8 @@ OFERTA Y ACADEMIA
 
 CORRECCIÓN CALCULADORA Y MAYORISTAS
 - Calculadora en dos columnas luego del cálculo.
-- Izquierda: pedido, cantidades a comprar y WhatsApp arriba.
-- Derecha: tratamiento, dosis y explicación.
+- Izquierda: Pedido, cantidades a comprar y WhatsApp arriba.
+- Derecha: Tratamiento, dosis y explicación.
 - La presentación sugerida no repite la dosis diaria.
 - Mayoristas con tarjetas más contrastadas, iconos, colores y relieve.
 
@@ -93,14 +93,14 @@ ANDYCLOR MASTER 1.0 — M001
 - Nataclor deja de ocupar el hero; se mantiene como respaldo comercial en el pie: “Distribuidor Multimarca · Línea principal NATACLOR”.
 - Se agregó una línea breve bajo el hero con las categorías principales para reforzar claridad semántica sin recargar la cabecera.
 - Título, meta description y Open Graph de la portada alineados con el nuevo posicionamiento.
-- Convención editorial: segmentos visibles como Mayorista/Minorista usan mayúscula inicial; en texto corrido se mantiene minúscula.
+- Convención editorial: Los segmentos visibles como Mayorista/Minorista usan mayúscula inicial. Cada oración y la primera palabra posterior a dos puntos comienzan con mayúscula.
 
 
 ANDYCLOR MASTER 1.0 — RC4
 - La grilla de ofertas se adapta de forma independiente en Minorista y Mayorista.
-- 1 oferta activa: tarjeta centrada.
-- 2 ofertas activas: dos tarjetas centradas y repartidas horizontalmente.
-- 3 ofertas activas: tres tarjetas repartidas en una misma fila en escritorio.
+- 1 oferta activa: Tarjeta centrada.
+- 2 ofertas activas: Dos tarjetas centradas y repartidas horizontalmente.
+- 3 ofertas activas: Tres tarjetas repartidas en una misma fila en escritorio.
 - En celular, las ofertas se apilan en una sola columna.
 - Si no hay ofertas activas, la sección correspondiente se oculta por completo.
 
@@ -109,3 +109,26 @@ ANDYCLOR MASTER 1.0 — RC5
 - Se restauró la separación visual entre ANDY y CLOR en el nombre grande de la portada.
 - La separación se mantiene en computadora y celular.
 - Se conservan sin cambios la configuración de precios y la grilla dinámica de ofertas de RC4.
+
+
+ANDYCLOR MASTER 1.0 — RC6
+- La venta Mayorista se comunica desde 100 kg.
+- Las listas de 300, 500 y 1.000 kg se presentan como escalas de referencia.
+- La condición final se acuerda con cada cliente según cantidad, distancia, frecuencia y modalidad de entrega.
+- Se eliminaron de la página Mayoristas las referencias a ofertas de 5, 10 y 20 kg.
+- La oferta publicada de 500 kg se mantiene como referencia, no como tarifa general.
+- Se informan tres modalidades: Entrega con transporte propio, retiro coordinado y despacho por transporte de confianza.
+
+
+ANDYCLOR MASTER 1.0 — RC7
+- Se normalizó el uso de mayúsculas al comienzo de cada oración.
+- La primera palabra posterior a dos puntos comienza con mayúscula en todos los textos visibles.
+- Se unificó la escritura de Mayorista y Minorista en los pies de página.
+
+
+ANDYCLOR MASTER 1.0 — RC8
+- La sección de presentaciones de granulados quedó reducida a tres tarjetas centradas.
+- Las cantidades de 5, 10 y 20 kg se agruparon como descuentos por cantidad.
+- Los 50 kg se identifican expresamente como granulados a granel en cuñete completo.
+- Los 45 kg fraccionados se muestran como alternativa dentro de la presentación de cuñete.
+- La misma clasificación se aplicó a las fichas de Granulado Rápido, Lento y Multiacción.

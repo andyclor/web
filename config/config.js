@@ -62,7 +62,7 @@ window.ANDYCLOR_CONFIG = {
         tipo: "pastillas",
         producto: "Pastillas Multiacción 200 g",
         tecnico: "En cápsulas",
-        detalle: "Referencia publicada: compras desde 500 kg",
+        detalle: "Referencia publicada: Escala de 500 kg",
         precio: 225000,
         precioKg: 4500,
         ahorro: "Precio de referencia para esta condición",
