@@ -44,9 +44,9 @@ AJUSTE FINAL DE CALCULADORA
 
 
 OFERTA Y ACADEMIA
-- Inicio incorpora Oferta Minorista por 50 kg y Oferta Mayorista desde 300/500 kg.
-- El precio minorista se modifica en config/config.js, dentro de ANDYCLOR_OFERTAS.
-- Puede activarse o desactivarse cada oferta desde ese mismo bloque.
+- Inicio muestra la Oferta Minorista sin mezclar precios Mayoristas.
+- La página Mayoristas muestra una condición de referencia y deriva la cotización final a contacto directo.
+- Los precios editables se modifican en config/config.js, dentro de ANDYCLOR_CONFIG.
 - Academia recupera tarjetas/recuadros visuales y preguntas frecuentes.
 
 
@@ -85,3 +85,27 @@ MENÚ MÓVIL FINAL
 - Cada opción tiene efecto redondeado independiente.
 - WhatsApp queda destacado en verde.
 - Se ocultan los botones flotantes de WhatsApp en celular para evitar duplicados.
+
+ANDYCLOR MASTER 1.0 — M001
+- Portada reenfocada en ANDYCLOR como especialista: “Especialistas en el cuidado de piletas”.
+- Hero simplificado: “Venta Mayorista y Minorista · Envíos”.
+- Se dejaron solo dos acciones principales: Ver productos y Calcular dosis.
+- Nataclor deja de ocupar el hero; se mantiene como respaldo comercial en el pie: “Distribuidor Multimarca · Línea principal NATACLOR”.
+- Se agregó una línea breve bajo el hero con las categorías principales para reforzar claridad semántica sin recargar la cabecera.
+- Título, meta description y Open Graph de la portada alineados con el nuevo posicionamiento.
+- Convención editorial: segmentos visibles como Mayorista/Minorista usan mayúscula inicial; en texto corrido se mantiene minúscula.
+
+
+ANDYCLOR MASTER 1.0 — RC4
+- La grilla de ofertas se adapta de forma independiente en Minorista y Mayorista.
+- 1 oferta activa: tarjeta centrada.
+- 2 ofertas activas: dos tarjetas centradas y repartidas horizontalmente.
+- 3 ofertas activas: tres tarjetas repartidas en una misma fila en escritorio.
+- En celular, las ofertas se apilan en una sola columna.
+- Si no hay ofertas activas, la sección correspondiente se oculta por completo.
+
+
+ANDYCLOR MASTER 1.0 — RC5
+- Se restauró la separación visual entre ANDY y CLOR en el nombre grande de la portada.
+- La separación se mantiene en computadora y celular.
+- Se conservan sin cambios la configuración de precios y la grilla dinámica de ofertas de RC4.

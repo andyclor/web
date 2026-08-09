@@ -3546,14 +3546,6 @@ body:has(#calculadora) #calculadora{
   background:#fff;
   box-shadow:0 18px 44px rgba(4,43,80,.12);
 }
-.gold-offer-card.retail{
-  border:2px solid rgba(31,109,209,.26);
-  background:linear-gradient(145deg,#f7fbff,#ffffff);
-}
-.gold-offer-card.wholesale{
-  border:2px solid rgba(19,139,66,.28);
-  background:linear-gradient(145deg,#f5fff8,#ffffff);
-}
 .gold-offer-badge{
   display:inline-block;
   margin-bottom:18px;
@@ -3564,8 +3556,6 @@ body:has(#calculadora) #calculadora{
   font-weight:950;
   text-transform:uppercase;
 }
-.gold-offer-card.retail .gold-offer-badge{background:#1667c5}
-.gold-offer-card.wholesale .gold-offer-badge{background:#118e43}
 .gold-offer-card h3{
   color:#073b71;
   font-size:clamp(1.65rem,3vw,2.55rem);
@@ -4051,12 +4041,15 @@ body:has(#resultadoCalculadora.is-visible-after-calc){
    Oferta horizontal + Calculadora en dos columnas
    ========================================================= */
 
-/* OFERTA: siempre dos tarjetas en PC */
+/* OFERTA: distribución automática según ofertas activas en PC */
 .gold-offer-section{
   display:block!important;
   width:100%!important;
   padding:48px clamp(20px,4vw,64px)!important;
   background:linear-gradient(180deg,#f8fbff 0%,#ffffff 100%)!important;
+}
+.gold-offer-section[hidden]{
+  display:none!important;
 }
 .gold-offer-heading{
   display:block!important;
@@ -4066,7 +4059,6 @@ body:has(#resultadoCalculadora.is-visible-after-calc){
 }
 .gold-offer-grid{
   display:grid!important;
-  grid-template-columns:repeat(2,minmax(0,1fr))!important;
   align-items:stretch!important;
   gap:24px!important;
   width:min(1180px,100%)!important;
@@ -4082,14 +4074,6 @@ body:has(#resultadoCalculadora.is-visible-after-calc){
   border-radius:26px!important;
   background:#fff!important;
   box-shadow:0 18px 46px rgba(4,43,80,.14)!important;
-}
-.gold-offer-card.retail{
-  border:2px solid rgba(22,103,197,.28)!important;
-  background:linear-gradient(145deg,#f5f9ff,#ffffff)!important;
-}
-.gold-offer-card.wholesale{
-  border:2px solid rgba(17,142,67,.30)!important;
-  background:linear-gradient(145deg,#f5fff8,#ffffff)!important;
 }
 .gold-offer-card h3,
 .gold-offer-card .gold-offer-volume,
@@ -4219,6 +4203,7 @@ body:has(#resultadoCalculadora.is-visible-after-calc){
   }
   .gold-offer-grid{
     grid-template-columns:1fr!important;
+    justify-content:stretch!important;
     gap:18px!important;
   }
   .gold-offer-card{
@@ -4356,5 +4341,556 @@ body:has(#resultadoCalculadora.is-visible-after-calc){
     visibility:visible!important;
     opacity:1!important;
     pointer-events:auto!important;
+  }
+}
+
+/* ANDYCLOR MASTER 1.0 — M001: introducción breve bajo el hero */
+.master-intro{padding-top:24px;padding-bottom:24px;text-align:center}
+.master-intro p{max-width:900px;margin:0 auto;color:#29445f;font-size:clamp(1rem,2vw,1.12rem);font-weight:650}
+
+
+/* ANDYCLOR MASTER - HOME */
+.rc-specialty-intro{padding-top:26px;padding-bottom:4px;text-align:center}
+.rc-specialty-intro p{max-width:900px;margin:0 auto;color:#526273;font-size:1.05rem;font-weight:700}
+.rc-lines .alguicida{border-color:#1d8ed1}
+.product-technical{margin:.25rem 0 .8rem;color:#687786;font-size:.92rem;font-weight:700}
+
+
+/* MASTER: OFERTAS SEGMENTADAS */
+.gold-offer-grid.single{
+  grid-template-columns:minmax(0,760px)!important;
+  justify-content:center!important;
+}
+.gold-offer-grid.single .gold-offer-card{
+  width:100%!important;
+  min-height:0!important;
+}
+
+/* MASTER — criterio de cotización Mayorista */
+.rc-wholesale-criteria{
+  text-align:center;
+}
+.rc-wholesale-criteria>h2{
+  color:#073b71;
+  margin:8px 0 8px;
+}
+.rc-criteria-intro{
+  max-width:760px;
+  margin:0 auto 22px;
+  color:#4f6072;
+}
+.rc-criteria-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:18px;
+  text-align:left;
+}
+.rc-criteria-grid article{
+  padding:22px;
+  border:1px solid rgba(7,59,113,.11);
+  border-radius:20px;
+  background:#fff;
+  box-shadow:0 12px 30px rgba(4,43,80,.09);
+}
+.rc-criteria-grid h3{
+  color:#073b71;
+  margin-bottom:6px;
+}
+@media(max-width:760px){
+  .rc-criteria-grid{grid-template-columns:1fr}
+}
+
+/* MASTER 1.0 — guía de elección de cloro */
+.rc-chlorine-choice>h2,.rc-quick-answers>h2{text-align:center}
+.rc-choice-lead{max-width:900px;margin:0 auto 28px;text-align:center;color:#526273;font-size:1.04rem}
+.rc-choice-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;max-width:1120px;margin:28px auto}
+.choice-card{padding:24px;border-radius:22px;background:#fff;border:1px solid rgba(7,59,113,.10);border-top:7px solid #82909c;box-shadow:0 12px 30px rgba(4,43,80,.08)}
+.choice-card h3{margin:8px 0 5px;color:#073b71;font-size:1.35rem;line-height:1.25}
+.choice-card p{margin-bottom:10px}
+.choice-card a,.rc-answer-grid a{color:#0879c9;font-weight:900}
+.choice-card.rapido{border-top-color:#18b663!important}
+.choice-card.lento{border-top-color:#e13d3d!important}
+.choice-card.multi,.choice-card.pastillas{border-top-color:#7b3fe4!important}
+.choice-for{display:inline-block;padding:6px 10px;border-radius:999px;background:#eef5fb;color:#073b71;font-size:.86rem;font-weight:900}
+.rc-choice-help{display:flex;align-items:center;justify-content:space-between;gap:24px;max-width:1000px;margin:30px auto 0;padding:24px;border-radius:22px;background:linear-gradient(120deg,#062747,#0879c9);color:#fff}
+.rc-choice-help strong,.rc-choice-help span{display:block}
+.rc-choice-help strong{font-size:1.22rem}
+.rc-choice-help span{opacity:.94}
+.rc-answer-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;max-width:1050px;margin:28px auto}
+.rc-answer-grid article{padding:22px;border-radius:20px;background:#fff;border:1px solid rgba(7,59,113,.09);box-shadow:0 10px 24px rgba(4,43,80,.06)}
+.rc-answer-grid h3{margin-bottom:8px;color:#073b71;font-size:1.18rem}
+@media(max-width:760px){.rc-choice-grid,.rc-answer-grid{grid-template-columns:1fr}.rc-choice-help{display:block;text-align:center}.rc-choice-help .btn{margin-top:16px}}
+
+/* MASTER: Alguicida + Clarificador + pH */
+.treatment-choice{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:20px}
+.treatment-choice article,.treatment-card{background:#fff;border:1px solid rgba(11,71,118,.12);border-radius:18px;padding:20px;box-shadow:0 10px 26px rgba(20,71,106,.08)}
+.treatment-choice strong{display:block;color:#0b4776;font-size:1.08rem;margin-bottom:6px}
+.ph-priority{padding-top:20px;padding-bottom:34px}
+.ph-priority-box{background:linear-gradient(135deg,#f4fbff,#fff7eb);border:1px solid rgba(12,118,191,.16);border-radius:26px;padding:30px;box-shadow:0 16px 38px rgba(20,71,106,.10)}
+.ph-priority-box h2{margin-bottom:10px}.ph-priority-box p{max-width:920px;margin-bottom:10px}.ph-actions{display:flex;gap:12px;flex-wrap:wrap;margin:18px 0}.ph-actions span{background:#fff;border:1px solid #dce7ef;border-radius:999px;padding:9px 14px}
+.treatment-guide{text-align:center}.treatment-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:24px;text-align:left}.treatment-card h3{color:#0b4776;margin-bottom:10px}.treatment-card p{margin-bottom:8px}.treatment-actions{justify-content:center;margin-top:24px}
+@media(max-width:800px){.treatment-choice,.treatment-grid{grid-template-columns:1fr}.ph-priority-box{padding:24px 20px}}
+
+/* =========================================================
+   ANDYCLOR MASTER 1.0 — PASADA VISUAL DESKTOP 2026-08-08
+   Ajustes aprobados: menú, respiración del hero, ribetes y WhatsApp
+   ========================================================= */
+
+/* 1) Más aire entre las líneas principales del inicio */
+.rc-home h1{
+  margin-top:34px;
+  line-height:1.08;
+}
+.rc-home > p{
+  margin-top:24px;
+  font-size:clamp(1.05rem,1.45vw,1.28rem);
+  line-height:1.45;
+}
+.rc-home .rc-actions{
+  margin-top:22px;
+  gap:16px;
+}
+
+/* 2) Las tres puertas principales se distinguen por color */
+.rc-lines>a{
+  border-width:2px;
+  border-top-width:8px;
+  transition:transform .18s ease,box-shadow .18s ease;
+}
+.rc-lines>a:hover{
+  transform:translateY(-3px);
+}
+.rc-lines .cloro{
+  border-color:#12a45a!important;
+  box-shadow:0 16px 34px rgba(18,164,90,.12);
+}
+.rc-lines .alguicida{
+  border-color:#7b3fe4!important;
+  box-shadow:0 16px 34px rgba(123,63,228,.12);
+}
+.rc-lines .accesorios{
+  border-color:#f47721!important;
+  box-shadow:0 16px 34px rgba(244,119,33,.12);
+}
+
+/* 3) WhatsApp flotante más contenido y separado de los bordes en PC */
+@media(min-width:761px){
+  #whatsappFlotante.whatsapp{
+    right:28px;
+    bottom:28px;
+    padding:11px 18px;
+    font-size:.96rem;
+    line-height:1.15;
+    box-shadow:0 10px 24px rgba(0,0,0,.22);
+  }
+}
+
+/* 4) Menú superior: apenas más grande en desktop, sin tocar mobile */
+@media(min-width:981px){
+  .site-navbar .nav-links{
+    gap:clamp(10px,1vw,18px)!important;
+  }
+  .site-navbar .nav-links a{
+    font-size:clamp(.94rem,.9vw,1.05rem)!important;
+    padding:9px 5px!important;
+    font-weight:900!important;
+  }
+}
+
+/* En tablet/mobile preservamos una portada compacta */
+@media(max-width:760px){
+  .rc-home h1{
+    margin-top:22px;
+    line-height:1.08;
+  }
+  .rc-home > p{
+    margin-top:16px;
+    font-size:1rem;
+  }
+  .rc-home .rc-actions{
+    margin-top:18px;
+  }
+}
+
+/* =========================================================
+   ANDYCLOR MASTER 1.0 — PASADA VISUAL MOBILE 2026-08-09
+   Objetivo: más aire, mejor lectura y navegación compacta.
+   ========================================================= */
+@media(max-width:760px){
+  /* Cabecera compacta sin perder presencia de marca */
+  .site-navbar{
+    top:8px!important;
+    width:calc(100% - 16px)!important;
+    min-height:58px!important;
+    padding:6px 10px!important;
+    border-radius:20px!important;
+  }
+  .site-navbar .brand-logo{flex:0 0 auto!important;}
+  .site-navbar .logo{
+    width:154px!important;
+    max-height:48px!important;
+    border-radius:13px!important;
+    padding:2px 5px!important;
+  }
+  .site-navbar .menu-toggle{font-size:27px!important;line-height:1!important;}
+  .site-navbar .nav-links{top:66px!important;}
+
+  /* Hero: compactar altura, pero separar visualmente cada mensaje */
+  .rc-hero{min-height:590px!important;background-position:center center!important;}
+  .rc-home{
+    width:calc(100% - 30px)!important;
+    padding:112px 0 44px!important;
+  }
+  .rc-brand>div{
+    font-size:clamp(3.35rem,17vw,4.9rem)!important;
+    line-height:.84!important;
+  }
+  .rc-home h1{
+    max-width:340px!important;
+    margin:27px 0 0!important;
+    font-size:clamp(1.75rem,7.6vw,2.35rem)!important;
+    line-height:1.12!important;
+  }
+  .rc-home > p{
+    margin:20px 0 0!important;
+    font-size:1rem!important;
+    line-height:1.45!important;
+  }
+  .rc-home .rc-actions{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    gap:11px!important;
+    margin-top:22px!important;
+    max-width:330px!important;
+  }
+  .rc-home .rc-actions .btn{
+    width:100%!important;
+    padding:12px 18px!important;
+  }
+
+  /* Separar mejor los bloques del inicio */
+  .rc-specialty-intro{
+    padding:30px 18px 18px!important;
+  }
+  .rc-specialty-intro p{
+    font-size:.98rem!important;
+    line-height:1.6!important;
+  }
+  main>.section:not(.rc-specialty-intro){
+    padding-top:48px!important;
+    padding-bottom:48px!important;
+  }
+  .section>h2{
+    margin-top:10px!important;
+    margin-bottom:20px!important;
+    font-size:clamp(1.85rem,8vw,2.45rem)!important;
+    line-height:1.12!important;
+  }
+
+  /* Puertas principales: ribetes visibles y más separación */
+  .rc-lines{
+    gap:18px!important;
+    margin-top:24px!important;
+  }
+  .rc-lines>a{
+    border-top-width:8px!important;
+    border-radius:20px!important;
+  }
+  .rc-lines>a>div{padding:18px!important;}
+  .rc-lines h3{font-size:1.25rem!important;line-height:1.18!important;}
+  .rc-lines p{line-height:1.5!important;}
+
+  /* Bloques comerciales: mejor respiración y botones cómodos */
+  .rc-assistant,.rc-wholesale-cta{
+    margin:22px 10px!important;
+    padding:26px 20px!important;
+    border-radius:22px!important;
+  }
+  .rc-assistant h2,.rc-wholesale-cta h2{
+    font-size:1.75rem!important;
+    line-height:1.15!important;
+  }
+  .rc-assistant .btn,.rc-wholesale-cta .btn{
+    width:100%!important;
+    margin-top:18px!important;
+  }
+
+  /* Productos destacados */
+  .rc-popular{gap:18px!important;}
+  .rc-popular article{border-radius:20px!important;}
+  .rc-popular article>div{padding:18px!important;}
+  .rc-popular h3{font-size:1.22rem!important;line-height:1.2!important;}
+
+  /* Barra inferior: un poco menos alta y más limpia */
+  .mobile-bottom-nav{
+    left:8px!important;
+    right:8px!important;
+    bottom:8px!important;
+    gap:6px!important;
+    padding:6px!important;
+    border-radius:21px!important;
+  }
+  .mobile-bottom-nav .mobile-nav-item{
+    min-height:54px!important;
+    padding:6px 3px!important;
+    border-radius:16px!important;
+  }
+  .mobile-bottom-nav .mobile-nav-icon{font-size:1.08rem!important;margin-bottom:3px!important;}
+  .mobile-bottom-nav .mobile-nav-label{font-size:.70rem!important;}
+  body{padding-bottom:84px!important;}
+}
+
+@media(max-width:380px){
+  .site-navbar .logo{width:142px!important;}
+  .rc-home{width:calc(100% - 24px)!important;}
+  .rc-brand>div{font-size:3.3rem!important;}
+  .rc-home h1{font-size:1.72rem!important;}
+}
+
+/* ==========================================================
+   MASTER — OFERTAS DINÁMICAS POR PRODUCTO
+   El color identifica el producto; el segmento lo indica el badge.
+   ========================================================== */
+.gold-offer-grid{
+  align-items:stretch;
+}
+.gold-offer-grid.count-1{
+  grid-template-columns:minmax(0,560px)!important;
+  justify-content:center!important;
+}
+.gold-offer-grid.count-2{
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  justify-content:center!important;
+  max-width:960px!important;
+}
+.gold-offer-grid.count-3{
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  justify-content:center!important;
+  max-width:1180px!important;
+}
+.gold-offer-card{
+  --offer-accent:#1769aa;
+  --offer-soft:#f4f9fd;
+  display:flex;
+  flex-direction:column;
+  height:100%;
+  border:2px solid color-mix(in srgb,var(--offer-accent) 26%,transparent);
+  border-top:7px solid var(--offer-accent);
+  background:linear-gradient(145deg,var(--offer-soft),#fff 72%);
+}
+.gold-offer-card.offer-product-rapido{
+  --offer-accent:#159957;
+  --offer-soft:#f1fbf5;
+}
+.gold-offer-card.offer-product-lento{
+  --offer-accent:#d84040;
+  --offer-soft:#fff3f3;
+}
+.gold-offer-card.offer-product-pastillas,
+.gold-offer-card.offer-product-multiaccion{
+  --offer-accent:#7950bd;
+  --offer-soft:#f7f3fc;
+}
+.gold-offer-card .gold-offer-badge{
+  align-self:flex-start;
+  background:var(--offer-accent)!important;
+}
+.gold-offer-card .gold-offer-price-wrap{
+  border:1px solid color-mix(in srgb,var(--offer-accent) 20%,#dce6ee);
+  background:rgba(255,255,255,.90);
+}
+.gold-offer-card .gold-offer-price-wrap small,
+.gold-offer-card .gold-offer-price-wrap strong{
+  color:var(--offer-accent);
+}
+.gold-offer-technical{
+  margin:4px 0 0;
+  color:var(--offer-accent);
+  font-size:.93rem;
+  font-weight:900;
+}
+.gold-offer-card .gold-offer-action{
+  width:100%;
+  justify-content:center;
+  min-height:52px;
+  margin-top:auto;
+  background:var(--offer-accent)!important;
+  border-color:var(--offer-accent)!important;
+}
+.gold-offer-grid.count-3 .gold-offer-card{
+  padding:24px 22px;
+}
+.gold-offer-grid.count-3 .gold-offer-card h3{
+  font-size:clamp(1.4rem,1.8vw,1.9rem);
+}
+.gold-offer-grid.count-3 .gold-offer-volume{
+  font-size:1.05rem;
+}
+.gold-offer-grid.count-3 .gold-offer-price-wrap strong{
+  font-size:clamp(2rem,3vw,3rem);
+}
+
+@media(max-width:900px){
+  .gold-offer-grid.count-3{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  }
+}
+@media(max-width:760px){
+  .gold-offer-grid.count-1,
+  .gold-offer-grid.count-2,
+  .gold-offer-grid.count-3{
+    grid-template-columns:1fr!important;
+    justify-content:stretch!important;
+    max-width:100%!important;
+  }
+}
+
+/* MASTER — Accesorios organizados por necesidad */
+.rc-accessory-intro{align-items:center}
+.rc-access-by-need{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.rc-access-by-need .access-need-card{position:relative;overflow:hidden;padding:24px 24px 22px;border:1px solid rgba(7,59,113,.10);box-shadow:0 14px 34px rgba(4,43,80,.08)}
+.rc-access-by-need .access-need-card::before{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:#1d77a8}
+.rc-access-by-need .access-cleaning::before{background:#ef8f3a}
+.rc-access-by-need .access-dosing::before{background:#247ba0}
+.rc-access-by-need .access-control::before{background:#5f8fb2}
+.rc-access-by-need .access-spares::before{background:#8a9aac}
+.access-kicker{display:inline-block;margin-bottom:6px;font-size:.78rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:#527087}
+.rc-access-by-need h3{margin-bottom:12px;line-height:1.25}
+.rc-access-by-need ul{padding-left:20px;color:#24445f}
+.rc-access-by-need li{margin:7px 0}
+.access-note{margin-top:14px;padding:12px 14px;border-radius:14px;background:#f4f9fc;color:#36556d;font-size:.95rem}
+.rc-orange{background:#ef8f3a!important;color:#fff!important}
+@media(max-width:760px){.rc-access-by-need{grid-template-columns:1fr}.rc-access-by-need .access-need-card{padding:20px}}
+
+
+/* MASTER — Contacto orientado a conversión */
+.rc-contact-segments .contact-card{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+.rc-contact-segments .contact-card h2{margin:0}
+.rc-contact-segments .contact-card p{margin:0;color:#41556b}
+.rc-contact-segments .contact-card .btn{margin-top:auto}
+.rc-contact-segments .contact-retail{border-top-color:#f29a4a!important;background:linear-gradient(180deg,#fff7ef 0%,#fff 72%)}
+.rc-contact-segments .contact-wholesale{border-top-color:#8c6bd8!important;background:linear-gradient(180deg,#f7f3ff 0%,#fff 72%)}
+.rc-contact-segments .contact-delivery{border-top-color:#2a98d2!important;background:linear-gradient(180deg,#f2faff 0%,#fff 72%)}
+.rc-purple{background:#7250c9!important;color:#fff!important}
+.contact-secondary-link{font-weight:900;color:#6a4ab8;text-decoration:underline;text-underline-offset:3px}
+.contact-zone-list{font-size:.94rem}
+@media(max-width:760px){.rc-contact-segments .contact-card{align-items:stretch}.rc-contact-segments .contact-card .btn{text-align:center}.contact-secondary-link{text-align:center}}
+
+/* BIBLIOTECA TÉCNICA MASTER */
+.gold-academy-card.orange{border-top-color:#e98a32}
+.gold-academy-card.teal{border-top-color:#2a9fa6}
+.gold-academy-card.navy{border-top-color:#17699f}
+.academy-priority-grid .gold-academy-card{
+  min-height:100%;
+}
+.academy-priority-grid .gold-academy-card:not(:has(img)){
+  display:flex;
+  align-items:center;
+  background:linear-gradient(145deg,#fffaf5,#ffffff);
+}
+.academy-priority-grid .gold-academy-card p{
+  margin:10px 0 14px;
+  color:#355069;
+}
+.academy-dose-block{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:28px;
+  padding:34px 38px;
+  border-radius:28px;
+  background:linear-gradient(120deg,#eef8ff,#fff8ef);
+  border:1px solid rgba(7,59,113,.10);
+  box-shadow:0 14px 34px rgba(4,43,80,.08);
+}
+.academy-dose-copy{max-width:760px}
+.academy-dose-block h2{margin-bottom:8px}
+.academy-dose-block p{color:#355069}
+@media(max-width:760px){
+  .academy-dose-block{
+    display:block;
+    width:min(100% - 18px,1180px);
+    padding:26px 20px;
+    text-align:center;
+  }
+  .academy-dose-block .btn{width:100%;margin-top:18px}
+}
+
+
+/* MASTER — SEO Local Adrogué */
+.rc-local-home{
+  display:flex;align-items:center;justify-content:space-between;gap:28px;
+  background:linear-gradient(120deg,#f2f9ff,#fffaf4);
+  border:1px solid rgba(7,59,113,.10);border-radius:26px;
+  box-shadow:0 14px 34px rgba(4,43,80,.07)
+}
+.rc-local-home>div{max-width:760px}
+.rc-local-home h2{margin-bottom:8px}
+.rc-local-home p{margin:0;color:#355069}
+.local-hero-actions{margin-top:22px}
+.local-intro-block{max-width:980px;text-align:center}
+.local-intro-block p{max-width:850px;margin:0 auto;color:#355069;font-size:1.04rem;line-height:1.72}
+.local-solution-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:24px}
+.local-solution-card{position:relative;overflow:hidden;padding:24px;border:1px solid rgba(7,59,113,.11);border-radius:22px;background:#fff;box-shadow:0 12px 28px rgba(4,43,80,.07)}
+.local-solution-card::before{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:#247ba0}
+.local-solution-card.local-fast::before{background:#3f9b69}
+.local-solution-card.local-tabs::before{background:#7d5ac7}
+.local-solution-card.local-water::before{background:#2a98d2}
+.local-solution-card.local-access::before{background:#e49547}
+.local-solution-card h3{margin:4px 0 9px}
+.local-solution-card p{color:#41566a;line-height:1.6}
+.local-solution-card a{font-weight:900;text-decoration:underline;text-underline-offset:3px}
+.local-buy-block{display:flex;align-items:center;justify-content:space-between;gap:30px;border-radius:26px}
+.local-buy-block>div{max-width:800px}
+.local-steps{padding-left:22px;color:#355069}
+.local-steps li{margin:9px 0;line-height:1.55}
+.local-area-block{background:#f7fbfe;border-radius:26px;border:1px solid rgba(7,59,113,.08)}
+.local-area-block p{color:#355069;line-height:1.7}
+.local-area-block>a{font-weight:900;text-decoration:underline;text-underline-offset:3px}
+.local-wholesale{margin-top:0}
+@media(max-width:760px){
+  .rc-local-home,.local-buy-block{display:block;text-align:center}
+  .rc-local-home .btn,.local-buy-block .btn{width:100%;margin-top:18px}
+  .local-solution-grid{grid-template-columns:1fr}
+  .local-intro-block{width:min(100% - 18px,1180px)}
+  .local-area-block{width:min(100% - 18px,1180px)}
+}
+
+/* MASTER FIX — la oferta toma el color del producto, no del segmento */
+.gold-offer-card.offer-product-rapido{
+  background:linear-gradient(145deg,#edf9f2 0%,#f7fcf9 60%,#ffffff 100%)!important;
+  border-color:rgba(21,153,87,.30)!important;
+  box-shadow:0 18px 46px rgba(21,153,87,.10)!important;
+}
+.gold-offer-card.offer-product-lento{
+  background:linear-gradient(145deg,#fff0f0 0%,#fff8f8 60%,#ffffff 100%)!important;
+  border-color:rgba(216,64,64,.28)!important;
+  box-shadow:0 18px 46px rgba(216,64,64,.09)!important;
+}
+.gold-offer-card.offer-product-pastillas,
+.gold-offer-card.offer-product-multiaccion{
+  background:linear-gradient(145deg,#f3ecfb 0%,#faf7fd 60%,#ffffff 100%)!important;
+  border-color:rgba(121,80,189,.28)!important;
+  box-shadow:0 18px 46px rgba(121,80,189,.10)!important;
+}
+.gold-offer-card.offer-product-rapido .gold-offer-price-wrap,
+.gold-offer-card.offer-product-lento .gold-offer-price-wrap,
+.gold-offer-card.offer-product-pastillas .gold-offer-price-wrap,
+.gold-offer-card.offer-product-multiaccion .gold-offer-price-wrap{
+  background:rgba(255,255,255,.88)!important;
+  box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--offer-accent) 14%,transparent)!important;
+}
+
+/* ==========================================================
+   RC5 — Separación visual del nombre principal en el inicio
+   Mantiene ANDY y CLOR como dos bloques legibles en cualquier pantalla.
+   ========================================================== */
+.rc-home .rc-brand>div{
+  column-gap:clamp(16px,1.15vw,28px)!important;
+}
+
+@media(max-width:760px){
+  .rc-home .rc-brand>div{
+    column-gap:12px!important;
   }
 }
