@@ -1,0 +1,27 @@
+name: Avisar cambios a IndexNow
+
+on:
+  push:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: indexnow-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  enviar-url:
+    name: Enviar URL del sitio
+    if: github.event_name == 'workflow_dispatch' || github.ref_name == github.event.repository.default_branch
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar la versión publicada
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+
+      - name: Notificar las páginas a IndexNow
+        run: python3 scripts/submit_indexnow.py
