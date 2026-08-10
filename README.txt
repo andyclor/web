@@ -150,3 +150,18 @@ ANDYCLOR MASTER 1.0 — RC12
 - En computadora, los botones de WhatsApp abren directamente la conversación en WhatsApp Web y evitan la página institucional intermedia.
 - En celulares y tabletas, los enlaces conservan la apertura mediante WhatsApp para derivar a la aplicación instalada.
 - Se mantienen el mensaje precargado, la identificación del origen de la visita y la medición de clics.
+
+
+ANDYCLOR MASTER 1.0 — RC13
+- Se incorporó la guía “Cómo mantener el agua cristalina de una pileta” con una rutina preventiva, señales frecuentes y respuestas concretas.
+- La portada incluye accesos visibles a elección de cloro, recuperación de agua verde, mantenimiento del agua cristalina y calculadora.
+- Academia enlaza la nueva guía y suma una respuesta preventiva para agua verde o turbia.
+- El sitemap incluye 16 páginas indexables.
+- Academia incorpora datos estructurados CollectionPage con enlaces a sus contenidos principales.
+- La identificación del origen de consultas suma Claude, Gemini, Meta AI, You.com y Brave Search.
+- Se mantienen sin cambios los precios, condiciones comerciales, ofertas, calculadora, diseño general y apertura directa de WhatsApp.
+
+Después de publicar RC13:
+- Solicitar indexación de la portada, Academia y la nueva guía en Google Search Console.
+- Enviar https://andyclor.com.ar/sitemap.xml en Bing Webmaster Tools.
+- Activar Google Analytics 4 sólo cuando se disponga del ID G-XXXXXXXXXX en config/config.js.

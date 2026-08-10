@@ -21,10 +21,45 @@
   </script>
   <script defer="" src="js/main.js">
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ContactPage",
+        "@id": "https://andyclor.com.ar/contacto.html#webpage",
+        "url": "https://andyclor.com.ar/contacto.html",
+        "name": "Contacto y Cotizaciones | ANDYCLOR",
+        "description": "Contacto para precios, stock, cotizaciones y modalidades de entrega de productos para piletas y limpieza.",
+        "inLanguage": "es-AR",
+        "isPartOf": {"@id": "https://andyclor.com.ar/#website"},
+        "about": {"@id": "https://andyclor.com.ar/#organization"}
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://andyclor.com.ar/#organization",
+        "name": "ANDYCLOR",
+        "url": "https://andyclor.com.ar/",
+        "telephone": "+54 9 11 6830-6266",
+        "areaServed": [
+          {"@type": "AdministrativeArea", "name": "Gran Buenos Aires"},
+          {"@type": "AdministrativeArea", "name": "Provincia de Buenos Aires"},
+          {"@type": "Country", "name": "Argentina"}
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+54 9 11 6830-6266",
+          "contactType": "Ventas y cotizaciones",
+          "availableLanguage": "es"
+        }
+      }
+    ]
+  }
+  </script>
  </head>
  <body class="rc-site">
   <header class="rc-subheader">
-   <nav class="navbar site-navbar" id="navbar">
+   <nav aria-label="Navegación principal" class="navbar site-navbar" id="navbar">
     <a aria-label="Inicio ANDYCLOR" class="brand-logo" href="index.html">
      <img alt="ANDYCLOR" class="logo" height="361" src="Imagenes/logo-andyclor-sin-eslogan.webp" width="900"/>
     </a>
@@ -98,7 +133,7 @@
     </div>
    </section>
   </main>
-  <nav class="mobile-bottom-nav">
+  <nav aria-label="Navegación móvil" class="mobile-bottom-nav">
    <a class="mobile-nav-item" href="index.html">
     <span class="mobile-nav-icon">
      ⌂

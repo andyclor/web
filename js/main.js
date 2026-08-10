@@ -13,6 +13,11 @@ function detectTrafficSource() {
   if (!source && referrer.includes('chatgpt.com')) source = 'ChatGPT';
   else if (!source && referrer.includes('perplexity.ai')) source = 'Perplexity';
   else if (!source && (referrer.includes('copilot.microsoft.com') || referrer.includes('bing.com'))) source = 'Bing/Copilot';
+  else if (!source && referrer.includes('claude.ai')) source = 'Claude';
+  else if (!source && referrer.includes('gemini.google.com')) source = 'Gemini';
+  else if (!source && referrer.includes('meta.ai')) source = 'Meta AI';
+  else if (!source && referrer.includes('you.com')) source = 'You.com';
+  else if (!source && referrer.includes('search.brave.com')) source = 'Brave Search';
   else if (!source && referrer.includes('google.')) source = 'Google';
   else if (!source && referrer.includes('instagram.com')) source = 'Instagram';
   else if (!source && referrer.includes('facebook.com')) source = 'Facebook';
@@ -127,6 +132,7 @@ function setupSeoBreadcrumbs() {
     'mayoristas.html': { label: 'Venta Mayorista' },
     'academia.html': { label: 'Academia ANDYCLOR' },
     'como-recuperar-agua-verde-pileta.html': { label: 'Cómo Recuperar el Agua Verde', parent: ['Academia ANDYCLOR', 'academia.html'] },
+    'como-mantener-agua-cristalina-pileta.html': { label: 'Cómo Mantener el Agua Cristalina', parent: ['Academia ANDYCLOR', 'academia.html'] },
     'contacto.html': { label: 'Contacto' },
     'cloro-para-piletas-adrogue.html': { label: 'Cloro para Piletas en Adrogué', parent: ['Cloro para Piletas', 'cloro-piletas.html'] }
   };

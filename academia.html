@@ -21,10 +21,29 @@
   </script>
   <script defer="" src="js/main.js">
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": "https://andyclor.com.ar/academia.html#webpage",
+    "url": "https://andyclor.com.ar/academia.html",
+    "name": "Guías para el Cuidado de Piletas | Academia ANDYCLOR",
+    "description": "Guías prácticas para elegir productos, calcular dosis y resolver problemas frecuentes del agua de una pileta.",
+    "inLanguage": "es-AR",
+    "isPartOf": {"@id": "https://andyclor.com.ar/#website"},
+    "publisher": {"@id": "https://andyclor.com.ar/#organization"},
+    "hasPart": [
+      {"@type": "WebPage", "name": "Qué cloro usar en tu pileta", "url": "https://andyclor.com.ar/cloro-piletas.html"},
+      {"@type": "Article", "name": "Cómo recuperar el agua verde de una pileta", "url": "https://andyclor.com.ar/como-recuperar-agua-verde-pileta.html"},
+      {"@type": "Article", "name": "Cómo mantener el agua cristalina de una pileta", "url": "https://andyclor.com.ar/como-mantener-agua-cristalina-pileta.html"},
+      {"@type": "WebApplication", "name": "Calculadora de cloro para piletas", "url": "https://andyclor.com.ar/calculadora.html"}
+    ]
+  }
+  </script>
  </head>
  <body class="rc-site">
   <header class="rc-subheader">
-   <nav class="navbar site-navbar" id="navbar">
+   <nav aria-label="Navegación principal" class="navbar site-navbar" id="navbar">
     <a aria-label="Inicio ANDYCLOR" class="brand-logo" href="index.html">
      <img alt="ANDYCLOR" class="logo" height="361" src="Imagenes/logo-andyclor-sin-eslogan.webp" width="900"/>
     </a>
@@ -149,6 +168,23 @@
        </a>
       </div>
      </article>
+     <article class="gold-academy-card blue">
+      <img alt="Agua cristalina y mantenimiento de pileta" src="Imagenes/test-kit-ph.webp"/>
+      <div>
+       <span>
+        Prevención y rutina
+       </span>
+       <h3>
+        Cómo mantener el agua cristalina
+       </h3>
+       <p>
+        Una rutina ordenada de pH, cloro, filtrado, cepillado y limpieza para evitar problemas.
+       </p>
+       <a href="como-mantener-agua-cristalina-pileta.html">
+        Ver guía de mantenimiento
+       </a>
+      </div>
+     </article>
     </div>
    </section>
    <section class="section alt gold-academy-faq">
@@ -188,6 +224,14 @@
        Tricloro granulado lento cuando se utiliza granulado.
       </p>
      </details>
+     <details>
+      <summary>
+       ¿Cómo evito que el agua vuelva a ponerse verde o turbia?
+      </summary>
+      <p>
+       Mantené una rutina de medición de pH, desinfección, filtrado, cepillado y limpieza. Después de lluvia o uso intenso, volvé a controlar el agua antes de agregar productos.
+      </p>
+     </details>
     </div>
    </section>
    <section class="section gold-academy-cta">
@@ -207,7 +251,7 @@
     </a>
    </section>
   </main>
-  <nav class="mobile-bottom-nav">
+  <nav aria-label="Navegación móvil" class="mobile-bottom-nav">
    <a class="mobile-nav-item" href="index.html">
     <span class="mobile-nav-icon">
      ⌂
