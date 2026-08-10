@@ -192,3 +192,34 @@ Después de publicar RC15:
 - Abrir andyclor.com.ar con Ctrl + F5.
 - Hacer clic una sola vez en un botón de WhatsApp.
 - Esperar entre 1 y 3 minutos y revisar “Número de eventos por Nombre del evento” en el informe En tiempo real.
+
+
+ANDYCLOR MASTER 1.0 — RC16
+- Se incorporó en la raíz el archivo de verificación de IndexNow que antes se había subido individualmente: 9e25630c36644c258549d8f7415001ab.txt.
+- Se agregó una automatización de GitHub que se ejecuta al publicar cambios en la rama principal.
+- La automatización toma directamente de sitemap.xml las 16 páginas públicas y las envía juntas al servicio oficial de IndexNow.
+- También puede ejecutarse manualmente desde la sección Actions de GitHub si alguna vez fuera necesario.
+- La validación comprueba que la clave, el dominio y todas las URL pertenezcan a andyclor.com.ar antes de hacer el envío.
+- No requiere contraseñas, secretos ni configuraciones adicionales.
+- No se modificaron diseño, textos comerciales, precios, ofertas, SEO visible, calculadora, Analytics ni WhatsApp.
+
+PUBLICACIÓN DE RC16
+- Descomprimir y subir todo el contenido a la raíz del repositorio GitHub “web”, reemplazando los archivos anteriores.
+- Incluir especialmente la carpeta .github, la carpeta scripts y el archivo 9e25630c36644c258549d8f7415001ab.txt.
+- No generar otra clave en Bing ni borrar el archivo de verificación.
+- Después de confirmar los cambios, GitHub ejecutará “Avisar cambios a IndexNow” automáticamente.
+
+
+ANDYCLOR MASTER 1.0 — RC17
+- Se incorporó una página regional útil: “Distribuidor de Cloro para Piletas en Zona Sur”.
+- La portada y Mayoristas refuerzan Distribuidor, Zona Sur, Buenos Aires e Interior del País sin repetir palabras de forma artificial.
+- La ficha de Granulado Rápido incorpora la equivalencia comercial: Cloro Instantáneo = Dicloro de disolución rápida.
+- La ficha de Granulado Lento incorpora la equivalencia comercial: Cloro Técnico = Tricloro de disolución lenta.
+- La ficha de Pastillas incorpora las búsquedas Multiacción, Multifunción y Triple Acción, manteniendo Multiacción como nombre principal.
+- Se agregaron enlaces internos entre portada, productos, Mayoristas, contacto, Adrogué y la nueva página regional.
+- El sitemap pasa de 16 a 17 páginas y conserva la automatización de IndexNow.
+- No se modificaron precios, ofertas, calculadora, Analytics, WhatsApp, configuración ni diseño general.
+
+DESPUÉS DE PUBLICAR RC17
+- Solicitar indexación en Google Search Console de la portada, Mayoristas y distribuidor-cloro-piletas-zona-sur.html.
+- No es necesario volver a cargar el sitemap en Bing: IndexNow enviará automáticamente las 17 páginas.

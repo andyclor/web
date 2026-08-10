@@ -4841,6 +4841,7 @@ body:has(#resultadoCalculadora.is-visible-after-calc){
 .local-solution-card{position:relative;overflow:hidden;padding:24px;border:1px solid rgba(7,59,113,.11);border-radius:22px;background:#fff;box-shadow:0 12px 28px rgba(4,43,80,.07)}
 .local-solution-card::before{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:#247ba0}
 .local-solution-card.local-fast::before{background:#3f9b69}
+.local-solution-card.local-slow::before{background:#d84040}
 .local-solution-card.local-tabs::before{background:#7d5ac7}
 .local-solution-card.local-water::before{background:#2a98d2}
 .local-solution-card.local-access::before{background:#e49547}
