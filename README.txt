@@ -178,3 +178,17 @@ Después de publicar RC14:
 - Abrir andyclor.com.ar en una pestaña nueva.
 - Volver a Google Analytics y usar “Probar instalación”.
 - Verificar la primera visita en Informes > En tiempo real; la recepción inicial puede tardar unos minutos.
+
+
+ANDYCLOR MASTER 1.0 — RC15
+- Se reforzó el evento whatsapp_click después de comprobar que Analytics recibía las visitas pero no los contactos.
+- El detector de clics se activa de forma independiente al resto de las funciones de la página.
+- El evento se captura antes de abrir WhatsApp y se envía mediante beacon al flujo G-H3QG2BNK9Y.
+- La medición funciona con wa.me en celulares y web.whatsapp.com en computadoras.
+- Se mantiene la apertura directa de WhatsApp Web, sin volver a la pantalla institucional intermedia.
+- No se modificaron diseño, precios, ofertas, SEO, calculadora ni mensajes comerciales.
+
+Después de publicar RC15:
+- Abrir andyclor.com.ar con Ctrl + F5.
+- Hacer clic una sola vez en un botón de WhatsApp.
+- Esperar entre 1 y 3 minutos y revisar “Número de eventos por Nombre del evento” en el informe En tiempo real.

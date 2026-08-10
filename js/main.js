@@ -56,18 +56,27 @@ function directWhatsAppLink(message = '') {
 
 const whatsappLink = (message = '') => directWhatsAppLink(attributedMessage(message));
 
+let analyticsInitialized = false;
+
 function trackSiteEvent(eventName, parameters = {}) {
+  if (typeof window.gtag !== 'function') setupOptionalAnalytics();
   if (typeof window.gtag !== 'function') return;
+
+  const measurementId = String(CONFIG.analytics?.ga4Id || '').trim();
   window.gtag('event', eventName, {
     page_path: window.location.pathname,
     traffic_source: detectTrafficSource(),
+    transport_type: 'beacon',
+    ...(/^G-[A-Z0-9]+$/i.test(measurementId) ? { send_to: measurementId } : {}),
     ...parameters
   });
 }
 
 function setupOptionalAnalytics() {
+  if (analyticsInitialized) return;
   const measurementId = String(CONFIG.analytics?.ga4Id || '').trim();
   if (!/^G-[A-Z0-9]+$/i.test(measurementId)) return;
+  analyticsInitialized = true;
 
   window.dataLayer = window.dataLayer || [];
   window.gtag = function gtag() { window.dataLayer.push(arguments); };
@@ -102,17 +111,47 @@ function decorateWhatsAppLink(link) {
   }
 }
 
-function setupWhatsappTracking() {
-  document.querySelectorAll('a[href*="wa.me/"]').forEach(decorateWhatsAppLink);
-  document.addEventListener('click', event => {
-    const link = event.target.closest('a[data-whatsapp-link="true"], a[href*="wa.me/"], a[href*="web.whatsapp.com/send"]');
-    if (!link) return;
-    decorateWhatsAppLink(link);
-    trackSiteEvent('whatsapp_click', {
-      link_label: (link.textContent || 'WhatsApp').trim().slice(0, 80)
-    });
+const WHATSAPP_LINK_SELECTOR = [
+  'a[data-whatsapp-link="true"]',
+  'a[href*="wa.me/"]',
+  'a[href*="web.whatsapp.com/send"]'
+].join(', ');
+
+let whatsappTrackingInitialized = false;
+
+function findWhatsAppLink(target) {
+  if (!(target instanceof Element)) return null;
+  return target.closest(WHATSAPP_LINK_SELECTOR);
+}
+
+function handleWhatsAppClick(event) {
+  const link = findWhatsAppLink(event.target);
+  if (!link) return;
+
+  decorateWhatsAppLink(link);
+  trackSiteEvent('whatsapp_click', {
+    event_category: 'Contacto',
+    contact_method: 'WhatsApp',
+    link_label: (link.textContent || 'WhatsApp').trim().slice(0, 80),
+    link_url: link.href
   });
 }
+
+function activateWhatsappTracking() {
+  if (whatsappTrackingInitialized) return;
+  whatsappTrackingInitialized = true;
+  document.addEventListener('click', handleWhatsAppClick, { capture: true });
+}
+
+function setupWhatsappTracking() {
+  document.querySelectorAll(WHATSAPP_LINK_SELECTOR).forEach(decorateWhatsAppLink);
+  activateWhatsappTracking();
+}
+
+// Se activa al evaluar el archivo, sin depender de otras funciones de inicio.
+// El modo captura registra el contacto antes de que WhatsApp abra otra pestaña.
+setupOptionalAnalytics();
+activateWhatsappTracking();
 
 function setupSeoBreadcrumbs() {
   const main = document.querySelector('main');
