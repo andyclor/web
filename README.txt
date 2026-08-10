@@ -165,3 +165,16 @@ Después de publicar RC13:
 - Solicitar indexación de la portada, Academia y la nueva guía en Google Search Console.
 - Enviar https://andyclor.com.ar/sitemap.xml en Bing Webmaster Tools.
 - Activar Google Analytics 4 sólo cuando se disponga del ID G-XXXXXXXXXX en config/config.js.
+
+
+ANDYCLOR MASTER 1.0 — RC14
+- Se activó Google Analytics 4 con el ID de medición G-H3QG2BNK9Y.
+- La medición se carga automáticamente en todas las páginas públicas del sitio.
+- Se conserva el evento whatsapp_click para medir los accesos a WhatsApp, con la página, el texto del enlace y el origen de la visita.
+- Se mantiene la identificación de visitas desde buscadores, redes sociales y asistentes de IA.
+- No se modificaron precios, ofertas, diseño, SEO, calculadora ni el funcionamiento de WhatsApp.
+
+Después de publicar RC14:
+- Abrir andyclor.com.ar en una pestaña nueva.
+- Volver a Google Analytics y usar “Probar instalación”.
+- Verificar la primera visita en Informes > En tiempo real; la recepción inicial puede tardar unos minutos.

@@ -78,9 +78,8 @@ window.ANDYCLOR_CONFIG = {
     mercadolibre: ""
   },
 
-  /* Opcional: Escribí aquí un ID de Google Analytics 4 con formato G-XXXXXXXXXX.
-     Si queda vacío, la página no carga Google Analytics. */
+  /* Google Analytics 4 activo para andyclor.com.ar. */
   analytics: {
-    ga4Id: ""
+    ga4Id: "G-H3QG2BNK9Y"
   }
 };
