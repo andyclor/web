@@ -5126,3 +5126,53 @@ body:has(#resultadoCalculadora.is-visible-after-calc){
   .calc-dose-table-wrap{margin-left:0;margin-right:0}
   .calc-seo-guide{width:min(100% - 18px,1080px)}
 }
+
+/* Data Fiscal: imagen oficial clickeable integrada al pie de página */
+.footer-final{
+  display:flex!important;
+  flex-wrap:wrap!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:12px 20px!important;
+}
+.footer-final .footer-logo{
+  width:min(270px,58vw)!important;
+  margin:0!important;
+  order:1;
+}
+.footer-final .data-fiscal-link{
+  display:block;
+  flex:0 0 auto;
+  order:2;
+  border-radius:5px;
+  line-height:0;
+  transition:transform .18s ease,box-shadow .18s ease;
+}
+.footer-final .data-fiscal-img{
+  display:block;
+  width:110px;
+  height:auto;
+  border:0;
+  border-radius:3px;
+}
+.footer-final .data-fiscal-link:hover,
+.footer-final .data-fiscal-link:focus-visible{
+  transform:translateY(-2px);
+  box-shadow:0 9px 22px rgba(0,0,0,.25);
+  outline:3px solid rgba(255,255,255,.72);
+  outline-offset:3px;
+}
+.footer-final>p{
+  flex:1 0 100%;
+  order:3;
+}
+@media(max-width:420px){
+  .footer-final{
+    gap:11px 12px!important;
+    padding-right:12px!important;
+    padding-left:12px!important;
+  }
+  .footer-final .data-fiscal-img{
+    width:88px;
+  }
+}
