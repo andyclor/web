@@ -5112,6 +5112,16 @@ body:has(#resultadoCalculadora.is-visible-after-calc){
 .calc-seo-related{text-align:center;margin-top:24px}
 .calc-seo-related a{color:#075f9c;font-weight:900;text-decoration:underline;text-underline-offset:4px}
 
+/* SEO comercial: Cloro Mayorista y Pastillas Multiacción */
+.rc-wholesale-products .rc-choice-grid{margin-bottom:0}
+.rc-tablet-commerce>h2,.rc-tablet-sizes>h2{text-align:center}
+.rc-tablet-buy-actions{
+  display:flex;
+  justify-content:center;
+  gap:14px;
+  margin-top:26px;
+}
+
 @media(max-width:760px){
   .seo-breadcrumb{width:calc(100% - 24px);padding-top:18px;font-size:.82rem}
   .water-guide{width:min(100% - 18px,1040px)}
@@ -5125,6 +5135,8 @@ body:has(#resultadoCalculadora.is-visible-after-calc){
   .water-guide-actions .btn{width:100%}
   .calc-dose-table-wrap{margin-left:0;margin-right:0}
   .calc-seo-guide{width:min(100% - 18px,1080px)}
+  .rc-tablet-buy-actions{display:grid}
+  .rc-tablet-buy-actions .btn{width:100%}
 }
 
 /* Data Fiscal: imagen oficial clickeable integrada al pie de página */
