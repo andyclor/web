@@ -506,6 +506,9 @@ function calculatePool() {
 
   if (['granulado', 'ambos', 'granulado_multiaccion'].includes(maintenance)) {
     const offer = suggestedGranulatedPresentation(granulatedMonthlyKg);
+    const preparedGranulatedClass = multiAction
+      ? 'prepared-multiaccion'
+      : (poolType === 'revestida' ? 'prepared-lento' : 'prepared-rapido');
     resultItems.push(`
       <div class="result-item ${multiAction ? 'item-pastillas' : (poolType === 'revestida' ? 'item-lento' : 'item-rapido')}">
         <strong>🧪 ${granulatedName}</strong>
@@ -514,7 +517,7 @@ function calculatePool() {
         <small><b>Oferta recomendada:</b> ${offer}. Mejor precio por cantidad.</small>
       </div>
     `);
-    preparedOrder.push(`<li class="prepared-product"><strong>${granulatedName}</strong><span>${offer}</span></li>`);
+    preparedOrder.push(`<li class="prepared-product ${preparedGranulatedClass}"><strong>${granulatedName}</strong><span>${offer}</span></li>`);
     messageOrder.push(`${offer} — dosis estimada: ${granulatedGrams} g ${granulatedFrequency}; consumo mensual aprox.: ${formatKg(granulatedMonthlyKg)}`);
   }
 
@@ -529,7 +532,7 @@ function calculatePool() {
         <small><b>Oferta recomendada:</b> ${offer}. Mejor precio por cantidad.</small>
       </div>
     `);
-    preparedOrder.push(`<li class="prepared-product"><strong>Pastillas Multiacción en cápsulas</strong><span>${offer}</span></li>`);
+    preparedOrder.push(`<li class="prepared-product prepared-pastillas"><strong>Pastillas Multiacción en cápsulas</strong><span>${offer}</span></li>`);
     messageOrder.push(`${offer} — uso estimado: ${tablets} pastilla(s) ${tabletsFrequency}; consumo mensual aprox.: ${estimate.label}`);
   }
 
@@ -540,7 +543,7 @@ function calculatePool() {
       <small>Ante fuerte presencia de algas: ${strongAlgaeAlgaecide} cc. Aplicar sin bañistas y recircular durante 3 horas.</small>
     </div>
   `);
-  preparedOrder.push(`<li class="prepared-product"><strong>Alguicida Nataclor</strong><span>x 1 litro</span></li>`);
+  preparedOrder.push(`<li class="prepared-product prepared-alguicida"><strong>Alguicida Nataclor</strong><span>x 1 litro</span></li>`);
   messageOrder.push(`Alguicida Nataclor x 1 litro — dosis: ${weeklyAlgaecide} cc semanales`);
 
   resultItems.push(`
@@ -550,7 +553,7 @@ function calculatePool() {
       <small>Diluir en 10 litros de agua, aplicar por la noche y pasar el limpiafondo por la mañana.</small>
     </div>
   `);
-  preparedOrder.push(`<li class="prepared-product"><strong>Clarificador Nataclor</strong><span>x 1 litro</span></li>`);
+  preparedOrder.push(`<li class="prepared-product prepared-clarificador"><strong>Clarificador Nataclor</strong><span>x 1 litro</span></li>`);
   messageOrder.push(`Clarificador Nataclor x 1 litro — dosis: ${clarifierDose} cc por aplicación`);
 
   const message = [

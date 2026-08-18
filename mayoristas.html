@@ -15,7 +15,9 @@
 <link href="favicon-32x32.png" rel="icon"/>
 <link href="apple-touch-icon.png" rel="apple-touch-icon"/>
 <link href="manifest.webmanifest" rel="manifest"/>
-<link href="css/style.css" rel="stylesheet"/>
+<link as="image" fetchpriority="high" href="Imagenes/fondo-mobile.webp" media="(max-width: 760px)" rel="preload" type="image/webp"/>
+<link as="image" fetchpriority="high" href="Imagenes/fondo.webp" media="(min-width: 761px)" rel="preload" type="image/webp"/>
+<link href="css/style.css?v=18" rel="stylesheet"/>
 <script defer="" src="config/config.js">
 </script>
 <script defer="" src="js/main.js?v=15">
@@ -54,7 +56,7 @@
 <header class="rc-subheader">
 <nav aria-label="Navegación principal" class="navbar site-navbar" id="navbar">
 <a aria-label="Inicio ANDYCLOR" class="brand-logo" href="index.html">
-<img alt="ANDYCLOR" class="logo" height="361" src="Imagenes/logo-andyclor-sin-eslogan.webp" width="900"/>
+<img alt="ANDYCLOR" class="logo" decoding="async" fetchpriority="high" height="192" src="Imagenes/logo-nav.webp" width="480"/>
 </a>
 <button aria-controls="navLinks" aria-expanded="false" aria-label="Abrir menú" class="menu-toggle" id="menuToggle" type="button">
      ☰
@@ -220,7 +222,7 @@
 <a class="data-fiscal-link" href="https://serviciosweb.afip.gob.ar/clavefiscal/qr/response.aspx?qr=USyc5GjbRBLUGvenojudpA,," target="_blank" rel="noopener noreferrer" aria-label="Ver información fiscal de ANDYCLOR en ARCA">
 <img class="data-fiscal-img" src="https://www.afip.gob.ar/images/f960/DATAWEB.jpg" alt="Formulario 960/D - Data Fiscal de ANDYCLOR" width="110" height="151" loading="lazy"/>
 </a>
-<img alt="ANDYCLOR" class="footer-logo" src="Imagenes/logo-andyclor.webp"/>
+<img alt="ANDYCLOR" class="footer-logo" decoding="async" height="300" loading="lazy" src="Imagenes/logo-andyclor.webp" width="600"/>
 <p><strong>Distribuidor Multimarca · Línea principal NATACLOR</strong> · Venta Mayorista y Minorista · Zona Sur · Envíos a todo el país.</p>
 </footer>
 <a class="whatsapp" href="https://wa.me/5491168306266" id="whatsappFlotante" rel="noopener" target="_blank">

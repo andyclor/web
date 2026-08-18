@@ -223,3 +223,19 @@ ANDYCLOR MASTER 1.0 — RC17
 DESPUÉS DE PUBLICAR RC17
 - Solicitar indexación en Google Search Console de la portada, Mayoristas y distribuidor-cloro-piletas-zona-sur.html.
 - No es necesario volver a cargar el sitemap en Bing: IndexNow enviará automáticamente las 17 páginas.
+
+
+ANDYCLOR — OPTIMIZACIÓN FINAL PC Y CELULAR — 2026-08-18
+- Se eliminaron 10 imágenes antiguas que no eran utilizadas por ninguna página.
+- La carpeta Imagenes pasó de aproximadamente 9,1 MB a aproximadamente 1,1 MB.
+- Se mantiene fondo.webp para computadoras y se agregó fondo-mobile.webp para celulares.
+- Cada página precarga solamente el fondo correspondiente al ancho de pantalla.
+- Se optimizaron el logo superior, el logo del pie, Granulado Multiacción y Test Kit sin cambiar su función ni su aspecto general.
+- Todas las imágenes visibles tienen dimensiones declaradas para evitar movimientos durante la carga.
+- Las imágenes fuera de la primera pantalla usan carga diferida y decodificación asíncrona.
+- Se conserva fondo.jpg porque es la imagen social utilizada por Open Graph.
+- Se mantienen las 17 páginas, sitemap, robots, IndexNow, Analytics, WhatsApp, Data Fiscal, ofertas y calculadora.
+
+PUBLICACIÓN
+- Descomprimir este ZIP y subir todo su contenido directamente a la raíz del repositorio GitHub “web”, reemplazando los archivos anteriores.
+- No subir una carpeta contenedora adicional.
