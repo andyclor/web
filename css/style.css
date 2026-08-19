@@ -5264,3 +5264,22 @@ body:has(#resultadoCalculadora.is-visible-after-calc){
       drop-shadow(0 .02em .015em rgba(0,18,33,.45));
   }
 }
+/* Corrección de extremos itálicos: evita recortes en Y y R */
+.rc-home .rc-brand>div{
+  padding-right:.14em!important;
+  font-size:clamp(3.7rem,7.7vw,6.85rem)!important;
+}
+.rc-home .rc-brand .andy,
+.rc-home .rc-brand .clor{
+  display:inline-block!important;
+  padding-right:.12em!important;
+}
+.rc-home .rc-brand .andy{
+  margin-right:-.12em!important;
+}
+@media(max-width:760px){
+  .rc-home .rc-brand>div{
+    padding-right:.14em!important;
+    font-size:clamp(3.05rem,16.4vw,5rem)!important;
+  }
+}
