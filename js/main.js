@@ -875,7 +875,7 @@ function productTypeMatches(configType, pageType) {
 function activeOffersForProduct(pageData) {
   const groups = [
     { offers: CONFIG.ofertas?.minorista, segment: 'retail', label: 'Minorista' },
-    { offers: CONFIG.ofertas?.mayorista, segment: 'wholesale', label: 'Mayorista' }
+
   ];
 
   return groups.flatMap(group => (Array.isArray(group.offers) ? group.offers : [])
@@ -952,7 +952,7 @@ function renderCurrentProductOffers() {
       <p>Valores publicados según presentación y condición de compra. Confirmamos disponibilidad antes de cerrar la operación.</p>
     </div>
     <div class="gold-offer-grid count-${activeOffers.length}"></div>
-    <p class="gold-offer-note">La condición Mayorista depende de cantidad, frecuencia, distancia y modalidad de entrega.</p>
+<p class="gold-offer-note">Precio sujeto a modificaciones. Consultá disponibilidad y promociones vigentes por WhatsApp.</p>
   `;
 
   const grid = section.querySelector('.gold-offer-grid');
