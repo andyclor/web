@@ -767,6 +767,20 @@ function buildOfferCard(offer, segment) {
   const badge = segment === 'retail' ? 'Oferta Minorista' : 'Oferta Mayorista';
   const buttonLabel = segment === 'retail' ? 'Consultar oferta' : 'Solicitar cotización';
   const priceKg = numericPrice(offer.precioKg);
+  const priceLabel = offer.etiquetaPrecio || 'Precio publicado';
+  const conditions = Array.isArray(offer.condiciones) && offer.condiciones.length
+    ? offer.condiciones
+    : (segment === 'retail'
+      ? [
+          'Precio especial por cantidad',
+          'Entrega coordinada según zona',
+          'Pago por efectivo o transferencia'
+        ]
+      : [
+          'Referencia sujeta a volumen, frecuencia, distancia y producto',
+          'Otros volúmenes y compras recurrentes se evalúan caso por caso',
+          'Entrega propia, retiro coordinado o despacho por transporte'
+        ]);
   const message = offer.mensajeWhatsapp ||
     (segment === 'retail'
       ? `Hola ANDYCLOR. Quiero consultar la oferta de ${offer.producto || 'este producto'}.`
@@ -778,21 +792,14 @@ function buildOfferCard(offer, segment) {
     ${offer.tecnico ? `<p class="gold-offer-technical">${offer.tecnico}</p>` : ''}
     ${offer.detalle ? `<p class="gold-offer-volume">${offer.detalle}</p>` : ''}
     <div class="gold-offer-price-wrap">
-      <small>Precio publicado</small>
+      <small>${priceLabel}</small>
       <strong>${formatARS(offer.precio)}</strong>
       ${priceKg > 0 ? `<span>${formatARS(priceKg)} por kg</span>` : ''}
+      ${offer.vigencia ? `<span class="gold-saving-badge">${offer.vigencia}</span>` : ''}
       ${offer.ahorro ? `<span class="gold-saving-badge">${offer.ahorro}</span>` : ''}
     </div>
     <ul>
-      ${segment === 'retail' ? `
-        <li>Precio especial por cantidad</li>
-        <li>Entrega coordinada según zona</li>
-        <li>Pago por efectivo o transferencia</li>
-      ` : `
-        <li>Referencia sujeta a volumen, frecuencia, distancia y producto</li>
-        <li>Otros volúmenes y compras recurrentes se evalúan caso por caso</li>
-        <li>Entrega propia, retiro coordinado o despacho por transporte</li>
-      `}
+      ${conditions.map(condition => `<li>${condition}</li>`).join('')}
     </ul>
     <a class="btn primary gold-offer-action" target="_blank" rel="noopener noreferrer"
        data-whatsapp-link="true" href="${whatsappLink(message)}">${buttonLabel}</a>
@@ -829,142 +836,3 @@ function renderMasterOffers() {
 }
 
 document.addEventListener('DOMContentLoaded', renderMasterOffers);
-// ==========================================================
-// OFERTAS POR PÁGINA + PRODUCT/OFFER PARA BUSCADORES
-// Solo se publica una oferta cuando el mismo precio también
-// queda visible para la persona que visita la página.
-// ==========================================================
-const PRODUCT_OFFER_PAGES = {
-  'granulado-rapido.html': {
-    tipo: 'rapido',
-    nombre: 'Cloro Instantáneo o Granulado Rápido (Dicloro)',
-    descripcion: 'Cloro granulado de disolución rápida para mantenimiento, recuperación y tratamiento de choque en piletas de fibra o pintadas.',
-    imagen: 'Imagenes/cloro-rapido.webp'
-  },
-  'granulado-lento.html': {
-    tipo: 'lento',
-    nombre: 'Cloro Técnico o Granulado Lento (Tricloro)',
-    descripcion: 'Cloro granulado de disolución lenta para el mantenimiento de piletas revestidas o con venecitas.',
-    imagen: 'Imagenes/cloro-lento.webp'
-  },
-  'granulado-multiaccion.html': {
-    tipo: 'multiaccion',
-    nombre: 'Cloro Granulado Multiacción',
-    descripcion: 'Cloro granulado multiacción para desinfectar, ayudar a prevenir algas y mantener el agua cristalina en todo tipo de piletas.',
-    imagen: 'Imagenes/cloro-multiaccion.webp'
-  },
-  'pastillas-multiaccion.html': {
-    tipo: 'pastillas',
-    nombre: 'Pastillas Multiacción para Piletas de 50 g y 200 g',
-    descripcion: 'Pastillas Multiacción en cápsulas para mantenimiento continuo, aptas para todo tipo de piletas mediante boya dosificadora.',
-    imagen: 'Imagenes/pastillas.webp'
-  }
-};
-
-function productOfferPageData() {
-  const fileName = window.location.pathname.split('/').filter(Boolean).pop() || 'index.html';
-  return PRODUCT_OFFER_PAGES[fileName] || null;
-}
-
-function productTypeMatches(configType, pageType) {
-  const normalized = String(configType || '').toLowerCase().trim();
-  if (pageType === 'multiaccion') return normalized === 'multiaccion' || normalized === 'multi';
-  return normalized === pageType;
-}
-
-function activeOffersForProduct(pageData) {
-  const groups = [
-    { offers: CONFIG.ofertas?.minorista, segment: 'retail', label: 'Minorista' },
-
-  ];
-
-  return groups.flatMap(group => (Array.isArray(group.offers) ? group.offers : [])
-    .filter(offer => offer && productTypeMatches(offer.tipo, pageData.tipo) && numericPrice(offer.precio) > 0)
-    .slice(0, 1)
-    .map(offer => ({ ...group, offer })));
-}
-
-function offerEligibleQuantity(offer) {
-  const detail = String(offer.detalle || '');
-  const match = detail.match(/(\d[\d.]*)\s*kg/i);
-  if (!match) return null;
-  const value = Number(match[1].replace(/\./g, ''));
-  return Number.isFinite(value) && value > 0
-    ? { '@type': 'QuantitativeValue', minValue: value, unitCode: 'KGM' }
-    : null;
-}
-
-function appendProductOfferSchema(pageData, activeOffers) {
-  const canonicalUrl = new URL(window.location.pathname, 'https://andyclor.com.ar').href;
-  const offers = activeOffers.map(({ offer, label }) => {
-    const schemaOffer = {
-      '@type': 'Offer',
-      name: `Oferta ${label}: ${offer.producto || pageData.nombre}`,
-      description: offer.detalle || `Precio publicado para compra ${label}`,
-      price: String(Math.round(numericPrice(offer.precio))),
-      priceCurrency: 'ARS',
-      url: canonicalUrl,
-      seller: {
-        '@type': 'Organization',
-        '@id': 'https://andyclor.com.ar/#organization',
-        name: 'ANDYCLOR',
-        url: 'https://andyclor.com.ar/'
-      }
-    };
-    const eligibleQuantity = offerEligibleQuantity(offer);
-    if (eligibleQuantity) schemaOffer.eligibleQuantity = eligibleQuantity;
-    return schemaOffer;
-  });
-
-  const productSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Product',
-    '@id': `${canonicalUrl}#product`,
-    name: pageData.nombre,
-    description: pageData.descripcion,
-    image: new URL(pageData.imagen, 'https://andyclor.com.ar/').href,
-    category: 'Productos para piletas',
-    url: canonicalUrl,
-    offers: offers.length === 1 ? offers[0] : offers
-  };
-
-  const script = document.createElement('script');
-  script.type = 'application/ld+json';
-  script.id = 'product-offer-structured-data';
-  script.textContent = JSON.stringify(productSchema);
-  document.head.appendChild(script);
-}
-
-function renderCurrentProductOffers() {
-  const pageData = productOfferPageData();
-  if (!pageData || document.getElementById('ofertas-producto-actual')) return;
-
-  const activeOffers = activeOffersForProduct(pageData);
-  if (activeOffers.length === 0) return;
-
-  const section = document.createElement('section');
-  section.className = 'section gold-offer-section rc-product-live-offers';
-  section.id = 'ofertas-producto-actual';
-  section.innerHTML = `
-    <div class="gold-offer-heading">
-      <span class="rc-eyebrow blue">Precios activos</span>
-      <h2>Ofertas vigentes de ${pageData.nombre}</h2>
-      <p>Valores publicados según presentación y condición de compra. Confirmamos disponibilidad antes de cerrar la operación.</p>
-    </div>
-    <div class="gold-offer-grid count-${activeOffers.length}"></div>
-<p class="gold-offer-note">Precio sujeto a modificaciones. Consultá disponibilidad y promociones vigentes por WhatsApp.</p>
-  `;
-
-  const grid = section.querySelector('.gold-offer-grid');
-  activeOffers.forEach(({ offer, segment }) => grid.appendChild(buildOfferCard(offer, segment)));
-
-  const preferredAnchor = document.querySelector('.rc-tablet-commerce');
-  const main = document.querySelector('main');
-  if (preferredAnchor) preferredAnchor.insertAdjacentElement('afterend', section);
-  else if (main) main.appendChild(section);
-  else return;
-
-  appendProductOfferSchema(pageData, activeOffers);
-}
-
-document.addEventListener('DOMContentLoaded', renderCurrentProductOffers);

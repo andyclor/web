@@ -62,11 +62,17 @@ window.ANDYCLOR_CONFIG = {
         tipo: "pastillas",
         producto: "Pastillas Multiacción 200 g",
         tecnico: "En cápsulas",
-        detalle: "Referencia publicada: Escala de 500 kg",
+        detalle: "Cuñete de 50 kg · Compra mínima: 300 kg (6 unidades)",
+        etiquetaPrecio: "Precio promocional por cuñete de 50 kg",
         precio: 225000,
         precioKg: 4500,
-        ahorro: "Precio de referencia para esta condición",
-        mensajeWhatsapp: "Hola ANDYCLOR. Quiero solicitar una cotización Mayorista de Pastillas Multiacción. Cantidad estimada: ____ kg. Frecuencia: ____. Zona: ____."
+        vigencia: "Válida del 24/08/2026 al 31/08/2026 o hasta agotar stock promocional, lo que ocurra primero.",
+        condiciones: [
+          "Compra mínima: 300 kg (6 cuñetes de 50 kg)",
+          "Entrega sin cargo en zonas seleccionadas y según cantidad",
+          "Consultar cobertura y disponibilidad antes de confirmar"
+        ],
+        mensajeWhatsapp: "Hola ANDYCLOR. Vi la oferta Mayorista de Pastillas Multiacción a $225.000 por cuñete de 50 kg. Estoy en ____ y necesito ____ kg."
       }
     ]
   },

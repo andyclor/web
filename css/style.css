@@ -5231,55 +5231,51 @@ body:has(#resultadoCalculadora.is-visible-after-calc){
     background-position:center center!important;
   }
 }
-/* ANDYCLOR — título de Inicio aprobado (PC y celular) */
+
+/* AJUSTE VISUAL 2026-08-18 — nombre ANDYCLOR limpio en el inicio */
+.rc-home .rc-brand{
+  display:inline-block;
+  padding-bottom:.28em;
+}
 .rc-home .rc-brand>div{
-  column-gap:0!important;
-  font-family:"Arial Black","Nimbus Sans",Arial,sans-serif!important;
-  font-weight:1000!important;
-  letter-spacing:-.075em!important;
-  filter:
-    drop-shadow(0 .085em .045em rgba(0,18,33,.78))
-    drop-shadow(0 .025em .018em rgba(0,18,33,.48));
+  position:relative;
+  isolation:isolate;
+  font-family:"Arial Black","Trebuchet MS",Arial,sans-serif!important;
+  font-weight:900!important;
+  font-style:italic!important;
+  letter-spacing:-.065em!important;
+  transform:none!important;
+  filter:drop-shadow(0 5px 8px rgba(0,24,54,.38))!important;
 }
 .rc-home .rc-brand .andy,
 .rc-home .rc-brand .clor{
-  color:transparent!important;
-  -webkit-background-clip:text!important;
-  background-clip:text!important;
   -webkit-text-stroke:0!important;
   text-shadow:none!important;
 }
 .rc-home .rc-brand .andy{
-  background-image:linear-gradient(180deg,#ffc65a 0%,#ff9b27 44%,#f06c20 100%)!important;
+  background-image:linear-gradient(180deg,#a7efff 0%,#2ab9ee 34%,#0877c8 68%,#06427f 100%)!important;
 }
 .rc-home .rc-brand .clor{
-  background-image:linear-gradient(180deg,#f3fdff 0%,#92d7ff 46%,#0874c5 100%)!important;
+  background-image:linear-gradient(180deg,#ffe38a 0%,#ffb62d 34%,#f47719 68%,#d84a0a 100%)!important;
 }
+.rc-home .rc-brand>div::after{
+  content:"";
+  position:absolute;
+  right:.01em;
+  bottom:-.16em;
+  left:.03em;
+  height:clamp(3px,.34vw,5px);
+  border-radius:999px;
+  background:linear-gradient(90deg,#118ed3 0%,#32c9ed 45%,#ffad28 60%,#ef6813 100%);
+  box-shadow:0 3px 7px rgba(0,24,54,.28);
+}
+
 @media(max-width:760px){
   .rc-home .rc-brand>div{
-    column-gap:0!important;
-    letter-spacing:-.075em!important;
-    filter:
-      drop-shadow(0 .075em .04em rgba(0,18,33,.78))
-      drop-shadow(0 .02em .015em rgba(0,18,33,.45));
+    letter-spacing:-.055em!important;
+    filter:drop-shadow(0 4px 6px rgba(0,24,54,.36))!important;
   }
-}
-/* Corrección de extremos itálicos: evita recortes en Y y R */
-.rc-home .rc-brand>div{
-  padding-right:.14em!important;
-  font-size:clamp(3.7rem,7.7vw,6.85rem)!important;
-}
-.rc-home .rc-brand .andy,
-.rc-home .rc-brand .clor{
-  display:inline-block!important;
-  padding-right:.12em!important;
-}
-.rc-home .rc-brand .andy{
-  margin-right:-.12em!important;
-}
-@media(max-width:760px){
-  .rc-home .rc-brand>div{
-    padding-right:.14em!important;
-    font-size:clamp(3.05rem,16.4vw,5rem)!important;
+  .rc-home .rc-brand>div::after{
+    bottom:-.14em;
   }
 }
