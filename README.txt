@@ -239,3 +239,31 @@ ANDYCLOR — OPTIMIZACIÓN FINAL PC Y CELULAR — 2026-08-18
 PUBLICACIÓN
 - Descomprimir este ZIP y subir todo su contenido directamente a la raíz del repositorio GitHub “web”, reemplazando los archivos anteriores.
 - No subir una carpeta contenedora adicional.
+
+
+ANDYCLOR MASTER 1.0 — RC18 SEO SELECTIVO — 2026-08-23
+- Se auditó el sitio con la hoja de ruta SEO de Webstrategy y la documentación oficial de Google Search Central.
+- Se conservaron títulos, contenidos, páginas, enlaces internos, Analytics y eventos de WhatsApp porque ya están correctamente implementados.
+- La identidad Organization ahora utiliza el logo cuadrado de 512 px y vincula el perfil oficial de Instagram mediante sameAs.
+- Se acortó la descripción de la página local de Adrogué para evitar una presentación innecesariamente larga en resultados.
+- El sitemap informa fechas reales de cambios significativos y elimina priority/changefreq, valores que Google declara ignorar.
+- No se agregaron páginas repetidas, palabras clave forzadas, precios estructurados ni una dirección comercial inexistente.
+
+DESPUÉS DE PUBLICAR RC18
+- En Google Search Console, inspeccionar la portada, Mayoristas y Cloro para Piletas en Adrogué; solicitar indexación una sola vez.
+- No volver a enviar cada URL repetidamente: el sitemap y la automatización de IndexNow ya anuncian los cambios.
+
+
+ANDYCLOR MASTER 1.0 — RC19 GUÍAS SEO — 2026-08-23
+- Se revisaron los 45 puntos de la hoja de ruta SEO y se contrastaron con la documentación vigente de Google Search Central.
+- Se agregaron índices internos visibles a las dos guías extensas para facilitar la navegación y el acceso directo a sus secciones.
+- Se corrigió la página huérfana de Adrogué con un enlace contextual desde la cobertura de Zona Sur.
+- Se incorporó autoría organizacional y fecha visible de actualización en ambas guías.
+- Se actualizaron dateModified y lastmod de forma coherente con los cambios reales.
+- Los datos Article ahora usan el logotipo cuadrado del sitio de 512 x 512 px.
+- Se agregaron descripciones og:image:alt y se incrementó la versión de CSS solamente en las páginas modificadas.
+- No se añadieron GTM, plugins, texto de relleno, backlinks pagos ni esquemas de producto sin precio y stock verificables.
+
+DESPUÉS DE PUBLICAR RC19
+- Inspeccionar en Google Search Console las dos guías actualizadas y solicitar indexación una sola vez.
+- Mantener el seguimiento de consultas, páginas y enlaces en Search Console; no crear contenido sólo para alcanzar una cantidad de palabras.
