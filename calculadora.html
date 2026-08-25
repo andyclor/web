@@ -6,11 +6,11 @@
   <title>
    Calculadora de Cloro para Piletas por Litros | ANDYCLOR
   </title>
-  <meta content="Calculá los litros de tu pileta y la dosis orientativa de cloro granulado, pastillas Multiacción, alguicida y clarificador según superficie y temporada." name="description"/>
+  <meta content="Calculá los litros de tu pileta y dosis orientativas de cloro, pastillas, Oxypool Nataclor, alguicida y clarificador según el tratamiento." name="description"/>
   <meta content="index,follow,max-image-preview:large" name="robots"/>
   <link href="https://andyclor.com.ar/calculadora.html" rel="canonical"/>
   <meta content="Calculadora de Cloro para Piletas por Litros | ANDYCLOR" property="og:title"/>
-  <meta content="Ingresá las medidas y obtené litros, dosis y productos orientativos para el tratamiento de tu pileta." property="og:description"/>
+  <meta content="Ingresá las medidas y obtené litros y dosis orientativas, incluida la opción de recuperación rápida con Oxypool Nataclor." property="og:description"/>
   <meta content="https://andyclor.com.ar/calculadora.html" property="og:url"/>
   <meta content="https://andyclor.com.ar/Imagenes/fondo.jpg" property="og:image"/>
   <link href="favicon-32x32.png" rel="icon"/>
@@ -18,10 +18,10 @@
   <link href="manifest.webmanifest" rel="manifest"/>
   <link as="image" fetchpriority="high" href="Imagenes/fondo-mobile.webp" media="(max-width: 760px)" rel="preload" type="image/webp"/>
 <link as="image" fetchpriority="high" href="Imagenes/fondo.webp" media="(min-width: 761px)" rel="preload" type="image/webp"/>
-<link href="css/style.css?v=18" rel="stylesheet"/>
+<link href="css/style.css?v=21" rel="stylesheet"/>
   <script defer="" src="config/config.js">
   </script>
-  <script defer="" src="js/main.js?v=16">
+  <script defer="" src="js/main.js?v=18">
   </script>
   <script type="application/ld+json">
   {
@@ -32,7 +32,8 @@
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "Cualquier navegador web",
     "inLanguage": "es-AR",
-    "description": "Calculadora gratuita de litros y dosis orientativas de productos para el cuidado de piletas.",
+    "description": "Calculadora gratuita de litros y dosis orientativas de cloro, pastillas, Oxypool Nataclor y complementos para piletas.",
+    "dateModified": "2026-08-24",
     "isAccessibleForFree": true,
     "publisher": {
       "@type": "Organization",
@@ -93,7 +94,7 @@
      Asesoramiento
     </p>
     <p>
-     Ingres&aacute; las medidas y eleg&iacute; el tipo de mantenimiento. La recomendaci&oacute;n mostrar&aacute; solo los productos indicados para evitar confusiones.
+     Ingres&aacute; las medidas y el estado del agua. Si necesit&aacute;s recuperarla, primero ver&aacute;s la dosis orientativa de Oxypool y despu&eacute;s el tipo de cloro y la dosis sugerida para continuar el mantenimiento.
     </p>
     <div class="calc-container">
      <div class="calc-entry-panel">
@@ -121,8 +122,19 @@
          Revestida / Venecitas
         </option>
        </select>
+       <label for="recuperacion">
+        Estado del agua
+       </label>
+       <select id="recuperacion">
+        <option selected="selected" value="oxypool">
+         Necesita recuperaci&oacute;n r&aacute;pida
+        </option>
+        <option value="no">
+         Est&aacute; bien: calcular solo mantenimiento
+        </option>
+       </select>
        <label for="mantenimiento">
-        &iquest;C&oacute;mo realiz&aacute;s el mantenimiento?
+        Mantenimiento habitual o preferido
        </label>
        <select id="mantenimiento">
         <option value="pastillas">
@@ -185,7 +197,7 @@
        2
       </strong>
       <span>
-       Calculamos litros, dosis y ofertas recomendadas.
+       Calculamos primero el recupero y luego el mantenimiento sugerido.
       </span>
      </article>
      <article>
@@ -201,26 +213,27 @@
    <section class="section calc-seo-guide" id="dosis-por-litros">
     <span class="rc-eyebrow blue">Referencias por volumen</span>
     <h2>Cuánto cloro necesita una pileta según sus litros</h2>
-    <p class="calc-seo-lead">Estas cantidades permiten entender el cálculo antes de completar las medidas. Para cloro granulado, la referencia ANDYCLOR es 80 g cada 40.000 litros. Para pastillas Multiacción, se utiliza una de 50 g cada 5.000 litros o una de 200 g cada 20.000 litros.</p>
+    <p class="calc-seo-lead">Estas cantidades permiten entender el cálculo antes de completar las medidas. Para cloro granulado, la referencia ANDYCLOR es 80 g cada 40.000 litros. Para pastillas Multiacción, se utiliza una de 50 g cada 5.000 litros o una de 200 g cada 20.000 litros. En Oxypool, la tabla muestra la referencia base y la reforzada máxima.</p>
     <div class="calc-dose-table-wrap" role="region" aria-label="Tabla orientativa de dosis por litros" tabindex="0">
      <table class="calc-dose-table">
       <thead>
        <tr>
         <th scope="col">Volumen de la pileta</th>
         <th scope="col">Cloro granulado</th>
+        <th scope="col">Oxypool: base / reforzada máxima</th>
         <th scope="col">Pastillas de 50 g</th>
         <th scope="col">Pastillas de 200 g</th>
        </tr>
       </thead>
       <tbody>
-       <tr><th scope="row">10.000 litros</th><td>20 g</td><td>2 pastillas</td><td>1 pastilla cubre hasta 20.000 L</td></tr>
-       <tr><th scope="row">20.000 litros</th><td>40 g</td><td>4 pastillas</td><td>1 pastilla</td></tr>
-       <tr><th scope="row">40.000 litros</th><td>80 g</td><td>8 pastillas</td><td>2 pastillas</td></tr>
-       <tr><th scope="row">50.000 litros</th><td>100 g</td><td>10 pastillas</td><td>3 pastillas</td></tr>
+       <tr><th scope="row">10.000 litros</th><td>20 g</td><td>20 g / 40 g</td><td>2 pastillas</td><td>1 pastilla cubre hasta 20.000 L</td></tr>
+       <tr><th scope="row">20.000 litros</th><td>40 g</td><td>40 g / 80 g</td><td>4 pastillas</td><td>1 pastilla</td></tr>
+       <tr><th scope="row">40.000 litros</th><td>80 g</td><td>80 g / 160 g</td><td>8 pastillas</td><td>2 pastillas</td></tr>
+       <tr><th scope="row">50.000 litros</th><td>100 g</td><td>100 g / 200 g</td><td>10 pastillas</td><td>3 pastillas</td></tr>
       </tbody>
      </table>
     </div>
-    <p class="calc-dose-note"><strong>Frecuencia orientativa:</strong> Granulado diario en temporada alta y semanal en temporada baja. Pastillas semanales en temporada alta y mensuales en temporada baja. El clima, la lluvia, el uso, el filtrado y el estado del agua pueden modificar la necesidad real.</p>
+    <p class="calc-dose-note"><strong>Frecuencia orientativa:</strong> Granulado diario en temporada alta y semanal en temporada baja. Pastillas semanales en temporada alta y mensuales en temporada baja. En Oxypool, la aplicación reforzada no debe interpretarse como mantenimiento. El calor intenso, muchos bañistas, protectores solares y cremas, hojas y pinochas, lluvia, tierra, otros residuos, el filtrado y el estado del agua pueden modificar la necesidad real.</p>
     <div class="gold-faq-grid calc-seo-faq">
      <details>
       <summary>¿Cómo calculo los litros de una pileta?</summary>
@@ -237,6 +250,10 @@
      <details>
       <summary>¿Pastillas multifunción, triple acción y Multiacción son iguales?</summary>
       <p>Son nombres comerciales que los clientes suelen usar para tratamientos combinados. En ANDYCLOR se presentan como Pastillas Multiacción; siempre conviene verificar el tamaño, la composición y la dosis indicada.</p>
+     </details>
+     <details>
+      <summary>¿Para qué sirve Oxypool Nataclor?</summary>
+      <p>Es cloro ultrarrápido con oxígeno activo, apto para todo tipo de pileta. Se utiliza para la recuperación rápida y se complementa con el cloro de mantenimiento recomendado; no lo reemplaza. El resultado depende del pH, el filtrado y la carga de suciedad.</p>
      </details>
     </div>
     <p class="calc-seo-related"><a href="como-recuperar-agua-verde-pileta.html">Leé también: Cómo recuperar el agua verde de una pileta paso a paso</a></p>

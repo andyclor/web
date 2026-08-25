@@ -267,3 +267,33 @@ ANDYCLOR MASTER 1.0 — RC19 GUÍAS SEO — 2026-08-23
 DESPUÉS DE PUBLICAR RC19
 - Inspeccionar en Google Search Console las dos guías actualizadas y solicitar indexación una sola vez.
 - Mantener el seguimiento de consultas, páginas y enlaces en Search Console; no crear contenido sólo para alcanzar una cantidad de palabras.
+
+
+ANDYCLOR MASTER 1.0 — RC20 OXYPOOL — 2026-08-24
+- Se incorporó Oxypool Nataclor como alternativa de recuperación rápida dentro de la página principal de cloro, sin crear una página repetida.
+- Se publican únicamente las presentaciones originales trabajadas por ANDYCLOR: envase de 1 kg y lata de 10 kg.
+- La guía de agua verde incluye la referencia base de 20 g cada 10.000 litros y una aplicación reforzada máxima de 40 g cada 10.000 litros.
+- Se aclara que el tiempo de recuperación depende del pH, el filtrado, el estado inicial y la carga orgánica; no se promete un plazo fijo.
+- Se detallan los factores que aumentan la demanda: calor intenso, muchos bañistas, protectores solares y cremas, hojas y pinochas, lluvia, tierra y otros residuos.
+- La calculadora suma la opción “Recuperación rápida con Oxypool”, muestra dosis base y reforzada máxima y prepara la consulta por WhatsApp.
+- Se actualizaron metadatos, datos estructurados, enlaces internos, versiones de CSS/JavaScript y fechas reales del sitemap.
+- Se conservan Analytics, WhatsApp, IndexNow, Data Fiscal, ofertas, diseño general y las 17 URLs existentes.
+
+DESPUÉS DE PUBLICAR RC20
+- Probar la calculadora seleccionando “Recuperación rápida con Oxypool” en computadora y celular.
+- Inspeccionar en Google Search Console cloro-piletas.html, calculadora.html y como-recuperar-agua-verde-pileta.html; solicitar indexación una sola vez.
+- Subir todo el contenido del ZIP directamente a la raíz del repositorio GitHub “web”, sin agregar una carpeta contenedora.
+
+
+ANDYCLOR MASTER 1.0 — RC21 RECUPERO + MANTENIMIENTO — 2026-08-24
+- La calculadora separa el tratamiento puntual de recuperación del mantenimiento habitual.
+- Cuando el agua necesita recupero, muestra primero Oxypool Nataclor con la dosis base de 20 g cada 10.000 litros y el máximo reforzado de 40 g cada 10.000 litros.
+- Debajo muestra el tipo de cloro, la dosis y la frecuencia orientativa para continuar el mantenimiento según la pileta, la temporada y la opción elegida.
+- Oxypool ya no reemplaza al cloro de mantenimiento dentro del selector: se calcula como tratamiento adicional.
+- La consulta preparada por WhatsApp incluye primero el recupero y luego todos los productos sugeridos para mantenimiento.
+- Se reforzó en las páginas de cloro y agua verde que Oxypool no reemplaza el mantenimiento posterior.
+
+DESPUÉS DE PUBLICAR RC21
+- Probar la calculadora una vez con “Necesita recuperación rápida” y otra con “Está bien: calcular solo mantenimiento”.
+- Verificar en celular que el bloque “Primero: recupero del agua” aparezca antes de “Después: mantenimiento sugerido”.
+- Subir todo el contenido del ZIP directamente a la raíz del repositorio GitHub “web”, sin agregar una carpeta contenedora.

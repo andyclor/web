@@ -586,11 +586,17 @@ footer{
   border-color:rgba(12,118,191,.22);
   box-shadow:0 18px 45px rgba(12,118,191,.11);
 }
+.calc-result.tema-oxypool{
+  background:linear-gradient(135deg,rgba(29,142,209,.15),#ffffff 68%,rgba(0,166,200,.08));
+  border-color:rgba(29,142,209,.28);
+  box-shadow:0 18px 45px rgba(29,142,209,.13);
+}
 .result-item.item-rapido{border-left-color:#12a45a;background:linear-gradient(90deg,rgba(18,164,90,.10),#fff 55%)}
 .result-item.item-lento{border-left-color:#e23b3b;background:linear-gradient(90deg,rgba(226,59,59,.10),#fff 55%)}
 .result-item.item-pastillas{border-left-color:#7b3fe4;background:linear-gradient(90deg,rgba(123,63,228,.10),#fff 55%)}
 .result-item.item-algicida{border-left-color:#00a6c8;background:linear-gradient(90deg,rgba(0,166,200,.10),#fff 55%)}
 .result-item.item-clarificador{border-left-color:#0c76bf;background:linear-gradient(90deg,rgba(12,118,191,.10),#fff 55%)}
+.result-item.item-oxypool{border-left-color:#1d8ed1;background:linear-gradient(90deg,rgba(29,142,209,.14),#fff 58%)}
 .result-grid .result-item{
   animation:resultFade .28s ease both;
 }
@@ -4115,6 +4121,7 @@ body:has(#resultadoCalculadora.is-visible-after-calc){
 #resultadoCalculadora.tema-lento{--calc-accent:#e13d3d;--calc-accent-rgb:225,61,61;--calc-tint:#fff5f5}
 #resultadoCalculadora.tema-pastillas{--calc-accent:#7b3fe4;--calc-accent-rgb:123,63,228;--calc-tint:#faf7ff}
 #resultadoCalculadora.tema-mixto{--calc-accent:#1d8ed1;--calc-accent-rgb:29,142,209;--calc-tint:#f2faff}
+#resultadoCalculadora.tema-oxypool{--calc-accent:#1d8ed1;--calc-accent-rgb:29,142,209;--calc-tint:#eef9ff}
 #resultadoCalculadora.is-visible-after-calc{
   display:block!important;
 }
@@ -4193,6 +4200,10 @@ body:has(#resultadoCalculadora.is-visible-after-calc){
 .prepared-order-compact li.prepared-clarificador{
   border-left-color:#0c76bf!important;
   background:linear-gradient(90deg,rgba(12,118,191,.10),#fff 58%)!important;
+}
+.prepared-order-compact li.prepared-oxypool{
+  border-left-color:#1d8ed1!important;
+  background:linear-gradient(90deg,rgba(29,142,209,.14),#fff 58%)!important;
 }
 .prepared-order-compact li strong{
   display:block!important;
@@ -4442,6 +4453,7 @@ body:has(#resultadoCalculadora.is-visible-after-calc){
 .choice-card.rapido{border-top-color:#18b663!important}
 .choice-card.lento{border-top-color:#e13d3d!important}
 .choice-card.multi,.choice-card.pastillas{border-top-color:#7b3fe4!important}
+.choice-card.oxypool{border-top-color:#1d8ed1!important}
 .choice-for{display:inline-block;padding:6px 10px;border-radius:999px;background:#eef5fb;color:#073b71;font-size:.86rem;font-weight:900}
 .rc-choice-help{display:flex;align-items:center;justify-content:space-between;gap:24px;max-width:1000px;margin:30px auto 0;padding:24px;border-radius:22px;background:linear-gradient(120deg,#062747,#0879c9);color:#fff}
 .rc-choice-help strong,.rc-choice-help span{display:block}
@@ -4458,6 +4470,38 @@ body:has(#resultadoCalculadora.is-visible-after-calc){
 }
 .rc-answer-grid h3{margin-bottom:8px;color:#073b71;font-size:1.18rem}
 @media(max-width:760px){.rc-choice-grid,.rc-answer-grid{grid-template-columns:1fr}.rc-choice-help{display:block;text-align:center}.rc-choice-help .btn{margin-top:16px}}
+
+/* RC20 — Oxypool Nataclor */
+.rc-oxypool-panel{
+  display:grid;
+  grid-template-columns:minmax(0,1.15fr) minmax(280px,.85fr);
+  gap:24px;
+  max-width:1120px;
+  margin:0 auto;
+  padding:clamp(24px,4vw,42px);
+  border:2px solid #a9d3ec;
+  border-top:7px solid #1d8ed1;
+  border-radius:26px;
+  background:linear-gradient(145deg,#f5fbff 0%,#e7f5fd 100%);
+  box-shadow:0 18px 42px rgba(4,43,80,.14);
+}
+.rc-oxypool-panel h2,.rc-oxypool-panel h3{color:#073b71}
+.rc-oxypool-panel p{color:#355069;line-height:1.7}
+.rc-oxypool-panel .btn{margin-top:10px}
+.rc-oxypool-panel aside{
+  padding:24px;
+  border:1px solid rgba(7,59,113,.14);
+  border-radius:20px;
+  background:#fff;
+  box-shadow:0 10px 26px rgba(4,43,80,.08);
+}
+.rc-oxypool-panel ul{margin:14px 0;padding-left:22px;color:#355069;line-height:1.65}
+.rc-oxypool-factors{margin-top:16px;padding-top:16px;border-top:1px solid rgba(7,59,113,.12)}
+.rc-oxypool-alert{max-width:1120px;margin:20px auto 0}
+@media(max-width:760px){
+  .rc-oxypool-panel{grid-template-columns:1fr;padding:22px}
+  .rc-oxypool-panel aside{padding:20px}
+}
 
 /* MASTER: Alguicida + Clarificador + pH */
 .treatment-choice{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:20px}
@@ -4931,6 +4975,53 @@ body:has(#resultadoCalculadora.is-visible-after-calc){
 @media(max-width:760px){
   .rc-home .rc-brand>div{
     column-gap:12px!important;
+  }
+}
+
+/* RC21 — recupero primero y mantenimiento sugerido después */
+.treatment-section-title{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin:8px 0 2px;
+  padding:11px 14px;
+  border-radius:15px;
+  background:#eef7ff;
+  color:#073b71;
+  text-align:left;
+}
+.treatment-section-title>span{
+  display:grid;
+  place-items:center;
+  flex:0 0 32px;
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  background:#0c76bf;
+  color:#fff;
+  font-weight:1000;
+}
+.treatment-section-title strong,
+.treatment-section-title small{
+  display:block;
+}
+.treatment-section-title small{
+  color:#4b647c;
+}
+.treatment-recovery-title{
+  background:linear-gradient(90deg,#e5f7ff,#fff6e8);
+}
+.treatment-recovery-title>span{
+  background:#ff8a24;
+}
+.result-item-featured{
+  border:2px solid rgba(29,142,209,.38);
+  border-left:7px solid #1d8ed1!important;
+  box-shadow:0 10px 24px rgba(9,81,133,.12);
+}
+@media(max-width:600px){
+  .treatment-section-title{
+    align-items:flex-start;
   }
 }
 

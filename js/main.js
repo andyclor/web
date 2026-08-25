@@ -455,6 +455,7 @@ function calculatePool() {
   const width = Number(document.getElementById('ancho')?.value);
   const depth = Number(document.getElementById('profundidad')?.value);
   const poolType = document.getElementById('tipoPileta')?.value;
+  const recovery = document.getElementById('recuperacion')?.value;
   const maintenance = document.getElementById('mantenimiento')?.value;
   const season = document.getElementById('temporada')?.value;
   const result = document.getElementById('resultadoCalculadora');
@@ -479,9 +480,13 @@ function calculatePool() {
     ambos: 'Pastillas + Cloro Granulado'
   };
   const maintenanceLabel = maintenanceLabels[maintenance] || maintenance;
+  const recoveryLabel = recovery === 'oxypool'
+    ? 'Recuperación rápida con Oxypool'
+    : 'Solo mantenimiento';
   const seasonLabel = season === 'alta' ? 'Temporada alta' : 'Temporada baja';
 
   const multiAction = maintenance === 'granulado_multiaccion';
+  const addOxypool = recovery === 'oxypool';
   const granulatedName = multiAction
     ? 'Cloro Granulado Rápido Multiacción'
     : (poolType === 'revestida' ? 'Cloro Granulado Lento' : 'Cloro Granulado Rápido');
@@ -491,6 +496,12 @@ function calculatePool() {
   const granulatedMonthlyKg = season === 'alta'
     ? Math.ceil((granulatedGrams * 30 / 1000) * 10) / 10
     : Math.ceil((granulatedGrams * 4 / 1000) * 10) / 10;
+
+  const oxypoolBaseGrams = Math.ceil((litres / 10000) * 20);
+  const oxypoolReinforcedGrams = Math.ceil((litres / 10000) * 40);
+  const oxypoolPresentation = oxypoolReinforcedGrams <= 1000
+    ? 'Envase original x 1 kg'
+    : 'Lata original x 10 kg';
 
   const tablets = Math.max(1, Math.ceil(litres / 20000));
   const tabletsFrequency = season === 'alta' ? 'por semana' : 'por mes';
@@ -503,6 +514,31 @@ function calculatePool() {
   const resultItems = [];
   const preparedOrder = [];
   const messageOrder = [];
+
+  if (addOxypool) {
+    resultItems.push(`
+      <div class="treatment-section-title treatment-recovery-title">
+        <span>1</span>
+        <div><strong>Primero: recupero del agua</strong><small>Tratamiento puntual, no de mantenimiento.</small></div>
+      </div>
+      <div class="result-item item-oxypool result-item-featured">
+        <strong>⚡ Oxypool Nataclor</strong>
+        <span><b>Dosis orientativa de recupero:</b> ${oxypoolBaseGrams} g</span>
+        <small><b>Aplicación reforzada máxima:</b> ${oxypoolReinforcedGrams} g. No superar el doble de la dosis base.</small>
+        <small><b>Presentación original sugerida:</b> ${oxypoolPresentation}.</small>
+        <small>Cloro ultrarrápido + oxígeno activo. Ajustar pH, filtrar y volver a medir antes de repetir. El resultado depende del estado inicial, el clima y la carga de suciedad.</small>
+      </div>
+    `);
+    preparedOrder.push(`<li class="prepared-product prepared-oxypool"><strong>Oxypool Nataclor</strong><span>${oxypoolPresentation}</span></li>`);
+    messageOrder.push(`Oxypool Nataclor — recupero base: ${oxypoolBaseGrams} g; reforzada máxima: ${oxypoolReinforcedGrams} g; presentación sugerida: ${oxypoolPresentation}`);
+  }
+
+  resultItems.push(`
+    <div class="treatment-section-title treatment-maintenance-title">
+      <span>${addOxypool ? '2' : '1'}</span>
+      <div><strong>${addOxypool ? 'Después: mantenimiento sugerido' : 'Mantenimiento sugerido'}</strong><small>Tipo de cloro, dosis y frecuencia orientativa.</small></div>
+    </div>
+  `);
 
   if (['granulado', 'ambos', 'granulado_multiaccion'].includes(maintenance)) {
     const offer = suggestedGranulatedPresentation(granulatedMonthlyKg);
@@ -562,6 +598,7 @@ function calculatePool() {
     `Pileta: ${poolTypeLabel}`,
     `Medidas: ${length} m x ${width} m x ${depth} m`,
     `Capacidad aproximada: ${litres.toLocaleString('es-AR')} litros`,
+    `Recuperación: ${recoveryLabel}`,
     `Mantenimiento: ${maintenanceLabel}`,
     `Temporada: ${seasonLabel}`,
     '',
@@ -571,11 +608,13 @@ function calculatePool() {
     'La página me mostró la dosis estimada y una oferta recomendada. Quisiera consultar disponibilidad y precio.'
   ].join('\n');
 
-  const theme = maintenance === 'pastillas'
+  const theme = addOxypool
+    ? 'tema-oxypool'
+    : (maintenance === 'pastillas'
     ? 'tema-pastillas'
     : (maintenance === 'granulado'
       ? (poolType === 'revestida' ? 'tema-lento' : 'tema-rapido')
-      : (maintenance === 'granulado_multiaccion' ? 'tema-pastillas' : 'tema-mixto'));
+      : (maintenance === 'granulado_multiaccion' ? 'tema-pastillas' : 'tema-mixto')));
 
   result.className = `calc-result ${theme}`;
   result.innerHTML = `
@@ -600,6 +639,7 @@ function calculatePool() {
           <div class="litros-box">
             <strong>${litres.toLocaleString('es-AR')} litros aprox.</strong>
             <span>${poolTypeLabel}</span>
+            <span>${recoveryLabel}</span>
             <span>${maintenanceLabel}</span>
             <span>${seasonLabel}</span>
             <span>${length} m × ${width} m × ${depth} m</span>
@@ -607,13 +647,13 @@ function calculatePool() {
         </details>
       </section>
 
-      <section class="calc-treatment-column" aria-label="Tratamiento recomendado">
-        <h3>Tratamiento recomendado</h3>
+      <section class="calc-treatment-column" aria-label="Recupero y mantenimiento recomendado">
+        <h3>${addOxypool ? 'Recupero y mantenimiento recomendado' : 'Mantenimiento recomendado'}</h3>
         <div class="result-grid">${resultItems.join('')}</div>
 
         <div class="recommend">
           <strong>Importante:</strong>
-          <p>Las dosis son orientativas y pueden variar según clima, lluvia, uso, filtrado y estado del agua. Mantener el pH entre 7,2 y 7,6.</p>
+          <p>Las dosis son orientativas. El calor intenso, muchos bañistas, protectores solares y cremas, hojas y pinochas, lluvia, tierra, otros residuos, el filtrado y el estado del agua pueden modificar la necesidad real. Mantener el pH entre 7,2 y 7,6, aplicar cada químico por separado y volver a medir antes de habilitar el baño.</p>
         </div>
       </section>
     </div>
@@ -624,6 +664,7 @@ function calculatePool() {
     : (litres <= 40000 ? '20001_a_40000' : (litres <= 70000 ? '40001_a_70000' : 'mas_de_70000'));
   trackSiteEvent('calculator_complete', {
     pool_type: poolType,
+    recovery_type: recovery,
     maintenance_type: maintenance,
     season,
     volume_band: volumeBand
