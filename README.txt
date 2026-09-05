@@ -297,3 +297,16 @@ DESPUÉS DE PUBLICAR RC21
 - Probar la calculadora una vez con “Necesita recuperación rápida” y otra con “Está bien: calcular solo mantenimiento”.
 - Verificar en celular que el bloque “Primero: recupero del agua” aparezca antes de “Después: mantenimiento sugerido”.
 - Subir todo el contenido del ZIP directamente a la raíz del repositorio GitHub “web”, sin agregar una carpeta contenedora.
+
+
+ANDYCLOR MASTER 1.0 — RC22 OFERTA MAYORISTA — 2026-09-05
+- Se publican tres ofertas por cuñete de 50 kg: Granulado Rápido $210.000, Granulado Lento/Tricloro $220.000 y Pastillas Multiacción $235.000.
+- La compra mínima promocional es de 300 kg totales (6 cuñetes combinables entre las líneas publicadas).
+- Los pedidos se reciben hasta el 12/09/2026 o hasta agotar stock.
+- Se informa entrega propia hasta 100 km, coordinada según zona, y despachos por transporte a todo el país.
+- Se incorporó el aviso “Cupos de entrega limitados · Consultar stock disponible”.
+- Se actualizaron las ofertas minoristas por cuñete de 50 kg: Pastillas $269.000, Granulado Rápido a granel $249.000 y Granulado Lento a granel $265.000.
+
+DESPUÉS DE PUBLICAR RC22
+- Abrir mayoristas.html y verificar las tres tarjetas, sus precios y los botones de WhatsApp.
+- Subir todo el contenido del ZIP directamente a la raíz del repositorio GitHub “web”, sin agregar una carpeta contenedora.
