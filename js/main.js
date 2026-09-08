@@ -874,6 +874,12 @@ function renderMasterOffers() {
   const offers = CONFIG.ofertas || {};
   renderOfferGroup('ofertasMinoristasGrid', offers.minorista, 'retail');
   renderOfferGroup('ofertasMayoristasGrid', offers.mayorista, 'wholesale');
+
+  const hasActiveOffer = list => (Array.isArray(list) ? list : []).some(offer => offer && numericPrice(offer.precio) > 0);
+  const retailAccess = document.getElementById('accesoOfertaMinorista');
+  const wholesaleAccess = document.getElementById('accesoOfertaMayorista');
+  if (retailAccess) retailAccess.hidden = !hasActiveOffer(offers.minorista);
+  if (wholesaleAccess) wholesaleAccess.hidden = !hasActiveOffer(offers.mayorista);
 }
 
 document.addEventListener('DOMContentLoaded', renderMasterOffers);

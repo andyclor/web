@@ -5380,3 +5380,46 @@ body:has(#resultadoCalculadora.is-visible-after-calc){
     bottom:-.14em;
   }
 }
+
+
+/* RC22 - Acceso directo destacado a ofertas por segmento */
+.rc-fast-offer{
+  width:min(1180px,calc(100% - 32px));margin:26px auto 10px;padding:22px 26px;
+  display:flex;align-items:center;justify-content:space-between;gap:24px;
+  border:3px solid #f3b400;border-radius:22px;
+  background:linear-gradient(110deg,#fff8d9 0%,#fff 48%,#edf8ff 100%);
+  box-shadow:0 14px 34px rgba(4,43,80,.16);position:relative;overflow:hidden
+}
+.rc-fast-offer[hidden]{display:none!important}
+.rc-fast-offer:before{content:"OFERTA";position:absolute;right:-12px;top:-22px;font-size:5.2rem;font-weight:1000;color:rgba(243,180,0,.09);pointer-events:none}
+.rc-fast-offer-copy{display:flex;flex-direction:column;gap:4px;position:relative;z-index:1}
+.rc-fast-offer-kicker{width:max-content;padding:5px 10px;border-radius:999px;background:#073b71;color:#fff;font-size:.75rem;font-weight:900;text-transform:uppercase;letter-spacing:.04em}
+.rc-fast-offer-copy strong{font-size:clamp(1.25rem,2.3vw,1.75rem);color:#073b71;line-height:1.15}
+.rc-fast-offer-copy>span:last-child{color:#52677a;font-weight:650}
+.rc-fast-offer-actions{display:flex;flex-direction:column;align-items:stretch;gap:8px;min-width:285px;position:relative;z-index:1}
+.rc-fast-offer-main{padding:15px 20px;border-radius:14px;background:#f3b400;color:#073b71;text-decoration:none;text-align:center;font-weight:1000;box-shadow:0 7px 16px rgba(173,126,0,.2);transition:transform .15s ease,box-shadow .15s ease}
+.rc-fast-offer-main:hover{transform:translateY(-2px);box-shadow:0 10px 20px rgba(173,126,0,.28)}
+.rc-fast-offer-catalog{color:#073b71;text-align:center;text-decoration:none;font-size:.88rem;font-weight:700}
+.rc-fast-offer-catalog b{text-decoration:underline}
+.rc-fast-offer-wholesale{border-color:#20a85a;background:linear-gradient(110deg,#edfff4 0%,#fff 50%,#edf8ff 100%)}
+.rc-fast-offer-wholesale .rc-fast-offer-main{background:#20a85a;color:#fff;box-shadow:0 7px 16px rgba(16,116,60,.2)}
+@media(max-width:760px){
+ .rc-fast-offer{width:calc(100% - 24px);margin:18px auto 8px;padding:18px;display:block;text-align:center;border-width:3px}
+ .rc-fast-offer-copy{align-items:center}
+ .rc-fast-offer-copy>span:last-child{font-size:.92rem}
+ .rc-fast-offer-actions{min-width:0;margin-top:15px}
+ .rc-fast-offer-main{padding:16px 14px;font-size:1rem}
+ .rc-fast-offer-catalog{padding:5px 2px;font-size:.88rem}
+ .rc-fast-offer:before{font-size:4rem;right:-20px}
+}
+
+
+/* RC22 - Paginas directas de ofertas */
+.rc-offer-page-hero{width:min(1180px,calc(100% - 32px));margin:28px auto 18px;padding:28px;border-radius:24px;background:linear-gradient(120deg,#073b71,#0c568f);color:#fff;box-shadow:0 16px 36px rgba(4,43,80,.18)}
+.rc-offer-page-hero h1{margin:.35rem 0 .6rem;font-size:clamp(1.8rem,4vw,3rem);line-height:1.08}
+.rc-offer-page-hero p{margin:0;max-width:850px;font-size:1.04rem;line-height:1.6}
+.rc-offer-page-hero .rc-eyebrow{background:#f3b400;color:#073b71}
+.rc-offer-page-hero.wholesale{background:linear-gradient(120deg,#07512e,#159253)}
+.rc-offer-direct-note{width:min(1180px,calc(100% - 32px));margin:0 auto 18px;padding:14px 18px;border:1px solid #d7e4ee;border-radius:14px;background:#f7fbff;color:#334c60}
+.rc-offer-direct-note a{font-weight:800;color:#073b71}
+@media(max-width:760px){.rc-offer-page-hero{width:calc(100% - 24px);margin:18px auto 12px;padding:22px 18px}.rc-offer-direct-note{width:calc(100% - 24px)}}
