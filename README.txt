@@ -310,3 +310,19 @@ ANDYCLOR MASTER 1.0 — RC22 OFERTA MAYORISTA — 2026-09-05
 DESPUÉS DE PUBLICAR RC22
 - Abrir mayoristas.html y verificar las tres tarjetas, sus precios y los botones de WhatsApp.
 - Subir todo el contenido del ZIP directamente a la raíz del repositorio GitHub “web”, sin agregar una carpeta contenedora.
+
+
+ANDYCLOR MASTER 1.0 — RC23 SEO SEARCH CONSOLE — 2026-09-08
+- Ajustes selectivos basados en las consultas, impresiones, clics y posición media observados en Google Search Console.
+- Mayoristas: se refuerza “distribuidora de cloro” y la venta desde 100 kg en título, descripción e introducción, sin cambiar precios ni condiciones comerciales.
+- Pastillas Multiacción: se incorpora “pastillas de cloro” en el título y una respuesta específica para piletas de lona, manteniendo la recomendación de usar boya dosificadora y evitar el contacto directo con el revestimiento.
+- Cloro para Piletas: se refuerza como página central para granulado, pastillas y dosis, sumando una respuesta breve para piletas de lona y enlaces internos hacia productos y calculadora.
+- Calculadora: el H1 se alinea con “calculadora de cloro por litros”; se agrega la referencia proporcional para 1.000 litros y un enlace interno a la guía general de cloro. La lógica de cálculo no fue modificada.
+- Agua verde: se incorporan de forma natural las variantes “piscina verde” y “tratamiento de choque” observadas en Search Console, sin alterar el procedimiento técnico publicado.
+- Se actualizan dateModified y sitemap únicamente en las páginas con cambios significativos.
+- No se modifica la portada, Contacto, precios, ofertas, configuración comercial, diseño, Analytics, WhatsApp ni la funcionalidad de la calculadora.
+
+DESPUÉS DE PUBLICAR RC23
+- No hace falta solicitar indexación de todas las páginas. Inspeccionar una sola vez Mayoristas, Pastillas Multiacción, Cloro para Piletas, Calculadora y la guía de Agua Verde si se desea acelerar el rastreo.
+- Comparar en Search Console los próximos 28 días contra los 28 días anteriores, especialmente posición y CTR de Mayoristas y Pastillas, y posición de Cloro para Piletas, Calculadora y Agua Verde.
+- Subir todo el contenido del ZIP directamente a la raíz del repositorio GitHub “web”, sin agregar una carpeta contenedora.
