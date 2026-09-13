@@ -808,6 +808,7 @@ function buildOfferCard(offer, segment) {
   const badge = segment === 'retail' ? 'Oferta Minorista' : 'Oferta Mayorista';
   const buttonLabel = segment === 'retail' ? 'Consultar oferta' : 'Solicitar cotización';
   const priceKg = numericPrice(offer.precioKg);
+  const normalPrice = numericPrice(offer.precioNormal);
   const priceLabel = offer.etiquetaPrecio || 'Precio publicado';
   const conditions = Array.isArray(offer.condiciones) && offer.condiciones.length
     ? offer.condiciones
@@ -834,6 +835,7 @@ function buildOfferCard(offer, segment) {
     ${offer.detalle ? `<p class="gold-offer-volume">${offer.detalle}</p>` : ''}
     <div class="gold-offer-price-wrap">
       <small>${priceLabel}</small>
+      ${normalPrice > numericPrice(offer.precio) ? `<span class="gold-normal-price">Precio actual: <del>${formatARS(normalPrice)}</del></span>` : ''}
       <strong>${formatARS(offer.precio)}</strong>
       ${priceKg > 0 ? `<span>${formatARS(priceKg)} por kg</span>` : ''}
       ${offer.vigencia ? `<span class="gold-saving-badge">${offer.vigencia}</span>` : ''}

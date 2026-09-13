@@ -326,3 +326,15 @@ DESPUÉS DE PUBLICAR RC23
 - No hace falta solicitar indexación de todas las páginas. Inspeccionar una sola vez Mayoristas, Pastillas Multiacción, Cloro para Piletas, Calculadora y la guía de Agua Verde si se desea acelerar el rastreo.
 - Comparar en Search Console los próximos 28 días contra los 28 días anteriores, especialmente posición y CTR de Mayoristas y Pastillas, y posición de Cloro para Piletas, Calculadora y Agua Verde.
 - Subir todo el contenido del ZIP directamente a la raíz del repositorio GitHub “web”, sin agregar una carpeta contenedora.
+
+
+ANDYCLOR MASTER 1.0 — RC27 OFERTA ACTUALIZADA — 2026-09-13
+- Se elimina la fecha de vencimiento 12/09/2026 y se reemplaza por “Stock promocional limitado · Consultar disponibilidad”.
+- Se mantienen las ofertas minoristas por 50 kg: Rápido $249.000, Lento $265.000 y Pastillas $269.000.
+- Se actualizan las ofertas desde 300 kg: Rápido $219.000 (precio actual $229.000), Lento $235.000 (precio actual $245.000) y Pastillas 200 g en cápsulas $239.000 (precio actual $249.000).
+- El precio actual se muestra tachado para destacar el ahorro promocional.
+- Se actualizan los mensajes preparados de WhatsApp con los nuevos precios.
+
+DESPUÉS DE PUBLICAR RC27
+- Abrir mayoristas.html y oferta-cloro-mayorista.html y verificar precios, tachados y botones de WhatsApp.
+- Subir todo el contenido del ZIP directamente a la raíz del repositorio GitHub “web”, sin agregar una carpeta contenedora.
