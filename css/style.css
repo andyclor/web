@@ -5464,3 +5464,14 @@ body:has(#resultadoCalculadora.is-visible-after-calc){
   text-align:center!important;
   flex-shrink:0!important;
 }
+
+
+/* RC29 - Acceso a combos del catálogo de WhatsApp */
+.rc-combos-section{padding-top:52px;padding-bottom:52px}
+.rc-combos-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:26px}
+.rc-combo-card{display:flex;flex-direction:column;align-items:flex-start;min-height:260px;padding:26px;border:1px solid #dce8f2;border-radius:22px;background:linear-gradient(145deg,#fff,#f4faff);box-shadow:0 12px 30px rgba(4,43,80,.09)}
+.rc-combo-icon{display:grid;place-items:center;width:50px;height:50px;margin-bottom:14px;border-radius:15px;background:#e8f5ff;font-size:1.55rem}
+.rc-combo-card h3{margin:0 0 10px;color:#073b71;font-size:1.25rem}
+.rc-combo-card p{margin:0 0 20px;color:#52677a;line-height:1.55}
+.rc-combo-action{margin-top:auto;width:100%;text-align:center}
+@media(max-width:860px){.rc-combos-grid{grid-template-columns:1fr}.rc-combo-card{min-height:0}}
