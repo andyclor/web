@@ -712,6 +712,48 @@ footer{
   }
 }
 
+/* RC37 — Pieza mayorista responsive */
+.rc-wholesale-promo{
+  display:block;
+  width:min(100%,1120px);
+  margin:30px auto 38px;
+  overflow:hidden;
+  border:1px solid rgba(7,59,113,.14);
+  border-radius:28px;
+  background:#073b71;
+  box-shadow:0 22px 52px rgba(4,43,80,.18);
+  transition:transform .2s ease,box-shadow .2s ease;
+}
+.rc-wholesale-promo picture,
+.rc-wholesale-promo img{
+  display:block;
+  width:100%;
+}
+.rc-wholesale-promo img{
+  height:auto;
+}
+.rc-wholesale-promo:focus-visible{
+  outline:4px solid #f47721;
+  outline-offset:4px;
+}
+@media(hover:hover) and (pointer:fine){
+  .rc-wholesale-promo:hover{
+    transform:translateY(-4px);
+    box-shadow:0 28px 60px rgba(4,43,80,.23);
+  }
+}
+@media(max-width:760px){
+  .rc-wholesale-promo{
+    width:min(100%,520px);
+    margin:24px auto 30px;
+    border-radius:20px;
+    box-shadow:0 16px 36px rgba(4,43,80,.16);
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .rc-wholesale-promo{transition:none}
+}
+
 
 /* Barra más amplia y armónica para permitir mayor presencia del logo */
 .navbar {
@@ -5946,3 +5988,51 @@ footer .footer-copy { color:rgba(255,255,255,.74) !important; }
 footer .footer-slogan-final { color:#fff !important; }
 .footer-final .footer-slogan-final span,
 footer .footer-slogan-final span { color:#ffad6c !important; }
+
+/* ==========================================================
+   RC36 — Navegación: estado activo discreto y consistente
+   Evita que la opción actual quede como una píldora naranja.
+   ========================================================== */
+.navbar .nav-links a.active,
+.site-navbar .nav-links a.active{
+  position:relative!important;
+  background:transparent!important;
+  color:var(--andy-navy,#073b71)!important;
+}
+.navbar.scrolled .nav-links a.active,
+.site-navbar.scrolled .nav-links a.active{
+  background:transparent!important;
+  color:#fff!important;
+}
+.navbar .nav-links a.active::after,
+.site-navbar .nav-links a.active::after{
+  content:""!important;
+  position:absolute!important;
+  left:12px!important;
+  right:12px!important;
+  bottom:4px!important;
+  height:3px!important;
+  border-radius:999px!important;
+  background:var(--andy-orange,#f47b20)!important;
+}
+.navbar .nav-links a.active:hover,
+.site-navbar .nav-links a.active:hover{
+  background:rgba(244,123,32,.10)!important;
+  color:var(--andy-navy,#073b71)!important;
+}
+.navbar.scrolled .nav-links a.active:hover,
+.site-navbar.scrolled .nav-links a.active:hover{
+  background:rgba(255,255,255,.10)!important;
+  color:#fff!important;
+}
+@media(max-width:900px){
+  .navbar .nav-links a.active,
+  .site-navbar .nav-links a.active{
+    background:#eef5fb!important;
+    color:var(--andy-navy,#073b71)!important;
+  }
+  .navbar .nav-links a.active::after,
+  .site-navbar .nav-links a.active::after{
+    display:none!important;
+  }
+}
