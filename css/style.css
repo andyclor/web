@@ -586,10 +586,15 @@ footer{
   border-color:rgba(12,118,191,.22);
   box-shadow:0 18px 45px rgba(12,118,191,.11);
 }
-.calc-result.tema-oxypool{
+ .calc-result.tema-oxypool{
   background:linear-gradient(135deg,rgba(29,142,209,.15),#ffffff 68%,rgba(0,166,200,.08));
   border-color:rgba(29,142,209,.28);
   box-shadow:0 18px 45px rgba(29,142,209,.13);
+}
+.calc-result.tema-liquido{
+  background:linear-gradient(135deg,rgba(0,166,200,.13),#ffffff 70%);
+  border-color:rgba(0,166,200,.24);
+  box-shadow:0 18px 45px rgba(0,166,200,.10);
 }
 .result-item.item-rapido{border-left-color:#12a45a;background:linear-gradient(90deg,rgba(18,164,90,.10),#fff 55%)}
 .result-item.item-lento{border-left-color:#e23b3b;background:linear-gradient(90deg,rgba(226,59,59,.10),#fff 55%)}
@@ -597,6 +602,7 @@ footer{
 .result-item.item-algicida{border-left-color:#00a6c8;background:linear-gradient(90deg,rgba(0,166,200,.10),#fff 55%)}
 .result-item.item-clarificador{border-left-color:#0c76bf;background:linear-gradient(90deg,rgba(12,118,191,.10),#fff 55%)}
 .result-item.item-oxypool{border-left-color:#1d8ed1;background:linear-gradient(90deg,rgba(29,142,209,.14),#fff 58%)}
+.result-item.item-liquido{border-left-color:#00a6c8;background:linear-gradient(90deg,rgba(0,166,200,.11),#fff 58%)}
 .result-grid .result-item{
   animation:resultFade .28s ease both;
 }
@@ -710,48 +716,6 @@ footer{
     white-space: normal;
     font-size: 0.95rem;
   }
-}
-
-/* RC37 — Pieza mayorista responsive */
-.rc-wholesale-promo{
-  display:block;
-  width:min(100%,1120px);
-  margin:30px auto 38px;
-  overflow:hidden;
-  border:1px solid rgba(7,59,113,.14);
-  border-radius:28px;
-  background:#073b71;
-  box-shadow:0 22px 52px rgba(4,43,80,.18);
-  transition:transform .2s ease,box-shadow .2s ease;
-}
-.rc-wholesale-promo picture,
-.rc-wholesale-promo img{
-  display:block;
-  width:100%;
-}
-.rc-wholesale-promo img{
-  height:auto;
-}
-.rc-wholesale-promo:focus-visible{
-  outline:4px solid #f47721;
-  outline-offset:4px;
-}
-@media(hover:hover) and (pointer:fine){
-  .rc-wholesale-promo:hover{
-    transform:translateY(-4px);
-    box-shadow:0 28px 60px rgba(4,43,80,.23);
-  }
-}
-@media(max-width:760px){
-  .rc-wholesale-promo{
-    width:min(100%,520px);
-    margin:24px auto 30px;
-    border-radius:20px;
-    box-shadow:0 16px 36px rgba(4,43,80,.16);
-  }
-}
-@media(prefers-reduced-motion:reduce){
-  .rc-wholesale-promo{transition:none}
 }
 
 
@@ -4184,6 +4148,7 @@ body:has(#resultadoCalculadora.is-visible-after-calc){
 #resultadoCalculadora.tema-pastillas{--calc-accent:#7b3fe4;--calc-accent-rgb:123,63,228;--calc-tint:#faf7ff}
 #resultadoCalculadora.tema-mixto{--calc-accent:#1d8ed1;--calc-accent-rgb:29,142,209;--calc-tint:#f2faff}
 #resultadoCalculadora.tema-oxypool{--calc-accent:#1d8ed1;--calc-accent-rgb:29,142,209;--calc-tint:#eef9ff}
+#resultadoCalculadora.tema-liquido{--calc-accent:#00a6c8;--calc-accent-rgb:0,166,200;--calc-tint:#f0fcff}
 #resultadoCalculadora.is-visible-after-calc{
   display:block!important;
 }
@@ -4263,9 +4228,13 @@ body:has(#resultadoCalculadora.is-visible-after-calc){
   border-left-color:#0c76bf!important;
   background:linear-gradient(90deg,rgba(12,118,191,.10),#fff 58%)!important;
 }
-.prepared-order-compact li.prepared-oxypool{
+ .prepared-order-compact li.prepared-oxypool{
   border-left-color:#1d8ed1!important;
   background:linear-gradient(90deg,rgba(29,142,209,.14),#fff 58%)!important;
+}
+.prepared-order-compact li.prepared-liquido{
+  border-left-color:#00a6c8!important;
+  background:linear-gradient(90deg,rgba(0,166,200,.11),#fff 58%)!important;
 }
 .prepared-order-compact li strong{
   display:block!important;
@@ -6035,4 +6004,23 @@ footer .footer-slogan-final span { color:#ffad6c !important; }
   .site-navbar .nav-links a.active::after{
     display:none!important;
   }
+}
+
+
+/* RC37: cloro líquido 110 g/L — bloque informativo liviano */
+.liquid-high-concentration-card{
+  max-width:980px;
+  margin:0 auto;
+  padding:clamp(22px,4vw,38px);
+  border:1px solid rgba(0,166,200,.22);
+  border-radius:24px;
+  background:linear-gradient(145deg,rgba(0,166,200,.08),#fff 62%);
+}
+.liquid-high-concentration-card h2{margin:.45rem 0 1rem}
+.liquid-high-concentration-card p{max-width:860px}
+.liquid-high-concentration-note{
+  padding:12px 14px;
+  border-left:4px solid #00a6c8;
+  border-radius:10px;
+  background:rgba(0,166,200,.07);
 }

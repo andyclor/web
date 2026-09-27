@@ -450,6 +450,19 @@ function suggestedTabletOffer(monthlyKg) {
   return 'Cotización por volumen';
 }
 
+function suggestedLiquidChlorinePresentation(monthlyLitres) {
+  const bidones = Math.max(1, Math.ceil(monthlyLitres / 5));
+  const totalLitres = bidones * 5;
+  return `${bidones} bidón${bidones === 1 ? '' : 'es'} x 5 L (${totalLitres} L)`;
+}
+
+function formatLitres(value) {
+  const rounded = Math.round(value * 10) / 10;
+  return Number.isInteger(rounded)
+    ? `${rounded} L`
+    : `${rounded.toFixed(1).replace('.', ',')} L`;
+}
+
 function calculatePool() {
   const length = Number(document.getElementById('largo')?.value);
   const width = Number(document.getElementById('ancho')?.value);
@@ -477,6 +490,7 @@ function calculatePool() {
     pastillas: 'Solo Pastillas Multiacción',
     granulado: 'Solo Cloro Granulado',
     granulado_multiaccion: 'Granulado Rápido Multiacción',
+    liquido: 'Cloro Líquido 110 g/L',
     ambos: 'Pastillas + Cloro Granulado'
   };
   const maintenanceLabel = maintenanceLabels[maintenance] || maintenance;
@@ -496,6 +510,14 @@ function calculatePool() {
   const granulatedMonthlyKg = season === 'alta'
     ? Math.ceil((granulatedGrams * 30 / 1000) * 10) / 10
     : Math.ceil((granulatedGrams * 4 / 1000) * 10) / 10;
+
+  // Cloro líquido de alta concentración: 110 g/L de cloro activo.
+  // La dosis es por aplicación: cada 24 h en temporada alta y cada 7 días en temporada baja.
+  const liquidMl = Math.ceil((litres / 40000) * 400);
+  const liquidFrequency = season === 'alta' ? 'cada 24 horas' : 'cada 7 días';
+  const liquidMonthlyLitres = season === 'alta'
+    ? Math.ceil((liquidMl * 30 / 1000) * 10) / 10
+    : Math.ceil((liquidMl * 4 / 1000) * 10) / 10;
 
   const oxypoolBaseGrams = Math.ceil((litres / 10000) * 20);
   const oxypoolReinforcedGrams = Math.ceil((litres / 10000) * 40);
@@ -557,6 +579,21 @@ function calculatePool() {
     messageOrder.push(`${offer} — dosis estimada: ${granulatedGrams} g ${granulatedFrequency}; consumo mensual aprox.: ${formatKg(granulatedMonthlyKg)}`);
   }
 
+  if (maintenance === 'liquido') {
+    const offer = suggestedLiquidChlorinePresentation(liquidMonthlyLitres);
+    resultItems.push(`
+      <div class="result-item item-liquido">
+        <strong>💧 Cloro Líquido de Alta Concentración – 110 g/L</strong>
+        <span><b>Dosis de mantenimiento:</b> ${liquidMl} ml ${liquidFrequency}</span>
+        <small>La dosis indicada corresponde a <b>una aplicación</b>. En temporada alta representa 24 horas de mantenimiento; en temporada baja, 7 días.</small>
+        <small><b>Consumo estimado para aproximadamente un mes:</b> ${formatLitres(liquidMonthlyLitres)}.</small>
+        <small><b>Compra sugerida:</b> ${offer}. ANDYCLOR trabaja con 110 g/L de cloro activo, una concentración superior a muchas presentaciones habituales del mercado.</small>
+      </div>
+    `);
+    preparedOrder.push(`<li class="prepared-product prepared-liquido"><strong>Cloro Líquido 110 g/L</strong><span>${offer}</span></li>`);
+    messageOrder.push(`Cloro Líquido 110 g/L — dosis: ${liquidMl} ml ${liquidFrequency}; consumo mensual aprox.: ${formatLitres(liquidMonthlyLitres)}; compra sugerida: ${offer}`);
+  }
+
   if (['pastillas', 'ambos'].includes(maintenance)) {
     const estimate = tabletMonthlyEstimate(tabletsPerMonth);
     const offer = suggestedTabletOffer(estimate.kg);
@@ -614,7 +651,7 @@ function calculatePool() {
     ? 'tema-pastillas'
     : (maintenance === 'granulado'
       ? (poolType === 'revestida' ? 'tema-lento' : 'tema-rapido')
-      : (maintenance === 'granulado_multiaccion' ? 'tema-pastillas' : 'tema-mixto')));
+      : (maintenance === 'granulado_multiaccion' ? 'tema-pastillas' : (maintenance === 'liquido' ? 'tema-liquido' : 'tema-mixto'))));
 
   result.className = `calc-result ${theme}`;
   result.innerHTML = `
