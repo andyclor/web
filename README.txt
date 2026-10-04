@@ -1,3 +1,12 @@
+ACTUALIZACIÓN VIGENTE — 04/10/2026 (RC38)
+Precios por cuñete de 50 kg:
+- Minorista: rápido $259.000; lento $275.000; pastillas 200 g $295.000.
+- Mayorista desde 300 kg: rápido $239.000; lento $255.000; pastillas 200 g $275.000.
+Se actualizaron precio por kilo, mensajes de WhatsApp y tarjetas mayoristas.
+Para publicar esta actualización, subir el paquete completo al mismo repositorio.
+Ver README_RC38.txt para instrucciones vigentes de actualización de precios.
+Las notas que siguen y los otros README de revisiones previas son históricas.
+
 ANDYCLOR 1.0 FINAL AJUSTADA
 
 Últimos cambios:

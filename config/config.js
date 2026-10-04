@@ -16,9 +16,9 @@ window.ANDYCLOR_CONFIG = {
         tecnico: "Dicloro · A granel",
         detalle: "Cuñete de 50 kg a granel",
         etiquetaPrecio: "Precio minorista por cuñete",
-        precio: 249000,
-        precioKg: 4980,
-        mensajeWhatsapp: "Hola ANDYCLOR. Quiero consultar la Oferta Minorista de Cloro Granulado Rápido a granel: cuñete de 50 kg a $249.000."
+        precio: 259000,
+        precioKg: 5180,
+        mensajeWhatsapp: "Hola ANDYCLOR. Quiero consultar la Oferta Minorista de Cloro Granulado Rápido a granel: cuñete de 50 kg a $259.000."
       },
       {
         tipo: "lento",
@@ -26,9 +26,9 @@ window.ANDYCLOR_CONFIG = {
         tecnico: "Tricloro · A granel",
         detalle: "Cuñete de 50 kg a granel",
         etiquetaPrecio: "Precio minorista por cuñete",
-        precio: 269000,
-        precioKg: 5380,
-        mensajeWhatsapp: "Hola ANDYCLOR. Quiero consultar la Oferta Minorista de Cloro Granulado Lento a granel: cuñete de 50 kg a $269.000."
+        precio: 275000,
+        precioKg: 5500,
+        mensajeWhatsapp: "Hola ANDYCLOR. Quiero consultar la Oferta Minorista de Cloro Granulado Lento a granel: cuñete de 50 kg a $275.000."
       },
       {
         tipo: "pastillas",
@@ -36,9 +36,9 @@ window.ANDYCLOR_CONFIG = {
         tecnico: "En cápsulas",
         detalle: "Cuñete de 50 kg",
         etiquetaPrecio: "Precio minorista por cuñete",
-        precio: 279000,
-        precioKg: 5580,
-        mensajeWhatsapp: "Hola ANDYCLOR. Quiero consultar la Oferta Minorista de Pastillas Multiacción: cuñete de 50 kg a $279.000."
+        precio: 295000,
+        precioKg: 5900,
+        mensajeWhatsapp: "Hola ANDYCLOR. Quiero consultar la Oferta Minorista de Pastillas Multiacción: cuñete de 50 kg a $295.000."
       }
     ],
 
@@ -49,8 +49,8 @@ window.ANDYCLOR_CONFIG = {
         tecnico: "Dicloro",
         detalle: "Cuñete de 50 kg · Compra mínima total: 300 kg combinables",
         etiquetaPrecio: "Precio promocional por cuñete de 50 kg",
-        precio: 229000,
-        precioKg: 4580,
+        precio: 239000,
+        precioKg: 4780,
         vigencia: "Stock promocional limitado · Consultar disponibilidad",
         condiciones: [
           "Compra mínima total: 300 kg (6 cuñetes combinables)",
@@ -58,7 +58,7 @@ window.ANDYCLOR_CONFIG = {
           "Despachos por transporte a todo el país",
           "Cupos de entrega limitados · Consultar stock disponible"
         ],
-        mensajeWhatsapp: "Hola ANDYCLOR. Vi la oferta Mayorista de Cloro Granulado Rápido a $229.000 por cuñete de 50 kg. Estoy en ____ y necesito ____ kg."
+        mensajeWhatsapp: "Hola ANDYCLOR. Vi la oferta Mayorista de Cloro Granulado Rápido a $239.000 por cuñete de 50 kg. Estoy en ____ y necesito ____ kg."
       },
       {
         tipo: "lento",
@@ -66,8 +66,8 @@ window.ANDYCLOR_CONFIG = {
         tecnico: "Tricloro",
         detalle: "Cuñete de 50 kg · Compra mínima total: 300 kg combinables",
         etiquetaPrecio: "Precio promocional por cuñete de 50 kg",
-        precio: 249000,
-        precioKg: 4980,
+        precio: 255000,
+        precioKg: 5100,
         vigencia: "Stock promocional limitado · Consultar disponibilidad",
         condiciones: [
           "Compra mínima total: 300 kg (6 cuñetes combinables)",
@@ -75,7 +75,7 @@ window.ANDYCLOR_CONFIG = {
           "Despachos por transporte a todo el país",
           "Cupos de entrega limitados · Consultar stock disponible"
         ],
-        mensajeWhatsapp: "Hola ANDYCLOR. Vi la oferta Mayorista de Cloro Granulado Lento (Tricloro) a $249.000 por cuñete de 50 kg. Estoy en ____ y necesito ____ kg."
+        mensajeWhatsapp: "Hola ANDYCLOR. Vi la oferta Mayorista de Cloro Granulado Lento (Tricloro) a $255.000 por cuñete de 50 kg. Estoy en ____ y necesito ____ kg."
       },
       {
         tipo: "pastillas",
@@ -83,8 +83,8 @@ window.ANDYCLOR_CONFIG = {
         tecnico: "En cápsulas",
         detalle: "Cuñete de 50 kg · Compra mínima total: 300 kg combinables",
         etiquetaPrecio: "Precio promocional por cuñete de 50 kg",
-        precio: 259000,
-        precioKg: 5180,
+        precio: 275000,
+        precioKg: 5500,
         vigencia: "Stock promocional limitado · Consultar disponibilidad",
         condiciones: [
           "Compra mínima total: 300 kg (6 cuñetes combinables)",
@@ -92,7 +92,7 @@ window.ANDYCLOR_CONFIG = {
           "Despachos por transporte a todo el país",
           "Cupos de entrega limitados · Consultar stock disponible"
         ],
-        mensajeWhatsapp: "Hola ANDYCLOR. Vi la oferta Mayorista de Pastillas Multiacción a $259.000 por cuñete de 50 kg. Estoy en ____ y necesito ____ kg."
+        mensajeWhatsapp: "Hola ANDYCLOR. Vi la oferta Mayorista de Pastillas Multiacción a $275.000 por cuñete de 50 kg. Estoy en ____ y necesito ____ kg."
       }
     ]
   },
