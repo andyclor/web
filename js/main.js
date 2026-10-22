@@ -840,7 +840,7 @@ function offerTypeClass(type) {
 
 function buildOfferCard(offer, segment) {
   const card = document.createElement('article');
-  card.className = `gold-offer-card ${segment} ${offerTypeClass(offer.tipo)}`;
+  card.className = `gold-offer-card ${segment} ${offerTypeClass(offer.tipo)}${offer.superOferta ? ' is-super-offer' : ''}`;
 
   const badge = segment === 'retail' ? 'Oferta Minorista' : 'Oferta Mayorista';
   const buttonLabel = segment === 'retail' ? 'Consultar oferta' : 'Solicitar cotización';
@@ -866,6 +866,7 @@ function buildOfferCard(offer, segment) {
       : `Hola ANDYCLOR. Quiero solicitar una cotización Mayorista de ${offer.producto || 'este producto'}. Cantidad estimada: ____ kg. Frecuencia: ____. Zona: ____.`);
 
   card.innerHTML = `
+    ${offer.superOferta ? '<div class="gold-super-offer">SUPER OFERTA</div>' : ''}
     <div class="gold-offer-badge">${badge}</div>
     <h3>${offer.producto || 'Oferta ANDYCLOR'}</h3>
     ${offer.tecnico ? `<p class="gold-offer-technical">${offer.tecnico}</p>` : ''}
@@ -893,7 +894,7 @@ function renderOfferGroup(containerId, offers, segment) {
 
   const active = (Array.isArray(offers) ? offers : [])
     .filter(offer => offer && numericPrice(offer.precio) > 0)
-    .slice(0, 3);
+    .slice(0, 4);
 
   const section = container.closest('.gold-offer-section');
   if (active.length === 0) {
@@ -903,7 +904,7 @@ function renderOfferGroup(containerId, offers, segment) {
   }
 
   if (section) section.hidden = false;
-  container.classList.remove('count-1', 'count-2', 'count-3');
+  container.classList.remove('count-1', 'count-2', 'count-3', 'count-4');
   container.classList.add(`count-${active.length}`);
   container.innerHTML = '';
   active.forEach(offer => container.appendChild(buildOfferCard(offer, segment)));
