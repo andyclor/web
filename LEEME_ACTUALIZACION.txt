@@ -1,0 +1,29 @@
+ANDYCLOR · Actualización del 3 de noviembre de 2026
+
+Base: ANDYCLOR_WEB_COMPLETA_2026-11-03_CORREGIDA.zip.
+Se conservaron las correcciones y todos los precios de esa versión.
+Pastillas Mayorista: promoción $279.000 por cuñete de 50 kg, precio habitual
+$289.000 y ahorro de $10.000. Compra mínima total: 300 kg combinables.
+
+MEJORAS DE CARGA
+- El código de la calculadora se carga solo en calculadora.html.
+- JavaScript común: 38.813 a 21.824 bytes, aproximadamente un 44% menos.
+- CSS principal cargado: 186.371 a 159.752 bytes, aproximadamente un 14% menos.
+- Las páginas usan css/style.min.css y css/guia-compras.min.css.
+- Se mantienen los CSS originales para futuras modificaciones. Al editar
+  estilos, también hay que regenerar sus archivos .min.css.
+- Sin nuevas librerías ni nuevas imágenes.
+
+VERIFICACION
+Enlaces y anclas internos, recursos, datos estructurados, títulos, descripciones
+y canónicas de las 25 páginas HTML. Sitemap, precios y fórmulas conservados.
+Se comprobó que el navegador interpreta los estilos compactados igual que
+los originales. Se probaron el menú móvil y cálculos de mantenimiento,
+incluido cloro líquido 110 g/L. Revisión de ancho a 320 y 375 píxeles.
+Las reducciones expresan tamaño de archivos; no son una medición de segundos
+de carga en conexiones móviles reales.
+
+PARA SUBIR
+Descomprimir y subir el contenido a la raíz de la web, incluyendo las carpetas
+css y js completas. Se agregaron js/calculadora.js y los dos CSS .min.css.
+Este paquete está preparado para carga; no publica por sí solo en el dominio.

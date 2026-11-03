@@ -1,139 +1,179 @@
-/* ==========================================================
-   ANDYCLOR - CONFIGURACIÓN GENERAL
-
-   OFERTAS:
-   - Para MOSTRAR una oferta, cargá un precio mayor a 0.
-   - Para OCULTARLA, dejá precio: 0.
-   - Escribí los precios SIN $ y SIN puntos. Ejemplo: 259000
-   - La grilla se acomoda sola: 1 centrada / 2 lado a lado / 3 en fila.
-   ========================================================== */
+/* ANDYCLOR · Precios vigentes · Noviembre 2026. Precio por presentación; peso y compra mínima en cada opción. */
 window.ANDYCLOR_CONFIG = {
-  ofertas: {
-    minorista: [
+  "ofertas": {
+    "numeroLista": "Noviembre 2026",
+    "minorista": [
       {
-        tipo: "pastillas",
-        producto: "Pastillas Multiacción 200 g",
-        tecnico: "En cápsulas",
-        detalle: "Cuñete de 50 kg",
-        etiquetaPrecio: "Precio minorista por cuñete",
-        precio: 295000,
-        precioKg: 5900,
-        superOferta: true,
-        mensajeWhatsapp: "Hola ANDYCLOR. Quiero consultar la SUPER OFERTA Minorista de Pastillas Multiacción 200 g: cuñete de 50 kg a $295.000."
+        "id": "pastillas_200_50",
+        "tipo": "pastillas",
+        "producto": "Pastillas Multiacción 200 g",
+        "tecnico": "En cápsulas",
+        "detalle": "Cuñete de 50 kg",
+        "pesoKg": 50,
+        "compraMinimaKg": 50,
+        "etiquetaPrecio": "Precio por cuñete de 50 kg",
+        "precio": 295000,
+        "precioKg": 5900.0,
+        "condiciones": [
+          "Compra mínima total: 50 kg combinables",
+          "Entrega coordinada según zona",
+          "Consultar stock y modalidad de pago"
+        ],
+        "mensajeWhatsapp": "Hola ANDYCLOR. Quiero consultar los precios minoristas vigentes de noviembre de 2026: Pastillas Multiacción 200 g (En cápsulas), cuñete de 50 kg a $295.000. Compra mínima total: 50 kg combinables. Cantidad: ____ presentaciones. Zona: ____.",
+        "superOferta": true
       },
       {
-        tipo: "rapido",
-        producto: "Cloro Granulado de Disolución Rápida",
-        tecnico: "Dicloro · A granel",
-        detalle: "Cuñete de 50 kg a granel",
-        etiquetaPrecio: "Precio minorista por cuñete",
-        precio: 255000,
-        precioKg: 5100,
-        mensajeWhatsapp: "Hola ANDYCLOR. Quiero consultar la Oferta Minorista de Cloro Granulado Rápido a granel: cuñete de 50 kg a $255.000."
+        "id": "rapido_granel_50",
+        "tipo": "rapido",
+        "producto": "Cloro Granulado de Disolución Rápida",
+        "tecnico": "Dicloro",
+        "detalle": "A granel x 50 kg o fraccionado x 45 kg",
+        "pesoKg": 50,
+        "compraMinimaKg": 50,
+        "etiquetaPrecio": "Precio por presentación",
+        "precio": 265000,
+        "precioKg": 5300.0,
+        "condiciones": [
+          "Compra mínima total: 50 kg combinables",
+          "Entrega coordinada según zona",
+          "Consultar stock y modalidad de pago"
+        ],
+        "mensajeWhatsapp": "Hola ANDYCLOR. Quiero consultar los precios minoristas vigentes de noviembre de 2026: Cloro Granulado de Disolución Rápida (Dicloro), a granel x 50 kg o fraccionado x 45 kg a $265.000. Compra mínima total: 50 kg combinables. Cantidad: ____ presentaciones. Zona: ____. Presentación elegida (granel o fraccionado): ____.",
+        "pesoFraccionadoKg": 45,
+        "precioKgFraccionado": 5888.89
       },
       {
-        tipo: "lento",
-        producto: "Cloro Granulado de Disolución Lenta",
-        tecnico: "Tricloro · A granel",
-        detalle: "Cuñete de 50 kg a granel",
-        etiquetaPrecio: "Precio minorista por cuñete",
-        precio: 279000,
-        precioKg: 5580,
-        mensajeWhatsapp: "Hola ANDYCLOR. Quiero consultar la Oferta Minorista de Cloro Granulado Lento a granel: cuñete de 50 kg a $279.000."
+        "id": "lento_granel_50",
+        "tipo": "lento",
+        "producto": "Cloro Granulado de Disolución Lenta",
+        "tecnico": "Tricloro",
+        "detalle": "A granel x 50 kg o fraccionado x 45 kg",
+        "pesoKg": 50,
+        "compraMinimaKg": 50,
+        "etiquetaPrecio": "Precio por presentación",
+        "precio": 279000,
+        "precioKg": 5580.0,
+        "condiciones": [
+          "Compra mínima total: 50 kg combinables",
+          "Entrega coordinada según zona",
+          "Consultar stock y modalidad de pago"
+        ],
+        "mensajeWhatsapp": "Hola ANDYCLOR. Quiero consultar los precios minoristas vigentes de noviembre de 2026: Cloro Granulado de Disolución Lenta (Tricloro), a granel x 50 kg o fraccionado x 45 kg a $279.000. Compra mínima total: 50 kg combinables. Cantidad: ____ presentaciones. Zona: ____. Presentación elegida (granel o fraccionado): ____.",
+        "pesoFraccionadoKg": 45,
+        "precioKgFraccionado": 6200.0
       },
       {
-        tipo: "multiaccion",
-        producto: "Cloro Granulado Multiacción",
-        tecnico: "Granulado Multiacción · A granel",
-        detalle: "Cuñete de 50 kg a granel",
-        etiquetaPrecio: "Precio minorista por cuñete",
-        precio: 299000,
-        precioKg: 5980,
-        mensajeWhatsapp: "Hola ANDYCLOR. Quiero consultar la Oferta Minorista de Cloro Granulado Multiacción a granel: cuñete de 50 kg a $299.000."
+        "id": "multiaccion_granel_50",
+        "tipo": "multiaccion",
+        "producto": "Granulado Rápido Multifunción",
+        "tecnico": "Multiacción",
+        "detalle": "A granel x 50 kg o fraccionado x 45 kg",
+        "pesoKg": 50,
+        "compraMinimaKg": 50,
+        "etiquetaPrecio": "Precio por presentación",
+        "precio": 299000,
+        "precioKg": 5980.0,
+        "condiciones": [
+          "Compra mínima total: 50 kg combinables",
+          "Entrega coordinada según zona",
+          "Consultar stock y modalidad de pago"
+        ],
+        "mensajeWhatsapp": "Hola ANDYCLOR. Quiero consultar los precios minoristas vigentes de noviembre de 2026: Granulado Rápido Multifunción (Multiacción), a granel x 50 kg o fraccionado x 45 kg a $299.000. Compra mínima total: 50 kg combinables. Cantidad: ____ presentaciones. Zona: ____. Presentación elegida (granel o fraccionado): ____.",
+        "pesoFraccionadoKg": 45,
+        "precioKgFraccionado": 6644.44
       }
     ],
-
-    mayorista: [
+    "mayorista": [
       {
-        tipo: "pastillas",
-        producto: "Pastillas Multiacción 200 g",
-        tecnico: "En cápsulas",
-        detalle: "Cuñete de 50 kg · Compra mínima total: 300 kg combinables",
-        etiquetaPrecio: "Precio promo por cuñete de 50 kg",
-        precio: 279000,
-        precioNormal: 289000,
-        precioKg: 5580,
-        ahorro: "Descuento adicional: $10.000 por cuñete",
-        superOferta: true,
-        vigencia: "",
-        condiciones: [
-          "Mínimo total: 300 kg · 6 cuñetes combinables",
+        "id": "pastillas_200_50",
+        "tipo": "pastillas",
+        "producto": "Pastillas Multiacción 200 g",
+        "tecnico": "En cápsulas",
+        "detalle": "Cuñete de 50 kg",
+        "pesoKg": 50,
+        "compraMinimaKg": 300,
+        "etiquetaPrecio": "Precio promo por cuñete de 50 kg",
+        "precio": 279000,
+        "precioKg": 5580,
+        "condiciones": [
+          "Compra mínima total: 300 kg combinables",
           "Entrega coordinada según zona",
-          "Consultar stock y entrega"
+          "Consultar stock y modalidad de pago"
         ],
-        mensajeWhatsapp: "Hola ANDYCLOR. Vi la SUPER OFERTA Mayorista de Pastillas Multiacción 200 g: $279.000 por cuñete de 50 kg (precio habitual $289.000), dentro de una compra mínima de 300 kg. Estoy en ____ y necesito ____ kg."
+        "mensajeWhatsapp": "Hola ANDYCLOR. Vi la SUPER OFERTA Mayorista de Pastillas Multiacción 200 g en cápsulas: $279.000 por cuñete de 50 kg (precio habitual $289.000). Compra mínima total: 300 kg combinables. Precios vigentes · Noviembre 2026. Cantidad: ____ cuñetes. Zona: ____.",
+        "superOferta": true,
+        "precioNormal": 289000,
+        "ahorro": "Ahorrás $10.000 por cuñete"
       },
       {
-        tipo: "rapido",
-        producto: "Cloro Granulado de Disolución Rápida",
-        tecnico: "Dicloro",
-        detalle: "Cuñete de 50 kg · Compra mínima total: 300 kg combinables",
-        etiquetaPrecio: "Precio por cuñete de 50 kg",
-        precio: 235000,
-        precioKg: 4700,
-        vigencia: "",
-        condiciones: [
-          "Mínimo total: 300 kg · 6 cuñetes combinables",
+        "id": "rapido_granel_50",
+        "tipo": "rapido",
+        "producto": "Cloro Granulado de Disolución Rápida",
+        "tecnico": "Dicloro",
+        "detalle": "A granel x 50 kg o fraccionado x 45 kg",
+        "pesoKg": 50,
+        "compraMinimaKg": 300,
+        "etiquetaPrecio": "Precio por presentación",
+        "precio": 255000,
+        "precioKg": 5100.0,
+        "condiciones": [
+          "Compra mínima total: 300 kg combinables",
           "Entrega coordinada según zona",
-          "Despachos por transporte a todo el país"
+          "Consultar stock y modalidad de pago"
         ],
-        mensajeWhatsapp: "Hola ANDYCLOR. Vi la oferta Mayorista de Cloro Granulado Rápido a $235.000 por cuñete de 50 kg dentro de una compra mínima de 300 kg. Estoy en ____ y necesito ____ kg."
+        "mensajeWhatsapp": "Hola ANDYCLOR. Quiero consultar los precios mayoristas vigentes de noviembre de 2026: Cloro Granulado de Disolución Rápida (Dicloro), a granel x 50 kg o fraccionado x 45 kg a $255.000. Compra mínima total: 300 kg combinables. Cantidad: ____ presentaciones. Zona: ____. Presentación elegida (granel o fraccionado): ____.",
+        "pesoFraccionadoKg": 45,
+        "precioKgFraccionado": 5666.67
       },
       {
-        tipo: "lento",
-        producto: "Cloro Granulado de Disolución Lenta",
-        tecnico: "Tricloro",
-        detalle: "Cuñete de 50 kg · Compra mínima total: 300 kg combinables",
-        etiquetaPrecio: "Precio por cuñete de 50 kg",
-        precio: 259000,
-        precioKg: 5180,
-        vigencia: "",
-        condiciones: [
-          "Mínimo total: 300 kg · 6 cuñetes combinables",
+        "id": "lento_granel_50",
+        "tipo": "lento",
+        "producto": "Cloro Granulado de Disolución Lenta",
+        "tecnico": "Tricloro",
+        "detalle": "A granel x 50 kg o fraccionado x 45 kg",
+        "pesoKg": 50,
+        "compraMinimaKg": 300,
+        "etiquetaPrecio": "Precio por presentación",
+        "precio": 259000,
+        "precioKg": 5180.0,
+        "condiciones": [
+          "Compra mínima total: 300 kg combinables",
           "Entrega coordinada según zona",
-          "Despachos por transporte a todo el país"
+          "Consultar stock y modalidad de pago"
         ],
-        mensajeWhatsapp: "Hola ANDYCLOR. Vi la oferta Mayorista de Cloro Granulado Lento a $259.000 por cuñete de 50 kg dentro de una compra mínima de 300 kg. Estoy en ____ y necesito ____ kg."
+        "mensajeWhatsapp": "Hola ANDYCLOR. Quiero consultar los precios mayoristas vigentes de noviembre de 2026: Cloro Granulado de Disolución Lenta (Tricloro), a granel x 50 kg o fraccionado x 45 kg a $259.000. Compra mínima total: 300 kg combinables. Cantidad: ____ presentaciones. Zona: ____. Presentación elegida (granel o fraccionado): ____.",
+        "pesoFraccionadoKg": 45,
+        "precioKgFraccionado": 5755.56
       },
       {
-        tipo: "multiaccion",
-        producto: "Cloro Granulado Multiacción",
-        tecnico: "Granulado Multiacción · A granel",
-        detalle: "Cuñete de 50 kg · Compra mínima total: 300 kg combinables",
-        etiquetaPrecio: "Precio por cuñete de 50 kg",
-        precio: 289000,
-        precioKg: 5780,
-        vigencia: "",
-        condiciones: [
-          "Mínimo total: 300 kg · 6 cuñetes combinables",
+        "id": "multiaccion_granel_50",
+        "tipo": "multiaccion",
+        "producto": "Granulado Rápido Multifunción",
+        "tecnico": "Multiacción",
+        "detalle": "A granel x 50 kg o fraccionado x 45 kg",
+        "pesoKg": 50,
+        "compraMinimaKg": 300,
+        "etiquetaPrecio": "Precio por presentación",
+        "precio": 279000,
+        "precioKg": 5580.0,
+        "condiciones": [
+          "Compra mínima total: 300 kg combinables",
           "Entrega coordinada según zona",
-          "Despachos por transporte a todo el país"
+          "Consultar stock y modalidad de pago"
         ],
-        mensajeWhatsapp: "Hola ANDYCLOR. Vi la oferta Mayorista de Cloro Granulado Multiacción a $289.000 por cuñete de 50 kg dentro de una compra mínima de 300 kg. Estoy en ____ y necesito ____ kg."
+        "mensajeWhatsapp": "Hola ANDYCLOR. Quiero consultar los precios mayoristas vigentes de noviembre de 2026: Granulado Rápido Multifunción (Multiacción), a granel x 50 kg o fraccionado x 45 kg a $279.000. Compra mínima total: 300 kg combinables. Cantidad: ____ presentaciones. Zona: ____. Presentación elegida (granel o fraccionado): ____.",
+        "pesoFraccionadoKg": 45,
+        "precioKgFraccionado": 6200.0
       }
     ]
-
   },
-
-  contacto: {
-    whatsapp: "5491168306266",
-    instagram: "",
-    facebook: "",
-    mercadolibre: ""
+  "contacto": {
+    "whatsapp": "5491168306266",
+    "instagram": "",
+    "facebook": "",
+    "mercadolibre": ""
   },
-
-  /* Google Analytics 4 activo para andyclor.com.ar. */
-  analytics: {
-    ga4Id: "G-H3QG2BNK9Y"
+  "analytics": {
+    "ga4Id": "G-H3QG2BNK9Y"
   }
 };
