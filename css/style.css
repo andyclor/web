@@ -6178,3 +6178,19 @@ footer .footer-slogan-final span { color:#ffad6c !important; }
     margin-top:0;
   }
 }
+
+/* Botones y listas comerciales separados · 2026-11-10 */
+.btn,.card-btn,.calc-main-btn,.calc-reset-btn,.guide-btn,.gold-offer-action,.rc-fast-offer-main,.rc-tabs>a,.seo-hero-offers>a{display:inline-flex;align-items:center;justify-content:center;text-align:center;white-space:normal;line-height:1.35}
+.rc-fast-offer-catalog{text-align:center}
+.rc-tabs{flex-wrap:wrap;align-items:stretch}
+.rc-tabs>a{min-height:44px;min-width:0}
+.seo-shop-grid.seo-retail-only{grid-template-columns:minmax(0,1fr);max-width:720px}
+.seo-audience-switch{display:flex;flex-direction:column;align-items:center;gap:12px;margin:24px auto;text-align:center;max-width:720px}
+.seo-audience-switch .btn{width:min(100%,400px);min-height:48px}
+.seo-price-actions{display:flex;flex-wrap:wrap;align-items:stretch;justify-content:center;gap:14px;margin:22px auto;max-width:900px}
+.seo-price-actions .btn{flex:1 1 260px;min-height:48px}
+.seo-split-links.seo-hero-offers{align-items:stretch;max-width:760px;margin:16px auto 0}
+.seo-hero-offers>a{flex:1 1 220px;min-height:48px}
+#precios-granulados .calc-dose-table td{text-align:center}
+@media(max-width:760px){.rc-tabs-mobile-grid{position:static}.rc-tabs-mobile-grid>a{height:100%;min-height:48px}.seo-price-actions{flex-direction:column}.seo-price-actions .btn{flex:0 1 auto;width:100%}}
+#precios-granulados .calc-dose-table{min-width:0;width:100%;table-layout:fixed}#precios-granulados .calc-dose-table th:first-child{width:58%;overflow-wrap:anywhere}#precios-granulados .calc-dose-table th,#precios-granulados .calc-dose-table td{white-space:normal}

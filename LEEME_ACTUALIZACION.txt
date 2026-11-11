@@ -1,29 +1,85 @@
-ANDYCLOR · Actualización del 3 de noviembre de 2026
+ANDYCLOR · Actualización del 10 de noviembre de 2026
 
-Base: ANDYCLOR_WEB_COMPLETA_2026-11-03_CORREGIDA.zip.
-Se conservaron las correcciones y todos los precios de esa versión.
-Pastillas Mayorista: promoción $279.000 por cuñete de 50 kg, precio habitual
-$289.000 y ahorro de $10.000. Compra mínima total: 300 kg combinables.
+CORRECCIÓN DE SEPARACIÓN DE PRECIOS Y BOTONES
+- Minorista y mayorista no se comparan juntos en ninguna ficha ni tabla.
+- Las fichas y el catálogo muestran únicamente precios minoristas, con un
+  botón que lleva a la lista mayorista sin mostrar sus importes allí.
+- Mayoristas y su oferta muestran únicamente su lista mayorista.
+- Se mantienen los importes originales y la configuración de precios.
+- Botones y pestañas con texto centrado horizontal y verticalmente; pestañas
+  en dos columnas en celulares y sin ocupar la pantalla durante el scroll.
+- La imagen de accesorios, las guías, el SEO y la calculadora se conservan.
 
-MEJORAS DE CARGA
-- El código de la calculadora se carga solo en calculadora.html.
-- JavaScript común: 38.813 a 21.824 bytes, aproximadamente un 44% menos.
-- CSS principal cargado: 186.371 a 159.752 bytes, aproximadamente un 14% menos.
-- Las páginas usan css/style.min.css y css/guia-compras.min.css.
-- Se mantienen los CSS originales para futuras modificaciones. Al editar
-  estilos, también hay que regenerar sus archivos .min.css.
-- Sin nuevas librerías ni nuevas imágenes.
+MEJORAS PARA COMPRAS Y CONSULTAS DE PROVEEDOR
+- Inicio: accesos separados para comprar para la pileta o para el negocio,
+  con ofertas minoristas, ofertas mayoristas y calculadora desde el encabezado.
+- Mayoristas: título, encabezado y contenido orientados a proveedor de cloro
+  granulado, revendedores y comercios, conservando la URL existente.
+- Acceso directo a precios, productos, cotización y preguntas frecuentes.
+- Consulta de WhatsApp con rubro, producto, cantidad, localidad y frecuencia.
+- Aclaración de precio por presentación y compra mínima total de 300 kg.
+- Accesorios: nombres alternativos útiles (mangos telescópicos y barrefondos),
+  conservando la imagen optimizada incorporada en la versión anterior.
+- Se conservan precios, configuración, calculadora y páginas existentes.
+- Un archivo CSS pequeño; sin librerías, JavaScript ni imágenes adicionales.
 
-VERIFICACION
-Enlaces y anclas internos, recursos, datos estructurados, títulos, descripciones
-y canónicas de las 25 páginas HTML. Sitemap, precios y fórmulas conservados.
-Se comprobó que el navegador interpreta los estilos compactados igual que
-los originales. Se probaron el menú móvil y cálculos de mantenimiento,
-incluido cloro líquido 110 g/L. Revisión de ancho a 320 y 375 píxeles.
-Las reducciones expresan tamaño de archivos; no son una medición de segundos
-de carga en conexiones móviles reales.
+IMAGEN ACTUALIZADA DE ACCESORIOS
+- Se incorpora la imagen enviada de accesorios ANDYCLOR en Accesorios y en
+  su acceso desde Inicio, conservando la composición completa sin recortes.
+- WebP adaptativo de 640 px (114 KB) y 1000 px (230 KB), frente a 3,7 MB
+  del PNG original. El navegador elige según pantalla y densidad de píxeles.
+- Carga diferida, proporción cuadrada reservada y opción de ampliar la imagen
+  en Accesorios. Sin JavaScript adicional.
+- Se actualiza también la imagen usada al compartir la página de Accesorios.
+
+NUEVOS PRODUCTOS EN ACCESORIOS
+- Antracita Vulcano x 6 kg; cuarzo Vulcano x 16,5 kg.
+- Grava fina y grava gruesa x 25 kg.
+- Manguito para accesorios, conector cónico, traba de seguridad, unión para
+  cabos extensibles, uniones roscadas Vulcano para manguera en 1 1/4 y 1 1/2,
+  canasto grande (prefiltro) y canasto chico (filtro).
+- Fotos en WebP con tamaños adaptados al dispositivo y carga diferida.
+- Consulta de precio y compatibilidad por WhatsApp, sin precios inventados.
+
+CLORO GRANULADO Y SEO
+- Títulos y descripciones específicos para rápido, lento y Multiacción.
+- Presentaciones y tabla de precios minoristas en cloro-piletas.html; la
+  lista mayorista se consulta en su propia página.
+- Se conservan las URLs y sus canónicas, y se actualizan las fechas del sitemap.
+- Las listas de oferta incluyen precios en el HTML inicial y mantienen su
+  actualización dinámica desde config/config.js.
+- Guías enlazadas con las fichas de productos y el catálogo incorporado.
+- Calculadora: fila y respuesta para 30.000 litros. Fórmulas sin cambios.
+
+PRECIOS COMPROBADOS CON LAS DOS LISTAS ENVIADAS
+Lista Minorista (compra mínima total: 50 kg)
+Pastillas Multiacción 200 g       $295.000
+Granulado Rápido                 $265.000
+Granulado Lento                  $279.000
+Granulado Multiacción            $299.000
+
+Lista Mayorista (compra mínima total: 300 kg)
+Pastillas Multiacción 200 g       $279.000 (promo)
+Granulado Rápido                 $255.000
+Granulado Lento                  $259.000
+Granulado Multiacción            $279.000
+
+Los importes son por presentación, no por el pedido completo de 300 kg.
+Granulados: a granel x 50 kg o fraccionados x 45 kg, conservando la condición
+aprobada. En compras combinadas se cuenta el peso real de cada presentación.
+Pastillas Mayorista: precio habitual $289.000, promoción $279.000.
+No se ofrecen las pastillas de 50 g en estas listas.
+Valores orientativos, mejorables según cantidad y modalidad de pago.
+
+VELOCIDAD Y MEDICIÓN
+- Se conserva el JavaScript separado de la calculadora y el CSS minificado.
+- Sin librerías nuevas ni nuevas imágenes en Inicio.
+- Se mantienen los eventos whatsapp_click y whatsapp_catalog_click.
+  La recepción en Analytics debe comprobarse desde esa cuenta.
 
 PARA SUBIR
-Descomprimir y subir el contenido a la raíz de la web, incluyendo las carpetas
-css y js completas. Se agregaron js/calculadora.js y los dos CSS .min.css.
-Este paquete está preparado para carga; no publica por sí solo en el dominio.
+Descomprimir y cargar el contenido en la raíz del repositorio andyclor/web.
+Incluir las carpetas Imagenes, css, js y config completas.
+Este ZIP está preparado para carga manual y no publica por sí solo.
+Al actualizar precios en el futuro, actualizar también sus copias en el HTML
+y los datos estructurados de las fichas para mantenerlos consistentes.

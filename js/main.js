@@ -262,6 +262,18 @@ function configureSocial(id, url, pendingLabel = 'Próximamente') {
   if (label) label.textContent = pendingLabel;
 }
 
+function syncProductPrices() {
+  document.querySelectorAll('[data-product-offer]').forEach(block => {
+    const segment = block.dataset.priceSegment === 'mayorista' ? 'mayorista' : 'minorista';
+    const offer = (CONFIG.ofertas?.[segment] || []).find(item => item.id === block.dataset.productOffer);
+    if (!offer) return;
+    block.hidden = numericPrice(offer.precio) <= 0;
+    block.querySelectorAll('[data-product-price]').forEach(price => {
+      price.textContent = formatARS(offer.precio);
+    });
+  });
+}
+
 function applyConfiguration() {
   const offer = CONFIG.oferta || {};
 
@@ -341,6 +353,7 @@ function applyConfiguration() {
   });
 
   renderPromotions(CONFIG.promociones || []);
+  syncProductPrices();
 }
 
 function renderPromotions(promotions) {
