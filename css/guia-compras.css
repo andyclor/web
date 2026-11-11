@@ -20,3 +20,20 @@
 
 /* Compra de regulador por escala, sin JavaScript adicional. */
 #negocios-regulador{scroll-margin-top:105px}.seo-quantity-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;max-width:1080px;margin:28px auto}.seo-quantity-option{display:flex;flex-direction:column;gap:10px;padding:22px 18px;border:1px solid #b5d2e5;border-top:4px solid #0879c9;border-radius:18px;background:#fff;color:#073b71;text-decoration:none;box-shadow:0 8px 22px rgba(4,43,80,.08)}.seo-quantity-option strong{font-size:1.3rem}.seo-quantity-option span{color:#355069}.seo-quantity-option b{color:#075f9c;text-decoration:underline;text-underline-offset:3px;font-size:.94rem}.seo-quantity-option:focus-visible{outline:3px solid #e9943d;outline-offset:3px}@media(max-width:760px){.seo-quantity-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.seo-quantity-option{padding:18px 13px}.seo-quantity-option strong{font-size:1.1rem}}
+
+/* Comparación de granulados y accesos a presentaciones. */
+#granulados, #elegir, #pedido-5-10kg, #granulados ~ section[id] { scroll-margin-top: 105px; }
+.seo-audience-switch { width: min(720px, calc(100% - 28px)); }
+.compras-hero-links a { justify-content: center; text-align: center; }
+.rc-granulado-grid .choice-card { display: flex; flex-direction: column; }
+.rc-granulado-grid .choice-for { align-self: flex-start; }
+.rc-granulado-grid .btn { margin-top: auto; min-height: 44px; padding: 9px 12px; }
+#precios-granulados .seo-price-actions .btn { max-width: 400px; }
+@media (min-width: 761px) {
+  .rc-granulado-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  #granulados ~ section[id] { scroll-margin-top: 145px; }
+}
+@media (max-width: 760px) {
+  .rc-granulado-hero .seo-hero-offers { gap: 8px; }
+  .rc-granulado-hero .seo-hero-offers a { flex-basis: 128px; }
+}

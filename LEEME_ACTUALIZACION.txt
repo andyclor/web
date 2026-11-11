@@ -1,5 +1,13 @@
 ANDYCLOR · Actualización del 10 de noviembre de 2026
 
+COMPARACIÓN DE GRANULADOS Y OPCIONES DE COMPRA
+- Comparación de rápido, lento y Multiacción al comienzo del catálogo.
+- Desde Presentaciones se puede consultar por 5 o 10 kg en cada ficha.
+- Las consultas de 5 o 10 kg abren WhatsApp con el producto, la cantidad
+  y la localidad para completar.
+- La cotización mayorista tiene un acceso propio desde Inicio y las fichas.
+- Las ofertas siguen sus condiciones de 50 kg minorista y 300 kg mayorista.
+
 CORRECCIÓN DE SEPARACIÓN DE PRECIOS Y BOTONES
 - Minorista y mayorista no se comparan juntos en ninguna ficha ni tabla.
 - Las fichas y el catálogo muestran únicamente precios minoristas, con un
@@ -80,6 +88,7 @@ VELOCIDAD Y MEDICIÓN
 PARA SUBIR
 Descomprimir y cargar el contenido en la raíz del repositorio andyclor/web.
 Incluir las carpetas Imagenes, css, js y config completas.
+Conservar el archivo CNAME existente del dominio, si está en el repositorio.
 Este ZIP está preparado para carga manual y no publica por sí solo.
 Al actualizar precios en el futuro, actualizar también sus copias en el HTML
 y los datos estructurados de las fichas para mantenerlos consistentes.
