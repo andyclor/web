@@ -31,16 +31,16 @@ window.ANDYCLOR_CONFIG = {
         "pesoKg": 50,
         "compraMinimaKg": 50,
         "etiquetaPrecio": "Precio por presentación",
-        "precio": 265000,
-        "precioKg": 5300.0,
+        "precio": 269000,
+        "precioKg": 5380.0,
         "condiciones": [
           "Compra mínima total: 50 kg combinables",
           "Entrega coordinada según zona",
           "Consultar stock y modalidad de pago"
         ],
-        "mensajeWhatsapp": "Hola ANDYCLOR. Quiero consultar los precios minoristas vigentes de noviembre de 2026: Cloro Granulado de Disolución Rápida (Dicloro), a granel x 50 kg o fraccionado x 45 kg a $265.000. Compra mínima total: 50 kg combinables. Cantidad: ____ presentaciones. Zona: ____. Presentación elegida (granel o fraccionado): ____.",
+        "mensajeWhatsapp": "Hola ANDYCLOR. Quiero consultar los precios minoristas vigentes de noviembre de 2026: Cloro Granulado de Disolución Rápida (Dicloro), a granel x 50 kg o fraccionado x 45 kg a $269.000. Compra mínima total: 50 kg combinables. Cantidad: ____ presentaciones. Zona: ____. Presentación elegida (granel o fraccionado): ____.",
         "pesoFraccionadoKg": 45,
-        "precioKgFraccionado": 5888.89
+        "precioKgFraccionado": 5977.78
       },
       {
         "id": "lento_granel_50",
@@ -51,16 +51,16 @@ window.ANDYCLOR_CONFIG = {
         "pesoKg": 50,
         "compraMinimaKg": 50,
         "etiquetaPrecio": "Precio por presentación",
-        "precio": 279000,
-        "precioKg": 5580.0,
+        "precio": 289000,
+        "precioKg": 5780.0,
         "condiciones": [
           "Compra mínima total: 50 kg combinables",
           "Entrega coordinada según zona",
           "Consultar stock y modalidad de pago"
         ],
-        "mensajeWhatsapp": "Hola ANDYCLOR. Quiero consultar los precios minoristas vigentes de noviembre de 2026: Cloro Granulado de Disolución Lenta (Tricloro), a granel x 50 kg o fraccionado x 45 kg a $279.000. Compra mínima total: 50 kg combinables. Cantidad: ____ presentaciones. Zona: ____. Presentación elegida (granel o fraccionado): ____.",
+        "mensajeWhatsapp": "Hola ANDYCLOR. Quiero consultar los precios minoristas vigentes de noviembre de 2026: Cloro Granulado de Disolución Lenta (Tricloro), a granel x 50 kg o fraccionado x 45 kg a $289.000. Compra mínima total: 50 kg combinables. Cantidad: ____ presentaciones. Zona: ____. Presentación elegida (granel o fraccionado): ____.",
         "pesoFraccionadoKg": 45,
-        "precioKgFraccionado": 6200.0
+        "precioKgFraccionado": 6422.22
       },
       {
         "id": "multiaccion_granel_50",
@@ -71,16 +71,16 @@ window.ANDYCLOR_CONFIG = {
         "pesoKg": 50,
         "compraMinimaKg": 50,
         "etiquetaPrecio": "Precio por presentación",
-        "precio": 299000,
-        "precioKg": 5980.0,
+        "precio": 289000,
+        "precioKg": 5780.0,
         "condiciones": [
           "Compra mínima total: 50 kg combinables",
           "Entrega coordinada según zona",
           "Consultar stock y modalidad de pago"
         ],
-        "mensajeWhatsapp": "Hola ANDYCLOR. Quiero consultar los precios minoristas vigentes de noviembre de 2026: Granulado Rápido Multifunción (Multiacción), a granel x 50 kg o fraccionado x 45 kg a $299.000. Compra mínima total: 50 kg combinables. Cantidad: ____ presentaciones. Zona: ____. Presentación elegida (granel o fraccionado): ____.",
+        "mensajeWhatsapp": "Hola ANDYCLOR. Quiero consultar los precios minoristas vigentes de noviembre de 2026: Granulado Rápido Multifunción (Multiacción), a granel x 50 kg o fraccionado x 45 kg a $289.000. Compra mínima total: 50 kg combinables. Cantidad: ____ presentaciones. Zona: ____. Presentación elegida (granel o fraccionado): ____.",
         "pesoFraccionadoKg": 45,
-        "precioKgFraccionado": 6644.44
+        "precioKgFraccionado": 6422.22
       }
     ],
     "mayorista": [
@@ -134,16 +134,16 @@ window.ANDYCLOR_CONFIG = {
         "pesoKg": 50,
         "compraMinimaKg": 300,
         "etiquetaPrecio": "Precio por presentación",
-        "precio": 259000,
-        "precioKg": 5180.0,
+        "precio": 279000,
+        "precioKg": 5580.0,
         "condiciones": [
           "Compra mínima total: 300 kg combinables",
           "Entrega coordinada según zona",
           "Consultar stock y modalidad de pago"
         ],
-        "mensajeWhatsapp": "Hola ANDYCLOR. Quiero consultar los precios mayoristas vigentes de noviembre de 2026: Cloro Granulado de Disolución Lenta (Tricloro), a granel x 50 kg o fraccionado x 45 kg a $259.000. Compra mínima total: 300 kg combinables. Cantidad: ____ presentaciones. Zona: ____. Presentación elegida (granel o fraccionado): ____.",
+        "mensajeWhatsapp": "Hola ANDYCLOR. Quiero consultar los precios mayoristas vigentes de noviembre de 2026: Cloro Granulado de Disolución Lenta (Tricloro), a granel x 50 kg o fraccionado x 45 kg a $279.000. Compra mínima total: 300 kg combinables. Cantidad: ____ presentaciones. Zona: ____. Presentación elegida (granel o fraccionado): ____.",
         "pesoFraccionadoKg": 45,
-        "precioKgFraccionado": 5755.56
+        "precioKgFraccionado": 6200.0
       },
       {
         "id": "multiaccion_granel_50",
