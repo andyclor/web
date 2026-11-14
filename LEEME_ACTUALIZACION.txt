@@ -1,5 +1,14 @@
 ANDYCLOR · Actualización del 13 de noviembre de 2026
 
+CLORO SÓLIDO A GRANEL
+- Página nueva en cloro-solido-a-granel.html, enlazada desde Inicio, Cloro y
+  Mayoristas. La URL está incluida en el sitemap.
+- Granulados rápido (dicloro), lento (tricloro) y Multiacción de 50 kg
+  con accesos separados a las listas minorista y mayorista.
+- Al publicar, inspeccionar esta URL en Google Search Console y seleccionar
+  «Solicitar indexación»:
+  https://andyclor.com.ar/cloro-solido-a-granel.html
+
 COMPARACIÓN DE GRANULADOS Y OPCIONES DE COMPRA
 - Comparación de rápido, lento y Multiacción al comienzo del catálogo.
 - Desde Presentaciones se puede consultar por 5 o 10 kg en cada ficha.
